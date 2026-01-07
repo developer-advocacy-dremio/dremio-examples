@@ -36,7 +36,7 @@ Each script is self-contained and performs the following:
 ## Usage Instructions
 
 1.  **Prerequisites**: Access to a Dremio environment (Software or Cloud).
-2.  **Catalog Setup**: Ensure you have a source/catalog named according to the demo (or use `Nessie` or `CapitalMarket` as generic placeholders). The scripts assume specific top-level folders (e.g., `CapitalMarket`, `RetailDB`).
+2.  **Catalog Setup**: Should useable as is for Cloud, may need to add the catalog namespace for Software
     *   *Note: You can easily Find/Replace the catalog name in any script to match your environment.*
 3.  **Run the Script**: Open a SQL Runner in Dremio, paste the content of a demo file, and execute 'Run All'.
 4.  **Explore**: Navigate to the created folders (`Silver`, `Gold`) to preview the views.

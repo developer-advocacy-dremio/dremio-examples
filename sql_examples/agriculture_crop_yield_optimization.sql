@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS AgricultureDB;
 CREATE FOLDER IF NOT EXISTS AgricultureDB.Bronze;
 CREATE FOLDER IF NOT EXISTS AgricultureDB.Silver;
 CREATE FOLDER IF NOT EXISTS AgricultureDB.Gold;

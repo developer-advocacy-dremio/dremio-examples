@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS SmartCityDB;
 CREATE FOLDER IF NOT EXISTS SmartCityDB.Bronze;
 CREATE FOLDER IF NOT EXISTS SmartCityDB.Silver;
 CREATE FOLDER IF NOT EXISTS SmartCityDB.Gold;

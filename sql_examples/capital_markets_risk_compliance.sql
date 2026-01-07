@@ -15,6 +15,7 @@
 -- Note: 'CREATE FOLDER' is supported in CapitalMarket/Iceberg catalogs often as namespaces.
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS CapitalMarket;
 CREATE FOLDER IF NOT EXISTS CapitalMarket.Bronze;
 CREATE FOLDER IF NOT EXISTS CapitalMarket.Silver;
 CREATE FOLDER IF NOT EXISTS CapitalMarket.Gold;

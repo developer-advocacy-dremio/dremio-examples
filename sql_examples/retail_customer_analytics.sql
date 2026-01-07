@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.Silver;
 CREATE FOLDER IF NOT EXISTS RetailDB.Gold;

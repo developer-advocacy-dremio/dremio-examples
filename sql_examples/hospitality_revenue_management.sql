@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS HospitalityDB;
 CREATE FOLDER IF NOT EXISTS HospitalityDB.Bronze;
 CREATE FOLDER IF NOT EXISTS HospitalityDB.Silver;
 CREATE FOLDER IF NOT EXISTS HospitalityDB.Gold;

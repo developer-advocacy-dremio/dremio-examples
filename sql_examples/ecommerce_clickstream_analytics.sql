@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS EcommerceDB;
 CREATE FOLDER IF NOT EXISTS EcommerceDB.Bronze;
 CREATE FOLDER IF NOT EXISTS EcommerceDB.Silver;
 CREATE FOLDER IF NOT EXISTS EcommerceDB.Gold;

@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS InsuranceDB;
 CREATE FOLDER IF NOT EXISTS InsuranceDB.Bronze;
 CREATE FOLDER IF NOT EXISTS InsuranceDB.Silver;
 CREATE FOLDER IF NOT EXISTS InsuranceDB.Gold;

@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS EducationDB;
 CREATE FOLDER IF NOT EXISTS EducationDB.Bronze;
 CREATE FOLDER IF NOT EXISTS EducationDB.Silver;
 CREATE FOLDER IF NOT EXISTS EducationDB.Gold;

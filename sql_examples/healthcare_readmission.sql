@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS HealthcareDB;
 CREATE FOLDER IF NOT EXISTS HealthcareDB.Bronze;
 CREATE FOLDER IF NOT EXISTS HealthcareDB.Silver;
 CREATE FOLDER IF NOT EXISTS HealthcareDB.Gold;

@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS EnergyDB;
 CREATE FOLDER IF NOT EXISTS EnergyDB.Bronze;
 CREATE FOLDER IF NOT EXISTS EnergyDB.Silver;
 CREATE FOLDER IF NOT EXISTS EnergyDB.Gold;

@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS MediaDB;
 CREATE FOLDER IF NOT EXISTS MediaDB.Bronze;
 CREATE FOLDER IF NOT EXISTS MediaDB.Silver;
 CREATE FOLDER IF NOT EXISTS MediaDB.Gold;

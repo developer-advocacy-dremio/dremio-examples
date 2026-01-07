@@ -14,6 +14,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS WealthDB;
 CREATE FOLDER IF NOT EXISTS WealthDB.Bronze;
 CREATE FOLDER IF NOT EXISTS WealthDB.Silver;
 CREATE FOLDER IF NOT EXISTS WealthDB.Gold;

@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS ManufacturingDB;
 CREATE FOLDER IF NOT EXISTS ManufacturingDB.Bronze;
 CREATE FOLDER IF NOT EXISTS ManufacturingDB.Silver;
 CREATE FOLDER IF NOT EXISTS ManufacturingDB.Gold;

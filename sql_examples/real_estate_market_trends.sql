@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS RealEstateDB;
 CREATE FOLDER IF NOT EXISTS RealEstateDB.Bronze;
 CREATE FOLDER IF NOT EXISTS RealEstateDB.Silver;
 CREATE FOLDER IF NOT EXISTS RealEstateDB.Gold;

@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
+CREATE FOLDER IF NOT EXISTS SupplyChainDB;
 CREATE FOLDER IF NOT EXISTS SupplyChainDB.Bronze;
 CREATE FOLDER IF NOT EXISTS SupplyChainDB.Silver;
 CREATE FOLDER IF NOT EXISTS SupplyChainDB.Gold;
