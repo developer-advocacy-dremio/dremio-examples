@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS SupplyChainDB.Bronze.Products (
     SupplierID INT,
     Name VARCHAR,
     Category VARCHAR,
-    UnitCost FLOAT
+    UnitCost DOUBLE
 );
 
 -- 1.3 Create Inventory

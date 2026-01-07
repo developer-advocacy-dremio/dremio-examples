@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS CapitalMarket.Bronze.Trades (
 -- 1.2 Create Bronze.MarketData Table
 CREATE TABLE IF NOT EXISTS CapitalMarket.Bronze.MarketData (
     Ticker VARCHAR,
-    Date DATE,
+    "Date" DATE,
     ClosePrice DOUBLE,
     Volatility DOUBLE,
     Sector VARCHAR
@@ -149,7 +149,7 @@ INSERT INTO CapitalMarket.Bronze.Trades (TradeID, Ticker, Quantity, Price, Trade
 (100, 'WFC', 617, 181.12, '2025-03-11', 'Bank_X', 'SETTLED');
 
 -- Insert 100 records into Bronze.MarketData
-INSERT INTO CapitalMarket.Bronze.MarketData (Ticker, Date, ClosePrice, Volatility, Sector) VALUES
+INSERT INTO CapitalMarket.Bronze.MarketData (Ticker, "Date", ClosePrice, Volatility, Sector) VALUES
 ('GOOGL', '2025-01-23', 243.57, 0.2, 'Tech'),
 ('TSLA', '2025-01-24', 277.61, 0.17, 'Auto'),
 ('WFC', '2025-01-24', 271.63, 0.35, 'Finance'),
@@ -289,7 +289,7 @@ SELECT
     (t.Quantity * m.ClosePrice * m.Volatility) AS EstRiskExposure -- Simple risk proxy
 FROM CapitalMarket.Silver.Clean_Trades t
 LEFT JOIN CapitalMarket.Bronze.MarketData m 
-    ON t.Ticker = m.Ticker AND t.TradeDate = m.Date;
+    ON t.Ticker = m.Ticker AND t.TradeDate = m."Date";
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER: Aggregated Metrics for Risk & Compliance

@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS RetailDB.Bronze.Products (
     ProductID INT,
     Name VARCHAR,
     Category VARCHAR,
-    Price FLOAT,
-    Cost FLOAT
+    Price DOUBLE,
+    Cost DOUBLE
 );
 
 CREATE TABLE IF NOT EXISTS RetailDB.Bronze.Customers (
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Bronze.Transactions (
     ProductID INT,
     Quantity INT,
     TxDate DATE,
-    TotalAmount FLOAT
+    TotalAmount DOUBLE
 );
 
 -- 1.2 Populate Bronze Tables
