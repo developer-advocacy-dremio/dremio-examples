@@ -12,6 +12,45 @@ Each script is self-contained and performs the following:
     *   **Gold Layer**: Aggregates data for business insights and reporting.
 4.  **Dremio Agent Prompts**: Includes natural language prompts to test Dremio's Text-to-SQL capabilities.
 
+## SQL Function Examples
+
+The `sql_function_examples/` directory contains practical usage examples for every Dremio function, categorized by type:
+
+| Category | File | Description |
+| :--- | :--- | :--- |
+| **Math** | `math_functions.sql` | Arithmetic, rounding, trigonometry, logs, etc. |
+| **String** | `string_functions.sql` | Concatenation, trimming, regex, casing, etc. |
+| **Date/Time** | `date_time_functions.sql` | Intervals, timestamps, extraction, formatting. |
+| **Aggregates** | `aggregate_functions.sql` | `GROUP BY` functions, stats, string aggregation. |
+| **Window** | `window_functions.sql` | Ranking, `LAG`/`LEAD`, moving averages. |
+| **Conversion** | `conversion_functions.sql` | `CAST`, JSON conversion, Hex encoding. |
+| **Conditional** | `conditional_functions.sql` | `COALESCE`, `NULLIF`, `CASE WHEN`. |
+
+## SQL Admin Examples
+
+The `sql_admin_examples/` directory contains scripts for administrative and operational tasks:
+
+| Scenario | File | Description |
+| :--- | :--- | :--- |
+| **Access Control (RBAC)** | `access_control_rbac.sql` | User/Role lifecycle, fine-grained grants, and privilege management. |
+| **Reflections** | `reflection_management.sql` | Creation and tuning of Raw and Aggregate reflections. |
+| **Data Maintenance** | `data_maintenance.sql` | Iceberg `OPTIMIZE`, `VACUUM` (snapshots/orphans), and `ROLLBACK`. |
+| **Source & Engine** | `source_engine_management.sql` | Metadata refreshes, engine routing, and session context. |
+
+## Advanced Examples
+
+For deeper technical deep-dives, explore these specialized collections:
+
+| Collection | Directory | Description |
+| :--- | :--- | :--- |
+| **Iceberg Metadata** | `sql_iceberg_metadata_examples/` | Inspecting history, snapshots, files, partitions, and manifests. |
+| **System Tables** | `sql_system_table_examples/` | Analyzing job performance, reflection health, and user activity. |
+
+## Security & compliance
+
+- **[Masking & Row-Level Security Recipes](masking_recipes.md)**: A guide to implementing dynamic masking and RLS patterns (View-based).
+- **[UDF Policy Recipes](udf_policy_recipes.md)**: A guide to implementing reusable Row Access and Column Masking Policies using UDFs.
+
 ## Industry Demos
 
 | Industry | File | Description |
