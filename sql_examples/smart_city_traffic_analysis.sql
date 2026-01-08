@@ -88,7 +88,7 @@ SELECT
     inc.IncidentID,
     inc.Type,
     i.Location,
-    DATEDIFF(MINUTE, inc.ReportTime, inc.ClearedTime) AS DurationMinutes,
+    TIMESTAMPDIFF(MINUTE, inc.ReportTime, inc.ClearedTime) AS DurationMinutes,
     MAX(cm.CongestionIndex) AS MaxCongestionDuringIncident
 FROM SmartCityDB.Bronze.Incidents inc
 JOIN SmartCityDB.Bronze.Intersections i ON inc.IntersectionID = i.IntersectionID

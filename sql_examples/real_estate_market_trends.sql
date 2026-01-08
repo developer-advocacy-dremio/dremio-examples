@@ -83,7 +83,7 @@ SELECT
     s.SalePrice,
     l.ListDate,
     s.SaleDate,
-    DATEDIFF(DAY, l.ListDate, COALESCE(s.SaleDate, CAST('2025-01-01' AS DATE))) AS DaysOnMarket,
+    TIMESTAMPDIFF(DAY, l.ListDate, COALESCE(s.SaleDate, CAST('2025-01-01' AS DATE))) AS DaysOnMarket,
     COALESCE(s.SalePrice, l.ListPrice) / p.SqFt AS PricePerSqFt
 FROM RealEstateDB.Bronze.Properties p
 JOIN RealEstateDB.Bronze.Listings l ON p.PropertyID = l.PropertyID

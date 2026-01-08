@@ -32,6 +32,16 @@ Each script is self-contained and performs the following:
 | **Hospitality** | [hospitality_revenue_management.sql](sql_examples/hospitality_revenue_management.sql) | Revenue management (RevPAR), occupancy rates, and guest satisfaction. |
 | **Media** | [media_streaming_content_performance.sql](sql_examples/media_streaming_content_performance.sql) | Content performance, viewer engagement, and genre popularity. |
 | **Agriculture** | [agriculture_crop_yield_optimization.sql](sql_examples/agriculture_crop_yield_optimization.sql) | Precision agriculture, crop yield optimization, and resource efficiency. |
+| **Automotive** | [automotive_fleet_telemetry.sql](sql_examples/automotive_fleet_telemetry.sql) | Fleet management, fuel efficiency tracking, and maintenance logs. |
+| **Aviation** | [aviation_flight_delays.sql](sql_examples/aviation_flight_delays.sql) | Flight operations, on-time performance analysis, and weather impact. |
+| **Gaming** | [gaming_player_economy.sql](sql_examples/gaming_player_economy.sql) | Player economy, microtransactions tracking, and revenue analysis. |
+| **Oil & Gas** | [oil_gas_pipeline_sensor.sql](sql_examples/oil_gas_pipeline_sensor.sql) | Pipeline sensor monitoring, leak detection, and pressure safety alerts. |
+| **Pharma** | [pharma_clinical_trials.sql](sql_examples/pharma_clinical_trials.sql) | Clinical trial management, patient safety monitoring, and study efficacy. |
+| **HR** | [hr_workforce_analytics.sql](sql_examples/hr_workforce_analytics.sql) | Workforce analytics, employee retention, and performance review aggregation. |
+| **Cybersecurity** | [cybersecurity_threat_detection.sql](sql_examples/cybersecurity_threat_detection.sql) | Threat detection, login anomaly monitoring, and brute force analysis. |
+| **AdTech** | [adtech_campaign_performance.sql](sql_examples/adtech_campaign_performance.sql) | Digital campaign tracking, impression-click attribution, and ROAS. |
+| **Sports** | [sports_team_performance.sql](sql_examples/sports_team_performance.sql) | Team performance metrics, player efficiency stats, and game analysis. |
+| **Non-Profit** | [nonprofit_donor_retention.sql](sql_examples/nonprofit_donor_retention.sql) | Donor retention strategies, campaign fundraising, and churn analysis. |
 
 ## Usage Instructions
 

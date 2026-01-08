@@ -454,7 +454,7 @@ SELECT
     s.Status,
     s.ExpectedArrival,
     s.ShipmentDate,
-    DATEDIFF(day, s.ShipmentDate, s.ExpectedArrival) AS EstimatedTransitDays
+    TIMESTAMPDIFF(day, s.ShipmentDate, s.ExpectedArrival) AS EstimatedTransitDays
 FROM SupplyChainDB.Bronze.Shipments s
 JOIN SupplyChainDB.Bronze.Suppliers sup ON s.SupplierID = sup.SupplierID
 JOIN SupplyChainDB.Bronze.Products p ON s.ProductID = p.ProductID;

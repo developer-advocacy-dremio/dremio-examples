@@ -456,7 +456,7 @@ SELECT
     MAX(Name) AS CustomerName,
     MAX(LoyaltyTier) AS Tier,
     MAX(TxDate) AS LastPurchaseDate,
-    DATEDIFF(day, MAX(TxDate), CAST('2025-05-01' AS DATE)) AS Recency, -- Assumed current date
+    TIMESTAMPDIFF(day, MAX(TxDate), CAST('2025-05-01' AS DATE)) AS Recency, -- Assumed current date
     COUNT(TransactionID) AS Frequency,
     SUM(TotalAmount) AS MonetaryValue
 FROM RetailDB.Silver.Enriched_Transactions

@@ -162,7 +162,7 @@ SELECT
     d.Description AS Diagnosis,
     d.Severity,
     e.Cost,
-    DATEDIFF(day, e.AdmitDate, e.DischargeDate) AS LengthOfStay
+    TIMESTAMPDIFF(day, e.AdmitDate, e.DischargeDate) AS LengthOfStay
 FROM HealthcareDB.Bronze.Encounters e
 JOIN HealthcareDB.Bronze.Patients p ON e.PatientID = p.PatientID
 JOIN HealthcareDB.Bronze.Diagnoses d ON e.EncounterID = d.EncounterID;
@@ -176,12 +176,12 @@ SELECT
     e1.DischargeDate AS InitialDischarge,
     e2.EncounterID AS ReadmissionVisit,
     e2.AdmitDate AS ReadmissionDate,
-    DATEDIFF(day, e1.DischargeDate, e2.AdmitDate) AS DaysBetweenVisits
+    TIMESTAMPDIFF(day, e1.DischargeDate, e2.AdmitDate) AS DaysBetweenVisits
 FROM HealthcareDB.Bronze.Encounters e1
 JOIN HealthcareDB.Bronze.Encounters e2 
     ON e1.PatientID = e2.PatientID 
     AND e2.AdmitDate > e1.DischargeDate
-    AND DATEDIFF(day, e1.DischargeDate, e2.AdmitDate) <= 30;
+    AND TIMESTAMPDIFF(day, e1.DischargeDate, e2.AdmitDate) <= 30;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER: Clinical Insights
