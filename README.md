@@ -43,13 +43,20 @@ For deeper technical deep-dives, explore these specialized collections:
 
 | Collection | Directory | Description |
 | :--- | :--- | :--- |
+| **Ingestion** | `sql_ingestion_examples/` | `COPY INTO` for batch loading and `PIPES` for continuous ingestion. |
+| **Advanced DML** | `sql_dml_examples/` | `MERGE` for upserts and SCD Type 1/2 updates. |
 | **Iceberg Metadata** | `sql_iceberg_metadata_examples/` | Inspecting history, snapshots, files, partitions, and manifests. |
 | **System Tables** | `sql_system_table_examples/` | Analyzing job performance, reflection health, and user activity. |
+
+## Guides & Best Practices
+
+- **[View & Reflection Strategies](view_reflection_best_practices.md)**: Exhaustive guide on Medallion View design, Reflection optimization, Wiki standards, and Tagging taxonomies.
 
 ## Security & compliance
 
 - **[Masking & Row-Level Security Recipes](masking_recipes.md)**: A guide to implementing dynamic masking and RLS patterns (View-based).
 - **[UDF Policy Recipes](udf_policy_recipes.md)**: A guide to implementing reusable Row Access and Column Masking Policies using UDFs.
+- **[Privilege Management Recipes](privilege_management_recipes.md)**: A guide to granting privileges on Sources, Spaces, Folders, and Datasets.
 
 ## Industry Demos
 
