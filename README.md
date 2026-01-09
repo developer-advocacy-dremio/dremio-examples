@@ -26,6 +26,15 @@ The `sql_function_examples/` directory contains practical usage examples for eve
 | **Conversion** | `conversion_functions.sql` | `CAST`, JSON conversion, Hex encoding. |
 | **Conditional** | `conditional_functions.sql` | `COALESCE`, `NULLIF`, `CASE WHEN`. |
 
+## AI Function Examples
+
+The `sql_ai_function_examples/` directory demonstrates Dremio's Generative AI capabilities using `AI_GENERATE_TEXT`:
+
+| Functionality | File | Description |
+| :--- | :--- | :--- |
+| **Sentiment & Tagging** | `sentiment_classification.sql` | Extracting sentiment ("Positive", "Negative") and classifying review topics. |
+| **Data Transformation** | `data_transformation.sql` | Normalizing addresses, formatting phone numbers, and cleaning messy text. |
+
 ## SQL Admin Examples
 
 The `sql_admin_examples/` directory contains scripts for administrative and operational tasks:
@@ -43,7 +52,7 @@ For deeper technical deep-dives, explore these specialized collections:
 
 | Collection | Directory | Description |
 | :--- | :--- | :--- |
-| **Ingestion** | `sql_ingestion_examples/` | `COPY INTO` for batch loading and `PIPES` for continuous ingestion. |
+| **Ingestion** | `sql_ingestion_examples/` | `COPY INTO`, `CTAS`, `INSERT SELECT`, `MERGE INTO` (Upsert), and Incremental Loading patterns. |
 | **Advanced DML** | `sql_dml_examples/` | `MERGE` for upserts and SCD Type 1/2 updates. |
 | **Iceberg Metadata** | `sql_iceberg_metadata_examples/` | Inspecting history, snapshots, files, partitions, and manifests. |
 | **System Tables** | `sql_system_table_examples/` | Analyzing job performance, reflection health, and user activity. |
