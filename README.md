@@ -127,6 +127,16 @@ For deeper technical deep-dives, explore these specialized collections:
 | **Govt (Environment)** | [government_environmental_monitoring.sql](sql_examples/government_environmental_monitoring.sql) | Air Quality (AQI) monitoring, sensor aggregation, and compliance. |
 | **Govt (Judicial)** | [government_court_case_management.sql](sql_examples/government_court_case_management.sql) | Court docket backlogs, case aging, and processing velocity. |
 | **Govt (Sanitation)** | [government_sanitation_waste_mgmt.sql](sql_examples/government_sanitation_waste_mgmt.sql) | Waste collection routes, recycling diversion rates, and tonnage. |
+| **Legal** | [legal_matter_billing_analysis.sql](sql_examples/legal_matter_billing_analysis.sql) | Billable hours, realization rates, and matter profit margins. |
+| **Construction** | [construction_project_budget_tracking.sql](sql_examples/construction_project_budget_tracking.sql) | Job costing, subcontractor expenses, and budget variance. |
+| **Mining** | [mining_extraction_efficiency.sql](sql_examples/mining_extraction_efficiency.sql) | Ore grade analysis, haul cycle times, and metal production. |
+| **Utilities** | [utilities_smart_water_metering.sql](sql_examples/utilities_smart_water_metering.sql) | Water consumption, leak detection, and pressure monitoring. |
+| **Telecom (Infra)** | [telecom_5g_network_optimization.sql](sql_examples/telecom_5g_network_optimization.sql) | Cell tower latency, throughput, and hardware downtime tracking. |
+| **Higher Ed** | [higher_ed_enrollment_funnel.sql](sql_examples/higher_ed_enrollment_funnel.sql) |  Admissions pipeline, yield rates, and matriculation analysis. |
+| **Maritime** | [maritime_port_operations.sql](sql_examples/maritime_port_operations.sql) | Vessel dwell times, berth occupancy, and port throughput. |
+| **Chemicals** | [chemical_batch_traceability.sql](sql_examples/chemical_batch_traceability.sql) | Ingredient lot tracking, lab purity results, and batch yield. |
+| **Aerospace** | [aerospace_component_reliability.sql](sql_examples/aerospace_component_reliability.sql) | Part MTBF, flight hours, and unscheduled maintenance tracking. |
+| **ESG** | [esg_carbon_footprint_tracking.sql](sql_examples/esg_carbon_footprint_tracking.sql) | Emissions (Scope 1-3), carbon intensity, and reduction progress. |
 
 ## Usage Instructions
 
