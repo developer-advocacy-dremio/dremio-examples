@@ -18,13 +18,13 @@ The `sql_function_examples/` directory contains practical usage examples for eve
 
 | Category | File | Description |
 | :--- | :--- | :--- |
-| **Math** | `math_functions.sql` | Arithmetic, rounding, trigonometry, logs, etc. |
-| **String** | `string_functions.sql` | Concatenation, trimming, regex, casing, etc. |
-| **Date/Time** | `date_time_functions.sql` | Intervals, timestamps, extraction, formatting. |
-| **Aggregates** | `aggregate_functions.sql` | `GROUP BY` functions, stats, string aggregation. |
-| **Window** | `window_functions.sql` | Ranking, `LAG`/`LEAD`, moving averages. |
-| **Conversion** | `conversion_functions.sql` | `CAST`, JSON conversion, Hex encoding. |
-| **Conditional** | `conditional_functions.sql` | `COALESCE`, `NULLIF`, `CASE WHEN`. |
+| **Math** | [`math_functions.sql`](sql_function_examples/math_functions.sql) | Arithmetic, rounding, trigonometry, logs, etc. |
+| **String** | [`string_functions.sql`](sql_function_examples/string_functions.sql) | Concatenation, trimming, regex, casing, etc. |
+| **Date/Time** | [`date_time_functions.sql`](sql_function_examples/date_time_functions.sql) | Intervals, timestamps, extraction, formatting. |
+| **Aggregates** | [`aggregate_functions.sql`](sql_function_examples/aggregate_functions.sql) | `GROUP BY` functions, stats, string aggregation. |
+| **Window** | [`window_functions.sql`](sql_function_examples/window_functions.sql) | Ranking, `LAG`/`LEAD`, moving averages. |
+| **Conversion** | [`conversion_functions.sql`](sql_function_examples/conversion_functions.sql) | `CAST`, JSON conversion, Hex encoding. |
+| **Conditional** | [`conditional_functions.sql`](sql_function_examples/conditional_functions.sql) | `COALESCE`, `NULLIF`, `CASE WHEN`. |
 
 ## AI Function Examples
 
@@ -32,8 +32,8 @@ The `sql_ai_function_examples/` directory demonstrates Dremio's Generative AI ca
 
 | Functionality | File | Description |
 | :--- | :--- | :--- |
-| **Sentiment & Tagging** | `sentiment_classification.sql` | Extracting sentiment ("Positive", "Negative") and classifying review topics. |
-| **Data Transformation** | `data_transformation.sql` | Normalizing addresses, formatting phone numbers, and cleaning messy text. |
+| **Sentiment & Tagging** | [`sentiment_classification.sql`](sql_ai_function_examples/sentiment_classification.sql) | Extracting sentiment ("Positive", "Negative") and classifying review topics. |
+| **Data Transformation** | [`data_transformation.sql`](sql_ai_function_examples/data_transformation.sql) | Normalizing addresses, formatting phone numbers, and cleaning messy text. |
 
 ## SQL Admin Examples
 
@@ -41,10 +41,10 @@ The `sql_admin_examples/` directory contains scripts for administrative and oper
 
 | Scenario | File | Description |
 | :--- | :--- | :--- |
-| **Access Control (RBAC)** | `access_control_rbac.sql` | User/Role lifecycle, fine-grained grants, and privilege management. |
-| **Reflections** | `reflection_management.sql` | Creation and tuning of Raw and Aggregate reflections. |
-| **Data Maintenance** | `data_maintenance.sql` | Iceberg `OPTIMIZE`, `VACUUM` (snapshots/orphans), and `ROLLBACK`. |
-| **Source & Engine** | `source_engine_management.sql` | Metadata refreshes, engine routing, and session context. |
+| **Access Control (RBAC)** | [`access_control_rbac.sql`](sql_admin_examples/access_control_rbac.sql) | User/Role lifecycle, fine-grained grants, and privilege management. |
+| **Reflections** | [`reflection_management.sql`](sql_admin_examples/reflection_management.sql) | Creation and tuning of Raw and Aggregate reflections. |
+| **Data Maintenance** | [`data_maintenance.sql`](sql_admin_examples/data_maintenance.sql) | Iceberg `OPTIMIZE`, `VACUUM` (snapshots/orphans), and `ROLLBACK`. |
+| **Source & Engine** | [`source_engine_management.sql`](sql_admin_examples/source_engine_management.sql) | Metadata refreshes, engine routing, and session context. |
 
 ## Advanced Examples
 
@@ -52,10 +52,10 @@ For deeper technical deep-dives, explore these specialized collections:
 
 | Collection | Directory | Description |
 | :--- | :--- | :--- |
-| **Ingestion** | `sql_ingestion_examples/` | `COPY INTO`, `CTAS`, `INSERT SELECT`, `MERGE INTO` (Upsert), and Incremental Loading patterns. |
-| **Advanced DML** | `sql_dml_examples/` | `MERGE` for upserts and SCD Type 1/2 updates. |
-| **Iceberg Metadata** | `sql_iceberg_metadata_examples/` | Inspecting history, snapshots, files, partitions, and manifests. |
-| **System Tables** | `sql_system_table_examples/` | Analyzing job performance, reflection health, and user activity. |
+| **Ingestion** | [`sql_ingestion_examples/`](sql_ingestion_examples/) | `COPY INTO`, `CTAS`, `INSERT SELECT`, `MERGE INTO` (Upsert), and Incremental Loading patterns. |
+| **Advanced DML** | [`sql_dml_examples/`](sql_dml_examples/) | `MERGE` for upserts and SCD Type 1/2 updates. |
+| **Iceberg Metadata** | [`sql_iceberg_metadata_examples/`](sql_iceberg_metadata_examples/) | Inspecting history, snapshots, files, partitions, and manifests. |
+| **System Tables** | [`sql_system_table_examples/`](sql_system_table_examples/) | Analyzing job performance, reflection health, and user activity. |
 
 ## Guides & Best Practices
 
@@ -97,6 +97,26 @@ For deeper technical deep-dives, explore these specialized collections:
 | **AdTech** | [adtech_campaign_performance.sql](sql_examples/adtech_campaign_performance.sql) | Digital campaign tracking, impression-click attribution, and ROAS. |
 | **Sports** | [sports_team_performance.sql](sql_examples/sports_team_performance.sql) | Team performance metrics, player efficiency stats, and game analysis. |
 | **Non-Profit** | [nonprofit_donor_retention.sql](sql_examples/nonprofit_donor_retention.sql) | Donor retention strategies, campaign fundraising, and churn analysis. |
+| **Retail Banking** | [retail_banking_transactions.sql](sql_examples/retail_banking_transactions.sql) | Branch performance, ATM usage, and account balance trends. |
+| **Fraud Detection** | [credit_card_fraud_detection.sql](sql_examples/credit_card_fraud_detection.sql) | Velocity checks, geographic anomalies, and high-value flagging. |
+| **Mortgage** | [mortgage_loan_portfolio.sql](sql_examples/mortgage_loan_portfolio.sql) | LTV ratios, delinquency analysis, and credit score monitoring. |
+| **Fintech** | [fintech_payment_app.sql](sql_examples/fintech_payment_app.sql) | P2P transfer volume, cross-border flows, and user engagement. |
+| **Inv. Banking** | [investment_banking_deal_flow.sql](sql_examples/investment_banking_deal_flow.sql) | M&A deal pipeline, probability weighting, and fee projections. |
+| **Asset Mgmt** | [asset_management_portfolio_rebalancing.sql](sql_examples/asset_management_portfolio_rebalancing.sql) | Target vs actual weights, drift analysis, and rebalancing triggers. |
+| **Compliance** | [regulatory_compliance_aml.sql](sql_examples/regulatory_compliance_aml.sql) | AML structuring detection, CTR triggers, and velocity monitoring. |
+| **Crypto** | [crypto_exchange_analytics.sql](sql_examples/crypto_exchange_analytics.sql) | Trading volume, gas fee analysis, and pair liquidity. |
+| **Private Equity** | [private_equity_fund_performance.sql](sql_examples/private_equity_fund_performance.sql) | MOIC calculations, valuation multiples, and fund-level returns. |
+| **Forex** | [forex_trading_volume.sql](sql_examples/forex_trading_volume.sql) | Currency pair spreads, liquidity analysis, and tick volume. |
+| **Healthcare (EHR)** | [healthcare_ehr_interoperability.sql](sql_examples/healthcare_ehr_interoperability.sql) | Unifying patient records (longitudinal view) from disparate systems. |
+| **Healthcare (Operations)** | [healthcare_bed_capacity.sql](sql_examples/healthcare_bed_capacity.sql) | ER wait times, bed occupancy rates, and capacity forecasting. |
+| **Healthcare (Supply Chain)** | [healthcare_medical_supply_chain.sql](sql_examples/healthcare_medical_supply_chain.sql) | Inventory tracking for PPE, surgical kits, and critical medications. |
+| **Telemedicine** | [healthcare_telemedicine_trends.sql](sql_examples/healthcare_telemedicine_trends.sql) | Remote vs in-person adoption rates and outcome analysis. |
+| **Insurance Claims** | [healthcare_insurance_claims.sql](sql_examples/healthcare_insurance_claims.sql) | Adjudication speed, denial reason analysis, and reimbursement rates. |
+| **Patient Exp.** | [healthcare_patient_satisfaction.sql](sql_examples/healthcare_patient_satisfaction.sql) | HCAHPS survey analysis, NPS calculation, and sentiment tagging. |
+| **Genomics** | [healthcare_genomic_analysis.sql](sql_examples/healthcare_genomic_analysis.sql) | Variant calling logs, high-impact mutation tracking, and gene expression. |
+| **IoT / Wearables** | [healthcare_iot_wearables.sql](sql_examples/healthcare_iot_wearables.sql) | High-frequency vitals monitoring (Heart Rate, SpO2) and anomaly alerts. |
+| **Mental Health** | [healthcare_mental_health_services.sql](sql_examples/healthcare_mental_health_services.sql) | Provider utilization, show/no-show rates, and appointment availability. |
+| **Chronic Disease** | [healthcare_chronic_disease_mgmt.sql](sql_examples/healthcare_chronic_disease_mgmt.sql) | Diabetes/Hypertension tracking, care gaps, and biometric control. |
 
 ## Usage Instructions
 
