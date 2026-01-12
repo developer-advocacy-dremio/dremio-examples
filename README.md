@@ -117,6 +117,16 @@ For deeper technical deep-dives, explore these specialized collections:
 | **IoT / Wearables** | [healthcare_iot_wearables.sql](sql_examples/healthcare_iot_wearables.sql) | High-frequency vitals monitoring (Heart Rate, SpO2) and anomaly alerts. |
 | **Mental Health** | [healthcare_mental_health_services.sql](sql_examples/healthcare_mental_health_services.sql) | Provider utilization, show/no-show rates, and appointment availability. |
 | **Chronic Disease** | [healthcare_chronic_disease_mgmt.sql](sql_examples/healthcare_chronic_disease_mgmt.sql) | Diabetes/Hypertension tracking, care gaps, and biometric control. |
+| **Govt (Tax)** | [government_tax_revenue_analysis.sql](sql_examples/government_tax_revenue_analysis.sql) | Tax collection efficiency, revenue projections, and delinquency analysis. |
+| **Govt (Transit)** | [government_public_transit_ops.sql](sql_examples/government_public_transit_ops.sql) | Bus/Rail on-time performance, ridership trends, and delay analysis. |
+| **Govt (Emergency)** | [government_emergency_response_911.sql](sql_examples/government_emergency_response_911.sql) | 911 response times, incident heatmaps, and dispatch efficiency. |
+| **Govt (Benefits)** | [government_social_services_benefits.sql](sql_examples/government_social_services_benefits.sql) | SNAP/Unemployment application processing times and backlog tracking. |
+| **Govt (Infrastr.)** | [government_infrastructure_maintenance.sql](sql_examples/government_infrastructure_maintenance.sql) | Road/Bridge maintenance work orders, cost tracking, and asset health. |
+| **Govt (Spend)** | [government_procurement_spend.sql](sql_examples/government_procurement_spend.sql) | Government contract analysis, vendor diversity, and budget utilization. |
+| **Govt (Permits)** | [government_permitting_and_licensing.sql](sql_examples/government_permitting_and_licensing.sql) | Zoning and building permit turnaround times and approval efficiency. |
+| **Govt (Environment)** | [government_environmental_monitoring.sql](sql_examples/government_environmental_monitoring.sql) | Air Quality (AQI) monitoring, sensor aggregation, and compliance. |
+| **Govt (Judicial)** | [government_court_case_management.sql](sql_examples/government_court_case_management.sql) | Court docket backlogs, case aging, and processing velocity. |
+| **Govt (Sanitation)** | [government_sanitation_waste_mgmt.sql](sql_examples/government_sanitation_waste_mgmt.sql) | Waste collection routes, recycling diversion rates, and tonnage. |
 
 ## Usage Instructions
 
