@@ -158,6 +158,31 @@ For deeper technical deep-dives, explore these specialized collections:
   - **Wastewater**: Effluent compliance monitoring.
   - **Museum**: Visitor dwell time analytics.
   - **Auction**: Bidding fraud and velocity.
+
+### Financial Services & Risk (Phase 5)
+| Scenario | File | Description |
+| :--- | :--- | :--- |
+| **AML Detection** | [aml_structuring_detection.sql](sql_examples/aml_structuring_detection.sql) | Detects structuring/smurfing patterns below \$10k thresholds. |
+| **ATM Cash Mgmt** | [atm_cash_management.sql](sql_examples/atm_cash_management.sql) | Optimizes cash replenishment to minimize outages and idle cash. |
+| **Basel III LCR** | [basel_liquidity_coverage.sql](sql_examples/basel_liquidity_coverage.sql) | Calculates Liquidity Coverage Ratio (HQLA / Outflows). |
+| **BNPL Default** | [bnpl_default_analysis.sql](sql_examples/bnpl_default_analysis.sql) | Analyzes delinquency cohorts in Buy-Now-Pay-Later loans. |
+| **Treasury Pooling** | [corporate_treasury_pooling.sql](sql_examples/corporate_treasury_pooling.sql) | Global multi-currency cash sweeping and positioning. |
+| **Credit Scoring** | [credit_scoring_model.sql](sql_examples/credit_scoring_model.sql) | Generates FICO-like scores from treadlines and inquiries. |
+| **ESG Scoring** | [esg_fund_scoring.sql](sql_examples/esg_fund_scoring.sql) | Weighted average ESG scores for investment portfolios. |
+| **Forex P&L** | [forex_desk_pnl.sql](sql_examples/forex_desk_pnl.sql) | Real-time NOP and Floating P&L for FX dealing desks. |
+| **Hedge Fund** | [hedge_fund_alpha.sql](sql_examples/hedge_fund_alpha.sql) | Decomposes returns into Alpha and Beta components. |
+| **HFT Latency** | [hft_latency_analysis.sql](sql_examples/hft_latency_analysis.sql) | millisecond analysis of Order-to-Ack latency. |
+| **M&A Deal Flow** | [ma_deal_flow.sql](sql_examples/ma_deal_flow.sql) | Tracks VDR activity to gauge buyer intent. |
+| **Merchant Risk** | [merchant_chargeback_analysis.sql](sql_examples/merchant_chargeback_analysis.sql) | Monitors chargeback ratios for payment processors. |
+| **Microfinance** | [microfinance_repayment.sql](sql_examples/microfinance_repayment.sql) | Group liability and attendance tracking for micro-loans. |
+| **Mortgage Refi** | [mortgage_prepayment_risk.sql](sql_examples/mortgage_prepayment_risk.sql) | Calculates prepayment risk based on rate differentials. |
+| **P2P Lending** | [p2p_lending_risk.sql](sql_examples/p2p_lending_risk.sql) | Default rates and ROI analysis for peer lending. |
+| **Pension LDI** | [pension_fund_ldi.sql](sql_examples/pension_fund_ldi.sql) | Asset-Liability duration gap analysis. |
+| **MiFID II** | [regulatory_reporting_mifid.sql](sql_examples/regulatory_reporting_mifid.sql) | Post-trade transparency and LIS deferral logic. |
+| **Reinsurance** | [reinsurance_cat_modeling.sql](sql_examples/reinsurance_cat_modeling.sql) | Probable Maximum Loss (PML) for Hurricane/Quake zones. |
+| **Robo Advisor** | [robo_advisor_rebalancing.sql](sql_examples/robo_advisor_rebalancing.sql) | Automated drift detection and rebalancing signals. |
+| **Trade Surveillance**| [trade_surveillance_spoofing.sql](sql_examples/trade_surveillance_spoofing.sql) | Identifies spoofing via Order-to-Trade ratios. |
+
 | **Legal** | [legal_matter_billing_analysis.sql](sql_examples/legal_matter_billing_analysis.sql) | Billable hours, realization rates, and matter profit margins. |
 | **Construction** | [construction_project_budget_tracking.sql](sql_examples/construction_project_budget_tracking.sql) | Job costing, subcontractor expenses, and budget variance. |
 | **Mining** | [mining_extraction_efficiency.sql](sql_examples/mining_extraction_efficiency.sql) | Ore grade analysis, haul cycle times, and metal production. |
