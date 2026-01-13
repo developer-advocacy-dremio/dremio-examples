@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.IoTHealth.Bronze.DeviceReadings (
     PatientID INT,
     Metric VARCHAR, -- HeartRate, SpO2
     Value INT,
-    Timestamp TIMESTAMP
+    "Timestamp" TIMESTAMP
 );
 
 INSERT INTO RetailDB.IoTHealth.Bronze.DeviceReadings VALUES
@@ -52,7 +52,7 @@ SELECT
     PatientID,
     Metric,
     Value,
-    Timestamp,
+    "Timestamp",
     CASE 
         WHEN Metric = 'HeartRate' AND Value > 100 THEN 'Tachycardia'
         WHEN Metric = 'HeartRate' AND Value < 50 THEN 'Bradycardia'
@@ -70,8 +70,8 @@ SELECT
     PatientID,
     AlertType,
     COUNT(*) AS Occurrences,
-    MIN(Timestamp) AS FirstOccurrence,
-    MAX(Timestamp) AS LastOccurrence
+    MIN("Timestamp") AS FirstOccurrence,
+    MAX("Timestamp") AS LastOccurrence
 FROM RetailDB.IoTHealth.Silver.Anomalies
 WHERE AlertType <> 'Normal'
 GROUP BY PatientID, AlertType;

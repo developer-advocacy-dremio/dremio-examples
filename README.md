@@ -127,6 +127,37 @@ For deeper technical deep-dives, explore these specialized collections:
 | **Govt (Environment)** | [government_environmental_monitoring.sql](sql_examples/government_environmental_monitoring.sql) | Air Quality (AQI) monitoring, sensor aggregation, and compliance. |
 | **Govt (Judicial)** | [government_court_case_management.sql](sql_examples/government_court_case_management.sql) | Court docket backlogs, case aging, and processing velocity. |
 | **Govt (Sanitation)** | [government_sanitation_waste_mgmt.sql](sql_examples/government_sanitation_waste_mgmt.sql) | Waste collection routes, recycling diversion rates, and tonnage. |
+| **Miscellaneous & Niche Industries**
+  - **Airline Loyalty**: Mileage liability analysis.
+  - **Biotech Research**: Lab experiment tracking.
+  - **Casino**: Floor optimization and hold percentages.
+  - **Cloud FinOps**: Infrastructure cost analysis.
+  - **Content Moderation**: AI & human review queues.
+  - **Crowdfunding**: Campaign goal tracking.
+  - **Customer Support**: Ticket resolution & CSAT.
+  - **Data Center**: Power usage and PUE metrics.
+  - **Digital Rights (DRM)**: License compliance.
+  - **EV Charging**: Station utilization.
+  - **Event Ticketing**: Sales velocity & dynamic pricing.
+  - **Fashion**: Trend forecasting vs sales.
+  - **Food Delivery**: Rider logistics efficiency.
+  - **Library**: Circulation and overdue tracking.
+  - **Music Streaming**: Artist royalty calculations.
+  - **Parking**: Garage occupancy optimization.
+  - **Podcast**: Listener engagement analytics.
+  - **Ride Sharing**: Driver earnings & surge pricing.
+  - **Subscription Box**: Churn and retention analysis.
+  - **Weather Retail**: Weather impact on sales.
+  - **DevOps**: DORA metrics (Deployment Freq, Fail Rate).
+  - **Solar Energy**: Panel efficiency & battery storage.
+  - **Marketing Attribution**: Multi-touch attribution models.
+  - **ISP Traffic**: Network congestion & packet loss.
+  - **Recruitment**: HR hiring funnel analytics.
+  - **Call Center**: Sentiment analysis & agent performance.
+  - **Restaurant**: Menu engineering (Stars vs Dogs).
+  - **Wastewater**: Effluent compliance monitoring.
+  - **Museum**: Visitor dwell time analytics.
+  - **Auction**: Bidding fraud and velocity.
 | **Legal** | [legal_matter_billing_analysis.sql](sql_examples/legal_matter_billing_analysis.sql) | Billable hours, realization rates, and matter profit margins. |
 | **Construction** | [construction_project_budget_tracking.sql](sql_examples/construction_project_budget_tracking.sql) | Job costing, subcontractor expenses, and budget variance. |
 | **Mining** | [mining_extraction_efficiency.sql](sql_examples/mining_extraction_efficiency.sql) | Ore grade analysis, haul cycle times, and metal production. |

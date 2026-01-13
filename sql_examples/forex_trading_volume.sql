@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Forex.Bronze.Ticks (
     Bid DOUBLE,
     Ask DOUBLE,
     Volume INT,
-    Timestamp TIMESTAMP
+    "Timestamp" TIMESTAMP
 );
 
 INSERT INTO RetailDB.Forex.Bronze.Ticks VALUES
@@ -53,7 +53,7 @@ SELECT
     Ask,
     (Ask - Bid) AS Spread,
     Volume,
-    Timestamp
+    "Timestamp"
 FROM RetailDB.Forex.Bronze.Ticks;
 
 -------------------------------------------------------------------------------

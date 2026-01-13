@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Environment.Bronze.SensorData (
     Location VARCHAR,
     SensorType VARCHAR, -- AQI, WaterPH, Noise
     Value DOUBLE,
-    Timestamp TIMESTAMP
+    "Timestamp" TIMESTAMP
 );
 
 INSERT INTO RetailDB.Environment.Bronze.SensorData VALUES
@@ -49,7 +49,7 @@ CREATE OR REPLACE VIEW RetailDB.Environment.Silver.AQI_Levels AS
 SELECT 
     Location,
     Value AS AQI,
-    Timestamp,
+    "Timestamp",
     CASE 
         WHEN Value <= 50 THEN 'Good'
         WHEN Value <= 100 THEN 'Moderate'

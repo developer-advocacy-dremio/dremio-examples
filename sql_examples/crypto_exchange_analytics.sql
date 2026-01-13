@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Crypto.Bronze.Trades (
     Amount DOUBLE,
     Price DOUBLE,
     GasFee DOUBLE,
-    Timestamp TIMESTAMP
+    "Timestamp" TIMESTAMP
 );
 
 INSERT INTO RetailDB.Crypto.Bronze.Trades VALUES

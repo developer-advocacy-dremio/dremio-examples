@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS EcommerceDB.Bronze.PageViews (
     ViewID INT,
     SessionID VARCHAR,
     PageURL VARCHAR, -- '/home', '/product', '/cart', '/checkout'
-    "Timestamp" TIMESTAMP
+    ""Timestamp"" TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS EcommerceDB.Bronze.ConversionEvents (
@@ -51,7 +51,7 @@ INSERT INTO EcommerceDB.Bronze.UserSessions (SessionID, UserID, StartTime, Devic
 ('S4', 104, '2025-11-25 11:00:00', 'Desktop'),
 ('S5', 105, '2025-11-25 11:20:00', 'Mobile');
 
-INSERT INTO EcommerceDB.Bronze.PageViews (ViewID, SessionID, PageURL, "Timestamp") VALUES
+INSERT INTO EcommerceDB.Bronze.PageViews (ViewID, SessionID, PageURL, ""Timestamp"") VALUES
 (1, 'S1', '/home', '2025-11-25 10:00:05'),
 (2, 'S1', '/product/A', '2025-11-25 10:01:00'),
 (3, 'S1', '/cart', '2025-11-25 10:02:00'),
