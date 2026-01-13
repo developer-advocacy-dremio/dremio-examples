@@ -209,12 +209,28 @@ See the **[Connectivity Directory](other_engines/README.md)** for generic detail
 -   **[Polars](other_engines/polars.md)**
 
 **Native APIs & AI**
--   **[Spice.ai](other_engines/spiceai.md)**
+-   **[Spice.ai](other_engines/spiceai.md)**: AI-native SQL query acceleration.
 -   **[Java](other_engines/iceberg_java.md)** | **[Rust](other_engines/iceberg_rust.md)** | **[Go](other_engines/iceberg_go.md)**
 
 ---
+
+## 🐍 Dremio Interfaces & Python Libraries
+Connect directly to the Dremio Engine for querying, analytics, and administration.
+See the **[Interfaces Directory](dremio_interfaces/README.md)** for a comparison of when to use these vs the Iceberg Catalog.
+
+**Standard APIs**
+-   **[Arrow Flight](dremio_interfaces/arrow_flight.md)**: High-speed binary streaming (Recommended for Data Science).
+-   **[REST API](dremio_interfaces/rest_api.md)**: Lightweight Job Submission & Catalog Management.
+-   **[JDBC/ODBC](dremio_interfaces/jdbc.md)**: Standard SQL drivers.
+
+**Specialized Libraries**
+-   **[dremio-simple-query](dremio_interfaces/dremio_simple_query.md)**: Easy wrapper for Arrow Flight.
+-   **[dremioframe](dremio_interfaces/dremioframe.md)**: Pandas-like API for Dremio.
+-   **[dremio-cli](dremio_interfaces/dremio_cli.md)**: CLI/Library for Administration & CI/CD.
+
+---
 | **Utilities** | [utilities_smart_water_metering.sql](sql_examples/utilities_smart_water_metering.sql) | Water consumption, leak detection, and pressure monitoring. |
-| **Telecom (Infra)** | [telecom_5g_network_optimization.sql](sql_examples/telecom_5g_network_optimization.sql) | Cell tower latency, throughput, and hardware downtime tracking. |
+| **Telecom (Infra)** | [telecom_5g_network_optimization.sql](sql_examples/teleam_5g_network_optimization.sql) | Cell tower latency, throughput, and hardware downtime tracking. |
 | **Higher Ed** | [higher_ed_enrollment_funnel.sql](sql_examples/higher_ed_enrollment_funnel.sql) |  Admissions pipeline, yield rates, and matriculation analysis. |
 | **Maritime** | [maritime_port_operations.sql](sql_examples/maritime_port_operations.sql) | Vessel dwell times, berth occupancy, and port throughput. |
 | **Chemicals** | [chemical_batch_traceability.sql](sql_examples/chemical_batch_traceability.sql) | Ingredient lot tracking, lab purity results, and batch yield. |
