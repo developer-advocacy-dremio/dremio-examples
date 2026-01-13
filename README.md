@@ -186,6 +186,33 @@ For deeper technical deep-dives, explore these specialized collections:
 | **Legal** | [legal_matter_billing_analysis.sql](sql_examples/legal_matter_billing_analysis.sql) | Billable hours, realization rates, and matter profit margins. |
 | **Construction** | [construction_project_budget_tracking.sql](sql_examples/construction_project_budget_tracking.sql) | Job costing, subcontractor expenses, and budget variance. |
 | **Mining** | [mining_extraction_efficiency.sql](sql_examples/mining_extraction_efficiency.sql) | Ore grade analysis, haul cycle times, and metal production. |
+
+---
+
+## 🔗 Connecting Other Engines (Dremio Catalog)
+Dremio's built-in Iceberg Catalog supports the standard REST specification, allowing you to connect other engines easily.
+
+## 🔗 Connecting Other Engines (Dremio Catalog)
+Dremio's built-in Iceberg Catalog supports the standard REST specification, allowing you to connect other engines easily.
+See the **[Connectivity Directory](other_engines/README.md)** for generic details, or jump to a specific guide:
+
+**Analytic Engines**
+-   **[Apache Spark](other_engines/apache_spark.md)**
+-   **[Apache Flink](other_engines/apache_flink.md)**
+-   **[Trino](other_engines/trino.md)**
+-   **[StarRocks](other_engines/starrocks.md)**
+
+**Python & DataFrames**
+-   **[PyIceberg](other_engines/pyiceberg.md)**
+-   **[DuckDB](other_engines/duckdb.md)**
+-   **[Daft](other_engines/daft.md)**
+-   **[Polars](other_engines/polars.md)**
+
+**Native APIs & AI**
+-   **[Spice.ai](other_engines/spiceai.md)**
+-   **[Java](other_engines/iceberg_java.md)** | **[Rust](other_engines/iceberg_rust.md)** | **[Go](other_engines/iceberg_go.md)**
+
+---
 | **Utilities** | [utilities_smart_water_metering.sql](sql_examples/utilities_smart_water_metering.sql) | Water consumption, leak detection, and pressure monitoring. |
 | **Telecom (Infra)** | [telecom_5g_network_optimization.sql](sql_examples/telecom_5g_network_optimization.sql) | Cell tower latency, throughput, and hardware downtime tracking. |
 | **Higher Ed** | [higher_ed_enrollment_funnel.sql](sql_examples/higher_ed_enrollment_funnel.sql) |  Admissions pipeline, yield rates, and matriculation analysis. |
