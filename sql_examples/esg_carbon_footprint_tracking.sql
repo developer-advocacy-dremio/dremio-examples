@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.ESG;
 CREATE FOLDER IF NOT EXISTS RetailDB.ESG.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.ESG.Silver;

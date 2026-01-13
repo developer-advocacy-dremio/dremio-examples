@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.Maritime;
 CREATE FOLDER IF NOT EXISTS RetailDB.Maritime.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.Maritime.Silver;

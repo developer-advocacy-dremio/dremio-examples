@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.Mining;
 CREATE FOLDER IF NOT EXISTS RetailDB.Mining.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.Mining.Silver;

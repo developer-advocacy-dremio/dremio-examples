@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.Environment;
 CREATE FOLDER IF NOT EXISTS RetailDB.Environment.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.Environment.Silver;

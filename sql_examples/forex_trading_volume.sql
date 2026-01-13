@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.Forex;
 CREATE FOLDER IF NOT EXISTS RetailDB.Forex.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.Forex.Silver;

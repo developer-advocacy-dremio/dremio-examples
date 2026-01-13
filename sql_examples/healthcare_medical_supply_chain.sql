@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.SupplyChainHC;
 CREATE FOLDER IF NOT EXISTS RetailDB.SupplyChainHC.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.SupplyChainHC.Silver;

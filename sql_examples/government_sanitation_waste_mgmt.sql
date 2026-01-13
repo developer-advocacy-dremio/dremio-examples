@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.Sanitation;
 CREATE FOLDER IF NOT EXISTS RetailDB.Sanitation.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.Sanitation.Silver;

@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.Crypto;
 CREATE FOLDER IF NOT EXISTS RetailDB.Crypto.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.Crypto.Silver;

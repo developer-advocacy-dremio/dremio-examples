@@ -10,6 +10,7 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
+CREATE FOLDER IF NOT EXISTS RetailDB;
 CREATE FOLDER IF NOT EXISTS RetailDB.TelecomInfra;
 CREATE FOLDER IF NOT EXISTS RetailDB.TelecomInfra.Bronze;
 CREATE FOLDER IF NOT EXISTS RetailDB.TelecomInfra.Silver;
