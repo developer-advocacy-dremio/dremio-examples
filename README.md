@@ -182,15 +182,36 @@ For deeper technical deep-dives, explore these specialized collections:
 | **Reinsurance** | [reinsurance_cat_modeling.sql](sql_examples/reinsurance_cat_modeling.sql) | Probable Maximum Loss (PML) for Hurricane/Quake zones. |
 | **Robo Advisor** | [robo_advisor_rebalancing.sql](sql_examples/robo_advisor_rebalancing.sql) | Automated drift detection and rebalancing signals. |
 | **Trade Surveillance**| [trade_surveillance_spoofing.sql](sql_examples/trade_surveillance_spoofing.sql) | Identifies spoofing via Order-to-Trade ratios. |
-
 | **Legal** | [legal_matter_billing_analysis.sql](sql_examples/legal_matter_billing_analysis.sql) | Billable hours, realization rates, and matter profit margins. |
 | **Construction** | [construction_project_budget_tracking.sql](sql_examples/construction_project_budget_tracking.sql) | Job costing, subcontractor expenses, and budget variance. |
 | **Mining** | [mining_extraction_efficiency.sql](sql_examples/mining_extraction_efficiency.sql) | Ore grade analysis, haul cycle times, and metal production. |
 
----
 
-## 🔗 Connecting Other Engines (Dremio Catalog)
-Dremio's built-in Iceberg Catalog supports the standard REST specification, allowing you to connect other engines easily.
+### Financial Services - Advanced Scenarios (Phase 6)
+| Scenario | File | Description |
+| :--- | :--- | :--- |
+| **Trade Efficiency** | [trade_efficiency_analysis.sql](sql_examples/trade_efficiency_analysis.sql) | Analyzing trade lifecycle milestones to optimize Straight-Through Processing (STP). |
+| **Stress Testing** | [stress_testing_ccar.sql](sql_examples/stress_testing_ccar.sql) | Simulating portfolio performance under adverse economic scenarios (CCAR/DFAST). |
+| **CDS Exposure** | [credit_default_swap_exposure.sql](sql_examples/credit_default_swap_exposure.sql) | Analyzing net notional exposure and concentration risk for Credit Default Swaps. |
+| **Mortgage Pipeline** | [mortgage_application_pipeline.sql](sql_examples/mortgage_application_pipeline.sql) | Tracking loan applications through underwriting stages and conversion funnels. |
+| **Bank Churn** | [retail_banking_churn.sql](sql_examples/retail_banking_churn.sql) | Analyzing customer activity patterns (activity trends) to predict attrition. |
+| **Market Data** | [market_data_feed_quality.sql](sql_examples/market_data_feed_quality.sql) | Detecting gaps, spikes, or staleness in high-frequency tick data feeds. |
+| **KYC Remediation** | [kyc_remediation.sql](sql_examples/kyc_remediation.sql) | Tracking customer document expiry timelines and remediation workflows. |
+| **Branch Staffing** | [branch_staffing_optimization.sql](sql_examples/branch_staffing_optimization.sql) | Aligning branch staffing levels with hourly customer footfall patterns. |
+| **HNW Onboarding** | [hnw_client_onboarding.sql](sql_examples/hnw_client_onboarding.sql) | Tracking specialized onboarding pipelines and SLAs for private bank clients. |
+| **Insurance Fraud** | [insurance_claims_fraud_rings.sql](sql_examples/insurance_claims_fraud_rings.sql) | Detecting coordinated fraud across multiple claims using network heuristics. |
+| **GDPR DSAR** | [gdpr_dsar_tracking.sql](sql_examples/gdpr_dsar_tracking.sql) | Tracking Data Subject Access Requests (DSAR) compliance and SLA breaches. |
+| **Crypto Recon** | [crypto_custody_reconciliation.sql](sql_examples/crypto_custody_reconciliation.sql) | Reconciling internal ledger balances against on-chain blockchain wallet data. |
+| **Syndicated Loans** | [syndicated_loan_admin.sql](sql_examples/syndicated_loan_admin.sql) | Managing interest payments and principal splits for multi-lender loans. |
+| **Bond Laddering** | [bond_laddering.sql](sql_examples/bond_laddering.sql) | Managing maturity profiles of a bond portfolio to ensure steady cash flow. |
+| **POS Lifecycle** | [pos_terminal_lifecycle.sql](sql_examples/pos_terminal_lifecycle.sql) | Managing deployment, maintenance, and replacement forecasting for terminals. |
+| **Card Abuse** | [corporate_card_abuse.sql](sql_examples/corporate_card_abuse.sql) | Flagging non-compliant expenses (weekend spending, blocked categories). |
+| **SWIFT Tracking** | [swift_payment_tracking.sql](sql_examples/swift_payment_tracking.sql) | Tracking international wire transfers and identifying stuck payments. |
+| **ABS Tranches** | [abs_tranche_performance.sql](sql_examples/abs_tranche_performance.sql) | Monitoring delinquencies in the underlying asset pool of a security. |
+| **VC Sourcing** | [venture_capital_deal_sourcing.sql](sql_examples/venture_capital_deal_sourcing.sql) | Analyzing the funnel of startup investment opportunities/deal flow. |
+| **Nostro/Vostro** | [nostro_vostro_reconciliation.sql](sql_examples/nostro_vostro_reconciliation.sql) | Reconciling international inter-bank accounts (Internal vs External statements). |
+
+---
 
 ## 🔗 Connecting Other Engines (Dremio Catalog)
 Dremio's built-in Iceberg Catalog supports the standard REST specification, allowing you to connect other engines easily.
