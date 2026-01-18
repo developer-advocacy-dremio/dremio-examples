@@ -79,6 +79,39 @@ All examples follow the **Medallion Architecture**:
 | **Crypto Trading** | [crypto_exchange_analytics.sql](sql_examples/crypto_exchange_analytics.sql) | Gas fees, liquidity, and volume metrics. |
 | **Crypto Custody** | [crypto_custody_reconciliation.sql](sql_examples/crypto_custody_reconciliation.sql) | On-chain vs Off-chain balance recon. |
 
+### Financial Services - Advanced Scenarios (Phase 6)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- |
+| **Corporate Card Abuse** | Detecting expense fraud like weekend spending or blocked MCCs. | `MCC_Codes`, `Weekend_Flag` | [corporate_card_abuse.sql](sql_examples/corporate_card_abuse.sql) |
+| **SWIFT Payment Tracking** | Monitoring international wire transfers for delays (>24h). | `MT103`, `AckNackLogs` | [swift_payment_tracking.sql](sql_examples/swift_payment_tracking.sql) |
+| **ABS Tranche Performance** | Tracking delinquency rates in asset-backed security pools. | `DelinquencyRate`, `TrancheTriggers` | [abs_tranche_performance.sql](sql_examples/abs_tranche_performance.sql) |
+| **VC Deal Sourcing** | Analyzing the venture capital deal funnel by sector. | `FunnelConversion`, `SectorHeatmap` | [venture_capital_deal_sourcing.sql](sql_examples/venture_capital_deal_sourcing.sql) |
+| **Nostro/Vostro Reconciliation** | Matching internal ledgers against external SWIFT statements. | `ReconBreaks`, `AgingAnalysis` | [nostro_vostro_reconciliation.sql](sql_examples/nostro_vostro_reconciliation.sql) |
+
+### Healthcare & Life Sciences - Expanded (Phase 7)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- |
+| **Opioid Monitoring** | Tracking MME (Morphine Milligram Equivalents) to flag high-risk prescriptions. | `MME_Calc`, `RiskAlerts` | [healthcare_opioid_monitoring.sql](sql_examples/healthcare_opioid_monitoring.sql) |
+| **Sepsis Early Warning** | Real-time vitals monitoring against SIRS criteria for early detection. | `SIRS_Logic`, `VitalsStream` | [healthcare_sepsis_early_warning.sql](sql_examples/healthcare_sepsis_early_warning.sql) |
+| **Radiology Workflow** | Monitoring turnaround times (TAT) for STAT vs Routine exams. | `TAT_Calc`, `SLA_Breach` | [healthcare_radiology_workflow.sql](sql_examples/healthcare_radiology_workflow.sql) |
+| **Oncology Pathways** | Tracking adherence to NCCN chemotherapy guidelines vs variances. | `PathwayCompliance`, `VarianceAnalysis` | [healthcare_oncology_pathways.sql](sql_examples/healthcare_oncology_pathways.sql) |
+| **EMS Dispatch** | Analyzing Chute Time and Travel Time to optimize ambulance coverage. | `ResponseMetrics`, `GeoHeatmap` | [healthcare_ems_dispatch.sql](sql_examples/healthcare_ems_dispatch.sql) |
+| **HAI Tracking** | Monitoring Hospital Acquired Infections (CLABSI/CAUTI) vs POA. | `InfectionRate`, `DeviceDays` | [healthcare_hai_tracking.sql](sql_examples/healthcare_hai_tracking.sql) |
+| **Device Maintenance** | Tracking preventive maintenance schedules for critical assets (MRI, Vents). | `NextDueDate`, `RiskFlag` | [healthcare_device_maintenance.sql](sql_examples/healthcare_device_maintenance.sql) |
+| **Patient No-Show** | Predicting appointment no-shows based on historical patient behavior. | `NoShowRate`, `RiskPrediction` | [healthcare_patient_no_show.sql](sql_examples/healthcare_patient_no_show.sql) |
+| **OR Utilization** | maximizing Operating Room block usage efficiency. | `UtilizationPct`, `BlockSchedule` | [healthcare_or_utilization.sql](sql_examples/healthcare_or_utilization.sql) |
+| **Blood Bank Inventory** | Managing blood product supply and expiration risks. | `ExpiryStatus`, `ShortageAlert` | [healthcare_blood_bank_inventory.sql](sql_examples/healthcare_blood_bank_inventory.sql) |
+| **Pharmacy Safety** | Reconciling Dispensed vs Administered meds to detect errors/diversion. | `VarianceDetect`, `SafetyLoop` | [healthcare_pharmacy_safety.sql](sql_examples/healthcare_pharmacy_safety.sql) |
+| **Home Health Routing** | Optimizing visiting nurse schedules by geographic clusters. | `ClusterLoad`, `RouteEff` | [healthcare_home_visiting_nurse.sql](sql_examples/healthcare_home_visiting_nurse.sql) |
+| **ED Diversion** | Analyzing root causes (No Beds, CT Down) of ED diversion hours. | `DiversionImpact`, `RevenueLoss` | [healthcare_ed_diversion.sql](sql_examples/healthcare_ed_diversion.sql) |
+| **SDOH Analysis** | Risk stratifying patients using Social Determinants (Food/Housing). | `SocialRiskScore`, `InterventionTarget` | [healthcare_sdoh_analysis.sql](sql_examples/healthcare_sdoh_analysis.sql) |
+| **Claims Appeals** | Tracking success rates of appealing insurance claim denials. | `OverturnRate`, `RecoveredRevenue` | [healthcare_claims_appeals.sql](sql_examples/healthcare_claims_appeals.sql) |
+| **Provider Credentialing** | Monitoring license and DEA registration expiries for compliance. | `ExpiryAlert`, `ComplianceDash` | [healthcare_provider_credentialing.sql](sql_examples/healthcare_provider_credentialing.sql) |
+| **Vaccine Cold Chain** | IoT monitoring of refrigerator temperatures to prevent vaccine spoilage. | `ExcursionDetect`, `SpoilageRisk` | [healthcare_vaccine_cold_chain.sql](sql_examples/healthcare_vaccine_cold_chain.sql) |
+| **SNF Referral Leakage** | Tracking discharged patients sent to out-of-network nursing facilities. | `NetworkLeakage`, `ReferralPatterns` | [healthcare_snf_referral_leakage.sql](sql_examples/healthcare_snf_referral_leakage.sql) |
+| **Nurse Staffing Acuity** | calculating HPPD (Hours Per Patient Day) tailored to patient severity. | `AcuityScore`, `StaffingVariance` | [healthcare_nurse_staffing_acuity.sql](sql_examples/healthcare_nurse_staffing_acuity.sql) |
+| **ACO Shared Savings** | Tracking PMPY spend against benchmarks for Value-Based Care. | `PMPY_Calc`, `SavingsPool` | [healthcare_aco_shared_savings.sql](sql_examples/healthcare_aco_shared_savings.sql) |
+
 ### Investment & Wealth Management
 | Scenario | File | Description |
 | :--- | :--- | :--- |
