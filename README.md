@@ -178,6 +178,43 @@ All examples follow the **Medallion Architecture**:
 
 ## 🏛️ Government & Public Sector
 
+### Civic Services & Operations (Phase 8)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- |
+| **311 Service Requests** | Analyzing citizen complaints (potholes, noise, trash) and resolution times. | `RequestType`, `SLA_Breach` | [government_311_service_requests.sql](sql_examples/government_311_service_requests.sql) |
+| **Voter Turnout** | Analyzing voter registration and turnout by precinct and demographics. | `TurnoutPct`, `DemographicShift` | [government_voter_turnout.sql](sql_examples/government_voter_turnout.sql) |
+| **Public Housing** | Managing public housing unit turnover, occupancy rates, and waitlists. | `VacancyDays`, `WaitlistAging` | [government_public_housing.sql](sql_examples/government_public_housing.sql) |
+| **Parks Utilization** | Tracking facility bookings, event attendance, and revenue. | `UtilizationRate`, `RevenuePerAcre` | [government_parks_rec_utilization.sql](sql_examples/government_parks_rec_utilization.sql) |
+| **Food Safety** | Restaurant health inspection grades and violation tracking. | `ViolationScore`, `PassRate` | [government_food_safety_inspections.sql](sql_examples/government_food_safety_inspections.sql) |
+
+### Public Safety & Justice (Phase 8)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- |
+| **Crime Statistics** | Geo-spatial analysis of crime types and hotspots. | `CrimeRate`, `HotspotDetection` | [government_crime_statistics.sql](sql_examples/government_crime_statistics.sql) |
+| **Fire Response** | Fire department response times and property loss estimates. | `ResponseTime`, `LossEstimate` | [government_fire_incident_response.sql](sql_examples/government_fire_incident_response.sql) |
+| **Building Codes** | Tracking building inspections, permits, and code violations. | `ViolationType`, `SafetyRisk` | [government_building_code_violations.sql](sql_examples/government_building_code_violations.sql) |
+| **Disaster Relief** | Allocating and tracking disaster relief funds and resources. | `FundAllocation`, `ImpactZone` | [government_disaster_relief.sql](sql_examples/government_disaster_relief.sql) |
+| **Homeless Services** | Shelter capacity monitoring and street outreach contacts. | `ShelterOccupancy`, `OutreachMetrics` | [government_homeless_services.sql](sql_examples/government_homeless_services.sql) |
+
+### Finance & Administration (Phase 8)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- |
+| **Grant Management** | Tracking federal/state grant lifecycles, awards, and burn rates. | `BurnRate`, `ComplianceStatus` | [government_grant_management.sql](sql_examples/government_grant_management.sql) |
+| **Pension Liability** | Analysis of public employee pension funding ratios and liabilities. | `FundingRatio`, `LiabilityProjection` | [government_pension_liability.sql](sql_examples/government_pension_liability.sql) |
+| **Econ Development** | Tracking business registrations, closures, and job creation. | `BizGrowthRate`, `JobCreation` | [government_economic_development.sql](sql_examples/government_economic_development.sql) |
+| **FOIA Records** | Managing Freedom of Information Act (FOIA) request backlogs. | `ProcessingTime`, `BacklogCount` | [government_public_records_foia.sql](sql_examples/government_public_records_foia.sql) |
+| **Lobbying Reg** | Tracking registered lobbyists, clients, and reported spending. | `SpendAnalysis`, `InfluenceMapping` | [government_lobbying_registration.sql](sql_examples/government_lobbying_registration.sql) |
+
+### Infrastructure & Utilities (Phase 8)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- |
+| **Water Quality** | Monitoring water contaminants (Lead, Copper) against safety limits. | `ContaminantLevel`, `SafetyBreach` | [government_water_quality.sql](sql_examples/government_water_quality.sql) |
+| **Snow Removal** | Optimizing snow plow routes and salt material usage. | `RouteEfficiency`, `MaterialUsage` | [government_snow_removal.sql](sql_examples/government_snow_removal.sql) |
+| **School Bus Ops** | Route optimization and on-time performance for school transport. | `OnTimePct`, `FuelCost` | [government_school_bus_logistics.sql](sql_examples/government_school_bus_logistics.sql) |
+| **Meter Parking** | Analyzing parking meter revenue and violation ticketing by zone. | `RevenuePerSpace`, `ViolationRate` | [government_meter_parking_revenue.sql](sql_examples/government_meter_parking_revenue.sql) |
+| **Census Demo** | Analyzing population shifts and demographic trends over time. | `PopGrowth`, `DemographicIndex` | [government_census_demographics.sql](sql_examples/government_census_demographics.sql) |
+
+### General & Legacy Scenarios
 | Scenario | File | Description |
 | :--- | :--- | :--- |
 | **Smart City Traffic**| [smart_city_traffic_analysis.sql](sql_examples/smart_city_traffic_analysis.sql) | Congestion monitoring and sensor data. |

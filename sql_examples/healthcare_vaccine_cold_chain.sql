@@ -38,19 +38,57 @@ CREATE OR REPLACE TABLE HealthcareColdChainDB.Bronze.TempSensors (
 );
 
 -- Bulk Readings (Simulating intermittent failures)
-INSERT INTO HealthcareColdChainDB.Bronze.TempSensors
-SELECT 
-  'S' || CAST((rn % 5) + 1 AS STRING), -- 5 sensors
-  DATE_ADD(TIMESTAMP '2025-01-01 00:00:00', CAST(rn * 30 AS INT) * 1000 * 60), -- Every 30 mins
-  CASE 
-    WHEN rn % 20 = 0 THEN 9.5 -- Excursion High
-    WHEN rn % 25 = 0 THEN 1.5 -- Excursion Low
-    ELSE 4.0 + (rn % 3) -- Normal (4-7 C)
-  END,
-  'F' || CAST((rn % 5) + 1 AS STRING)
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+INSERT INTO HealthcareColdChainDB.Bronze.TempSensors VALUES
+('S1', TIMESTAMP '2025-01-01 00:30:00', 9.5, 'F1'), -- Excursion High
+('S2', TIMESTAMP '2025-01-01 01:00:00', 4.5, 'F2'),
+('S3', TIMESTAMP '2025-01-01 01:30:00', 5.0, 'F3'),
+('S4', TIMESTAMP '2025-01-01 02:00:00', 4.8, 'F4'),
+('S5', TIMESTAMP '2025-01-01 02:30:00', 1.5, 'F5'), -- Excursion Low
+('S1', TIMESTAMP '2025-01-01 03:00:00', 5.2, 'F1'),
+('S2', TIMESTAMP '2025-01-01 03:30:00', 5.1, 'F2'),
+('S3', TIMESTAMP '2025-01-01 04:00:00', 4.9, 'F3'),
+('S4', TIMESTAMP '2025-01-01 04:30:00', 5.0, 'F4'),
+('S5', TIMESTAMP '2025-01-01 05:00:00', 5.3, 'F5'),
+('S1', TIMESTAMP '2025-01-01 05:30:00', 5.5, 'F1'),
+('S2', TIMESTAMP '2025-01-01 06:00:00', 5.4, 'F2'),
+('S3', TIMESTAMP '2025-01-01 06:30:00', 5.6, 'F3'),
+('S4', TIMESTAMP '2025-01-01 07:00:00', 5.2, 'F4'),
+('S5', TIMESTAMP '2025-01-01 07:30:00', 5.1, 'F5'),
+('S1', TIMESTAMP '2025-01-01 08:00:00', 5.0, 'F1'),
+('S2', TIMESTAMP '2025-01-01 08:30:00', 4.8, 'F2'),
+('S3', TIMESTAMP '2025-01-01 09:00:00', 4.9, 'F3'),
+('S4', TIMESTAMP '2025-01-01 09:30:00', 5.1, 'F4'),
+('S5', TIMESTAMP '2025-01-01 10:00:00', 9.5, 'F5'), -- High
+('S1', TIMESTAMP '2025-01-01 10:30:00', 5.2, 'F1'),
+('S2', TIMESTAMP '2025-01-01 11:00:00', 5.3, 'F2'),
+('S3', TIMESTAMP '2025-01-01 11:30:00', 5.4, 'F3'),
+('S4', TIMESTAMP '2025-01-01 12:00:00', 5.0, 'F4'),
+('S5', TIMESTAMP '2025-01-01 12:30:00', 1.5, 'F5'), -- Low
+('S1', TIMESTAMP '2025-01-01 13:00:00', 5.1, 'F1'),
+('S2', TIMESTAMP '2025-01-01 13:30:00', 5.2, 'F2'),
+('S3', TIMESTAMP '2025-01-01 14:00:00', 5.3, 'F3'),
+('S4', TIMESTAMP '2025-01-01 14:30:00', 5.4, 'F4'),
+('S5', TIMESTAMP '2025-01-01 15:00:00', 5.5, 'F5'),
+('S1', TIMESTAMP '2025-01-01 15:30:00', 5.0, 'F1'),
+('S2', TIMESTAMP '2025-01-01 16:00:00', 4.9, 'F2'),
+('S3', TIMESTAMP '2025-01-01 16:30:00', 4.8, 'F3'),
+('S4', TIMESTAMP '2025-01-01 17:00:00', 5.0, 'F4'),
+('S5', TIMESTAMP '2025-01-01 17:30:00', 5.1, 'F5'),
+('S1', TIMESTAMP '2025-01-01 18:00:00', 5.2, 'F1'),
+('S2', TIMESTAMP '2025-01-01 18:30:00', 5.3, 'F2'),
+('S3', TIMESTAMP '2025-01-01 19:00:00', 5.4, 'F3'),
+('S4', TIMESTAMP '2025-01-01 19:30:00', 5.5, 'F4'),
+('S5', TIMESTAMP '2025-01-01 20:00:00', 9.5, 'F5'), -- High
+('S1', TIMESTAMP '2025-01-01 20:30:00', 5.1, 'F1'),
+('S2', TIMESTAMP '2025-01-01 21:00:00', 5.0, 'F2'),
+('S3', TIMESTAMP '2025-01-01 21:30:00', 4.9, 'F3'),
+('S4', TIMESTAMP '2025-01-01 22:00:00', 4.8, 'F4'),
+('S5', TIMESTAMP '2025-01-01 22:30:00', 4.7, 'F5'),
+('S1', TIMESTAMP '2025-01-01 23:00:00', 5.0, 'F1'),
+('S2', TIMESTAMP '2025-01-01 23:30:00', 5.1, 'F2'),
+('S3', TIMESTAMP '2025-01-02 00:00:00', 5.2, 'F3'),
+('S4', TIMESTAMP '2025-01-02 00:30:00', 5.3, 'F4'),
+('S5', TIMESTAMP '2025-01-02 01:00:00', 1.5, 'F5'); -- Low
 
 CREATE OR REPLACE TABLE HealthcareColdChainDB.Bronze.InventoryLots (
     LotID STRING,
@@ -63,7 +101,13 @@ INSERT INTO HealthcareColdChainDB.Bronze.InventoryLots VALUES
 ('L001', 'Flu', 'F1', 500),
 ('L002', 'COVID', 'F1', 200),
 ('L003', 'Flu', 'F2', 300),
-('L004', 'Shingles', 'F3', 100);
+('L004', 'Shingles', 'F3', 100),
+('L005', 'COVID', 'F4', 250),
+('L006', 'Flu', 'F5', 150),
+('L007', 'Shingles', 'F1', 100),
+('L008', 'COVID', 'F2', 200),
+('L009', 'Flu', 'F3', 300),
+('L010', 'Shingles', 'F4', 400);
 
 -------------------------------------------------------------------------------
 -- 2. SILVER LAYER: Excursion Detection
