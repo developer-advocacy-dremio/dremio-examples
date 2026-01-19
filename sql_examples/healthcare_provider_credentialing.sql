@@ -37,15 +37,57 @@ CREATE OR REPLACE TABLE HealthcareCredsDB.Bronze.ProviderRoster (
     Specialty STRING -- Cards, Ortho, Primary
 );
 
--- Bulk Providers
-INSERT INTO HealthcareCredsDB.Bronze.ProviderRoster
-SELECT 
-  'PRV' || CAST(rn + 100 AS STRING),
-  'Dr. ' || CAST(rn + 100 AS STRING),
-  CASE WHEN rn % 3 = 0 THEN 'Cardiology' WHEN rn % 3 = 1 THEN 'Ortho' ELSE 'PrimaryCare' END
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+INSERT INTO HealthcareCredsDB.Bronze.ProviderRoster VALUES
+('PRV101', 'Dr. Smith', 'Cardiology'),
+('PRV102', 'Dr. Jones', 'Ortho'),
+('PRV103', 'Dr. Lee', 'PrimaryCare'),
+('PRV104', 'Dr. Patel', 'Cardiology'),
+('PRV105', 'Dr. Kim', 'Ortho'),
+('PRV106', 'Dr. Garcia', 'PrimaryCare'),
+('PRV107', 'Dr. Brown', 'Cardiology'),
+('PRV108', 'Dr. White', 'Ortho'),
+('PRV109', 'Dr. Green', 'PrimaryCare'),
+('PRV110', 'Dr. Black', 'Cardiology'),
+('PRV111', 'Dr. Grey', 'Ortho'),
+('PRV112', 'Dr. Blue', 'PrimaryCare'),
+('PRV113', 'Dr. Red', 'Cardiology'),
+('PRV114', 'Dr. Orange', 'Ortho'),
+('PRV115', 'Dr. Yellow', 'PrimaryCare'),
+('PRV116', 'Dr. Purple', 'Cardiology'),
+('PRV117', 'Dr. Pink', 'Ortho'),
+('PRV118', 'Dr. Gold', 'PrimaryCare'),
+('PRV119', 'Dr. Silver', 'Cardiology'),
+('PRV120', 'Dr. Bronze', 'Ortho'),
+('PRV121', 'Dr. Adams', 'PrimaryCare'),
+('PRV122', 'Dr. Baker', 'Cardiology'),
+('PRV123', 'Dr. Clark', 'Ortho'),
+('PRV124', 'Dr. Davis', 'PrimaryCare'),
+('PRV125', 'Dr. Evans', 'Cardiology'),
+('PRV126', 'Dr. Ford', 'Ortho'),
+('PRV127', 'Dr. Gomez', 'PrimaryCare'),
+('PRV128', 'Dr. Hall', 'Cardiology'),
+('PRV129', 'Dr. Ivy', 'Ortho'),
+('PRV130', 'Dr. Jack', 'PrimaryCare'),
+('PRV131', 'Dr. King', 'Cardiology'),
+('PRV132', 'Dr. Lord', 'Ortho'),
+('PRV133', 'Dr. Moon', 'PrimaryCare'),
+('PRV134', 'Dr. Noon', 'Cardiology'),
+('PRV135', 'Dr. Oates', 'Ortho'),
+('PRV136', 'Dr. Park', 'PrimaryCare'),
+('PRV137', 'Dr. Quinn', 'Cardiology'),
+('PRV138', 'Dr. Rose', 'Ortho'),
+('PRV139', 'Dr. Snow', 'PrimaryCare'),
+('PRV140', 'Dr. Tate', 'Cardiology'),
+('PRV141', 'Dr. Uzi', 'Ortho'),
+('PRV142', 'Dr. Vann', 'PrimaryCare'),
+('PRV143', 'Dr. West', 'Cardiology'),
+('PRV144', 'Dr. Xray', 'Ortho'),
+('PRV145', 'Dr. Yang', 'PrimaryCare'),
+('PRV146', 'Dr. Zod', 'Cardiology'),
+('PRV147', 'Dr. Alpha', 'Ortho'),
+('PRV148', 'Dr. Beta', 'PrimaryCare'),
+('PRV149', 'Dr. Gamma', 'Cardiology'),
+('PRV150', 'Dr. Delta', 'Ortho');
 
 CREATE OR REPLACE TABLE HealthcareCredsDB.Bronze.Credentials (
     CredID STRING,
@@ -54,16 +96,59 @@ CREATE OR REPLACE TABLE HealthcareCredsDB.Bronze.Credentials (
     ExpiryDate DATE
 );
 
--- Bulk Credentials
-INSERT INTO HealthcareCredsDB.Bronze.Credentials
-SELECT 
-  'C' || CAST(rn + 1000 AS STRING),
-  'PRV' || CAST(rn + 100 AS STRING),
-  CASE WHEN rn % 2 = 0 THEN 'STATE_LICENSE' ELSE 'DEA' END,
-  DATE_ADD(DATE '2025-01-01', CAST((rn * 7) - 30 AS INT)) -- Spread expiries from -30 days to +300 days
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+INSERT INTO HealthcareCredsDB.Bronze.Credentials VALUES
+('C101', 'PRV101', 'STATE_LICENSE', DATE '2024-12-31'), -- Expired
+('C102', 'PRV101', 'DEA', DATE '2025-06-01'),
+('C103', 'PRV102', 'STATE_LICENSE', DATE '2025-02-01'), -- Expiring Soon
+('C104', 'PRV102', 'DEA', DATE '2025-02-15'), -- Expiring Soon
+('C105', 'PRV103', 'STATE_LICENSE', DATE '2025-12-31'),
+('C106', 'PRV104', 'STATE_LICENSE', DATE '2025-03-01'), -- Valid
+('C107', 'PRV105', 'STATE_LICENSE', DATE '2024-11-30'), -- Expired
+('C108', 'PRV106', 'STATE_LICENSE', DATE '2026-01-01'),
+('C109', 'PRV107', 'STATE_LICENSE', DATE '2025-01-20'), -- Valid (Just barely if today is Jan 1)
+('C110', 'PRV108', 'STATE_LICENSE', DATE '2025-02-28'), -- Expiring Soon
+('C111', 'PRV109', 'STATE_LICENSE', DATE '2025-12-31'),
+('C112', 'PRV110', 'STATE_LICENSE', DATE '2025-04-01'),
+('C113', 'PRV111', 'STATE_LICENSE', DATE '2024-10-15'), -- Expired
+('C114', 'PRV112', 'STATE_LICENSE', DATE '2026-05-01'),
+('C115', 'PRV113', 'STATE_LICENSE', DATE '2025-01-15'), -- Expiring Soon/Expired depending on exact date
+('C116', 'PRV114', 'DEA', DATE '2025-03-15'),
+('C117', 'PRV115', 'STATE_LICENSE', DATE '2025-12-01'),
+('C118', 'PRV116', 'DEA', DATE '2024-12-01'), -- Expired
+('C119', 'PRV117', 'STATE_LICENSE', DATE '2025-07-01'),
+('C120', 'PRV118', 'STATE_LICENSE', DATE '2025-08-01'),
+('C121', 'PRV119', 'STATE_LICENSE', DATE '2025-09-01'),
+('C122', 'PRV120', 'DEA', DATE '2025-02-10'), -- Expiring Soon
+('C123', 'PRV121', 'STATE_LICENSE', DATE '2025-10-01'),
+('C124', 'PRV122', 'STATE_LICENSE', DATE '2025-11-01'),
+('C125', 'PRV123', 'DEA', DATE '2024-09-01'), -- Expired
+('C126', 'PRV124', 'STATE_LICENSE', DATE '2026-02-01'),
+('C127', 'PRV125', 'STATE_LICENSE', DATE '2026-03-01'),
+('C128', 'PRV126', 'DEA', DATE '2025-01-30'), -- Expiring Soon
+('C129', 'PRV127', 'STATE_LICENSE', DATE '2026-04-01'),
+('C130', 'PRV128', 'STATE_LICENSE', DATE '2026-05-01'),
+('C131', 'PRV129', 'DEA', DATE '2025-05-01'),
+('C132', 'PRV130', 'STATE_LICENSE', DATE '2026-06-01'),
+('C133', 'PRV131', 'STATE_LICENSE', DATE '2024-12-25'), -- Expired
+('C134', 'PRV132', 'DEA', DATE '2025-06-01'),
+('C135', 'PRV133', 'STATE_LICENSE', DATE '2026-07-01'),
+('C136', 'PRV134', 'STATE_LICENSE', DATE '2026-08-01'),
+('C137', 'PRV135', 'DEA', DATE '2025-02-20'), -- Expiring Soon
+('C138', 'PRV136', 'STATE_LICENSE', DATE '2026-09-01'),
+('C139', 'PRV137', 'STATE_LICENSE', DATE '2026-10-01'),
+('C140', 'PRV138', 'DEA', DATE '2025-07-01'),
+('C141', 'PRV139', 'STATE_LICENSE', DATE '2024-08-01'), -- Expired
+('C142', 'PRV140', 'STATE_LICENSE', DATE '2026-11-01'),
+('C143', 'PRV141', 'DEA', DATE '2025-08-01'),
+('C144', 'PRV142', 'STATE_LICENSE', DATE '2026-12-01'),
+('C145', 'PRV143', 'STATE_LICENSE', DATE '2027-01-01'),
+('C146', 'PRV144', 'DEA', DATE '2025-02-25'), -- Expiring Soon
+('C147', 'PRV145', 'STATE_LICENSE', DATE '2027-02-01'),
+('C148', 'PRV146', 'STATE_LICENSE', DATE '2027-03-01'),
+('C149', 'PRV147', 'DEA', DATE '2024-12-15'), -- Expired
+('C150', 'PRV148', 'STATE_LICENSE', DATE '2027-04-01'),
+('C151', 'PRV149', 'STATE_LICENSE', DATE '2027-05-01'),
+('C152', 'PRV150', 'DEA', DATE '2025-09-01');
 
 -------------------------------------------------------------------------------
 -- 2. SILVER LAYER: Expiry Calculation

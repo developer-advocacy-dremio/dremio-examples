@@ -50,18 +50,57 @@ CREATE OR REPLACE TABLE HealthcareReferralDB.Bronze.Discharges (
     DischargeDept STRING -- Ortho, Neuro
 );
 
--- Bulk Discharges
-INSERT INTO HealthcareReferralDB.Bronze.Discharges
-SELECT 
-  'D' || CAST(rn + 100 AS STRING),
-  'P' || CAST(rn + 100 AS STRING),
-  CASE WHEN rn % 4 = 0 THEN 'SNF03' -- Leakage
-       WHEN rn % 4 = 1 THEN 'SNF01' 
-       ELSE 'SNF02' END,
-  CASE WHEN rn % 2 = 0 THEN 'Ortho' ELSE 'Neuro' END
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+INSERT INTO HealthcareReferralDB.Bronze.Discharges VALUES
+('D101', 'P101', 'SNF03', 'Ortho'), -- Leakage
+('D102', 'P102', 'SNF01', 'Neuro'),
+('D103', 'P103', 'SNF02', 'Ortho'),
+('D104', 'P104', 'SNF04', 'Neuro'),
+('D105', 'P105', 'SNF03', 'Ortho'), -- Leakage
+('D106', 'P106', 'SNF01', 'Neuro'),
+('D107', 'P107', 'SNF02', 'Ortho'),
+('D108', 'P108', 'SNF01', 'Neuro'),
+('D109', 'P109', 'SNF03', 'Ortho'), -- Leakage
+('D110', 'P110', 'SNF04', 'Neuro'),
+('D111', 'P111', 'SNF01', 'Ortho'),
+('D112', 'P112', 'SNF02', 'Neuro'),
+('D113', 'P113', 'SNF03', 'Ortho'), -- Leakage
+('D114', 'P114', 'SNF04', 'Neuro'),
+('D115', 'P115', 'SNF01', 'Ortho'),
+('D116', 'P116', 'SNF02', 'Neuro'),
+('D117', 'P117', 'SNF01', 'Ortho'),
+('D118', 'P118', 'SNF02', 'Neuro'),
+('D119', 'P119', 'SNF03', 'Ortho'), -- Leakage
+('D120', 'P120', 'SNF04', 'Neuro'),
+('D121', 'P121', 'SNF01', 'Ortho'),
+('D122', 'P122', 'SNF02', 'Neuro'),
+('D123', 'P123', 'SNF03', 'Ortho'), -- Leakage
+('D124', 'P124', 'SNF04', 'Neuro'),
+('D125', 'P125', 'SNF01', 'Ortho'),
+('D126', 'P126', 'SNF02', 'Neuro'),
+('D127', 'P127', 'SNF03', 'Ortho'), -- Leakage
+('D128', 'P128', 'SNF01', 'Neuro'),
+('D129', 'P129', 'SNF02', 'Ortho'),
+('D130', 'P130', 'SNF04', 'Neuro'),
+('D131', 'P131', 'SNF01', 'Ortho'),
+('D132', 'P132', 'SNF02', 'Neuro'),
+('D133', 'P133', 'SNF03', 'Ortho'), -- Leakage
+('D134', 'P134', 'SNF04', 'Neuro'),
+('D135', 'P135', 'SNF01', 'Ortho'),
+('D136', 'P136', 'SNF02', 'Neuro'),
+('D137', 'P137', 'SNF03', 'Ortho'), -- Leakage
+('D138', 'P138', 'SNF01', 'Neuro'),
+('D139', 'P139', 'SNF02', 'Ortho'),
+('D140', 'P140', 'SNF04', 'Neuro'),
+('D141', 'P141', 'SNF01', 'Ortho'),
+('D142', 'P142', 'SNF02', 'Neuro'),
+('D143', 'P143', 'SNF03', 'Ortho'), -- Leakage
+('D144', 'P144', 'SNF04', 'Neuro'),
+('D145', 'P145', 'SNF01', 'Ortho'),
+('D146', 'P146', 'SNF02', 'Neuro'),
+('D147', 'P147', 'SNF03', 'Ortho'), -- Leakage
+('D148', 'P148', 'SNF01', 'Neuro'),
+('D149', 'P149', 'SNF02', 'Ortho'),
+('D150', 'P150', 'SNF04', 'Neuro');
 
 -------------------------------------------------------------------------------
 -- 2. SILVER LAYER: Leakage Detection

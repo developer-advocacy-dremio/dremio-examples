@@ -39,17 +39,57 @@ CREATE OR REPLACE TABLE GovernmentParkingDB.Bronze.MeterTxns (
     Date DATE
 );
 
--- Bulk Meter Revenue
-INSERT INTO GovernmentParkingDB.Bronze.MeterTxns
-SELECT 
-  'TXN' || CAST(rn + 1000 AS STRING),
-  'M' || CAST((rn % 20) AS STRING),
-  CASE WHEN rn % 2 = 0 THEN 'Downtown' ELSE 'Uptown' END,
-  CASE WHEN rn % 5 = 0 THEN 5.0 ELSE 2.5 END, -- $2.50 or $5.00
-  DATE_SUB(DATE '2025-01-20', CAST((rn % 10) AS INT))
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+INSERT INTO GovernmentParkingDB.Bronze.MeterTxns VALUES
+('TXN001', 'M101', 'Downtown', 5.0, DATE '2025-01-01'),
+('TXN002', 'M102', 'Downtown', 2.5, DATE '2025-01-01'),
+('TXN003', 'M103', 'Uptown', 1.0, DATE '2025-01-01'),
+('TXN004', 'M101', 'Downtown', 5.0, DATE '2025-01-01'),
+('TXN005', 'M104', 'Uptown', 2.0, DATE '2025-01-02'),
+('TXN006', 'M105', 'Downtown', 7.5, DATE '2025-01-02'),
+('TXN007', 'M102', 'Downtown', 2.5, DATE '2025-01-02'),
+('TXN008', 'M106', 'Uptown', 1.5, DATE '2025-01-02'),
+('TXN009', 'M101', 'Downtown', 5.0, DATE '2025-01-03'),
+('TXN010', 'M103', 'Uptown', 3.0, DATE '2025-01-03'),
+('TXN011', 'M107', 'Downtown', 4.0, DATE '2025-01-03'),
+('TXN012', 'M108', 'Uptown', 2.0, DATE '2025-01-04'),
+('TXN013', 'M101', 'Downtown', 5.0, DATE '2025-01-04'),
+('TXN014', 'M102', 'Downtown', 2.5, DATE '2025-01-04'),
+('TXN015', 'M104', 'Uptown', 1.0, DATE '2025-01-05'),
+('TXN016', 'M105', 'Downtown', 6.0, DATE '2025-01-05'),
+('TXN017', 'M109', 'Downtown', 3.0, DATE '2025-01-05'),
+('TXN018', 'M103', 'Uptown', 2.0, DATE '2025-01-06'),
+('TXN019', 'M101', 'Downtown', 5.0, DATE '2025-01-06'),
+('TXN020', 'M106', 'Uptown', 1.5, DATE '2025-01-06'),
+('TXN021', 'M102', 'Downtown', 2.5, DATE '2025-01-07'),
+('TXN022', 'M104', 'Uptown', 4.0, DATE '2025-01-07'),
+('TXN023', 'M107', 'Downtown', 5.0, DATE '2025-01-07'),
+('TXN024', 'M108', 'Uptown', 2.0, DATE '2025-01-08'),
+('TXN025', 'M101', 'Downtown', 5.0, DATE '2025-01-08'),
+('TXN026', 'M105', 'Downtown', 3.0, DATE '2025-01-09'),
+('TXN027', 'M103', 'Uptown', 1.0, DATE '2025-01-09'),
+('TXN028', 'M102', 'Downtown', 2.5, DATE '2025-01-10'),
+('TXN029', 'M109', 'Downtown', 4.0, DATE '2025-01-10'),
+('TXN030', 'M106', 'Uptown', 2.0, DATE '2025-01-10'),
+('TXN031', 'M101', 'Downtown', 5.0, DATE '2025-01-11'),
+('TXN032', 'M104', 'Uptown', 3.0, DATE '2025-01-11'),
+('TXN033', 'M107', 'Downtown', 6.0, DATE '2025-01-12'),
+('TXN034', 'M102', 'Downtown', 2.5, DATE '2025-01-12'),
+('TXN035', 'M108', 'Uptown', 1.5, DATE '2025-01-13'),
+('TXN036', 'M103', 'Uptown', 2.0, DATE '2025-01-13'),
+('TXN037', 'M101', 'Downtown', 5.0, DATE '2025-01-14'),
+('TXN038', 'M105', 'Downtown', 4.0, DATE '2025-01-14'),
+('TXN039', 'M106', 'Uptown', 3.0, DATE '2025-01-15'),
+('TXN040', 'M102', 'Downtown', 2.5, DATE '2025-01-15'),
+('TXN041', 'M109', 'Downtown', 5.0, DATE '2025-01-15'),
+('TXN042', 'M104', 'Uptown', 2.0, DATE '2025-01-16'),
+('TXN043', 'M107', 'Downtown', 3.0, DATE '2025-01-16'),
+('TXN044', 'M101', 'Downtown', 5.0, DATE '2025-01-17'),
+('TXN045', 'M103', 'Uptown', 1.0, DATE '2025-01-17'),
+('TXN046', 'M108', 'Uptown', 2.5, DATE '2025-01-18'),
+('TXN047', 'M102', 'Downtown', 2.5, DATE '2025-01-18'),
+('TXN048', 'M105', 'Downtown', 6.0, DATE '2025-01-19'),
+('TXN049', 'M106', 'Uptown', 3.5, DATE '2025-01-19'),
+('TXN050', 'M101', 'Downtown', 5.0, DATE '2025-01-20');
 
 CREATE OR REPLACE TABLE GovernmentParkingDB.Bronze.Tickets (
     TicketID STRING,
@@ -59,17 +99,32 @@ CREATE OR REPLACE TABLE GovernmentParkingDB.Bronze.Tickets (
     Date DATE
 );
 
--- Bulk Tickets
-INSERT INTO GovernmentParkingDB.Bronze.Tickets
-SELECT 
-  'T' || CAST(rn + 500 AS STRING),
-  CASE WHEN rn % 2 = 0 THEN 'Downtown' ELSE 'Uptown' END,
-  CASE WHEN rn % 2 = 0 THEN 'Expired Meter' ELSE 'No Parking' END,
-  50.0,
-  DATE_SUB(DATE '2025-01-20', CAST((rn % 10) AS INT))
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+INSERT INTO GovernmentParkingDB.Bronze.Tickets VALUES
+('T1', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-01'),
+('T2', 'Uptown', 'No Parking', 75.0, DATE '2025-01-01'),
+('T3', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-02'),
+('T4', 'Downtown', 'No Parking', 75.0, DATE '2025-01-03'),
+('T5', 'Uptown', 'Expired Meter', 50.0, DATE '2025-01-04'),
+('T6', 'Downtown', 'No Parking', 75.0, DATE '2025-01-05'),
+('T7', 'Uptown', 'No Parking', 75.0, DATE '2025-01-06'),
+('T8', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-07'),
+('T9', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-08'),
+('T10', 'Uptown', 'Expired Meter', 50.0, DATE '2025-01-09'),
+('T11', 'Downtown', 'No Parking', 75.0, DATE '2025-01-10'),
+('T12', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-11'),
+('T13', 'Uptown', 'No Parking', 75.0, DATE '2025-01-12'),
+('T14', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-13'),
+('T15', 'Uptown', 'Expired Meter', 50.0, DATE '2025-01-14'),
+('T16', 'Downtown', 'No Parking', 75.0, DATE '2025-01-15'),
+('T17', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-16'),
+('T18', 'Uptown', 'No Parking', 75.0, DATE '2025-01-17'),
+('T19', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-18'),
+('T20', 'Uptown', 'Expired Meter', 50.0, DATE '2025-01-19'),
+('T21', 'Downtown', 'No Parking', 75.0, DATE '2025-01-20'),
+('T22', 'Downtown', 'Expired Meter', 50.0, DATE '2025-01-01'), -- Double ticket
+('T23', 'Uptown', 'Expired Meter', 50.0, DATE '2025-01-02'),
+('T24', 'Downtown', 'No Parking', 75.0, DATE '2025-01-04'),
+('T25', 'Uptown', 'No Parking', 75.0, DATE '2025-01-05');
 
 -------------------------------------------------------------------------------
 -- 2. SILVER LAYER: Daily Totals

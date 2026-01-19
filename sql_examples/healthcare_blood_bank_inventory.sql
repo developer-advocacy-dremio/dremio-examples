@@ -40,24 +40,57 @@ CREATE OR REPLACE TABLE HealthcareBloodDB.Bronze.Inventory (
     Status STRING -- Available, Reserved, Quarantined
 );
 
--- Insert 50+ records
 INSERT INTO HealthcareBloodDB.Bronze.Inventory VALUES
-('U001', 'O-', 'RBC', DATE '2024-12-01', DATE '2025-01-12', 'Available'), -- Expiring soon
-('U002', 'A+', 'RBC', DATE '2024-12-15', DATE '2025-01-26', 'Available'),
-('U003', 'AB+', 'Plasma', DATE '2024-01-01', DATE '2025-01-01', 'Available'),
-('U004', 'O+', 'Platelets', DATE '2025-01-10', DATE '2025-01-15', 'Available'); -- Platelets short shelf life
--- Bulk Inventory
-INSERT INTO HealthcareBloodDB.Bronze.Inventory
-SELECT 
-  'U' || CAST(rn + 100 AS STRING),
-  CASE WHEN rn % 4 = 0 THEN 'O-' WHEN rn % 4 = 1 THEN 'A+' WHEN rn % 4 = 2 THEN 'B-' ELSE 'AB+' END,
-  CASE WHEN rn % 3 = 0 THEN 'RBC' WHEN rn % 3 = 1 THEN 'Platelets' ELSE 'Plasma' END,
-  DATE '2024-12-01',
-  DATE_ADD(DATE '2025-01-15', CAST((rn % 20) - 10 AS INT)), -- Spread expiries around today
-  'Available'
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+('U101', 'O-', 'RBC', DATE '2024-12-01', DATE '2025-01-12', 'Available'), -- Expired
+('U102', 'A+', 'RBC', DATE '2024-12-15', DATE '2025-01-26', 'Available'),
+('U103', 'AB+', 'Plasma', DATE '2024-01-01', DATE '2025-01-01', 'Available'), -- Expired
+('U104', 'O+', 'Platelets', DATE '2025-01-10', DATE '2025-01-15', 'Available'), -- Expiring Today
+('U105', 'B-', 'RBC', DATE '2024-12-20', DATE '2025-01-30', 'Available'),
+('U106', 'O-', 'Platelets', DATE '2025-01-12', DATE '2025-01-17', 'Available'),
+('U107', 'A-', 'Plasma', DATE '2024-12-01', DATE '2025-12-01', 'Available'),
+('U108', 'O+', 'RBC', DATE '2024-12-22', DATE '2025-02-02', 'Available'),
+('U109', 'AB-', 'Platelets', DATE '2025-01-11', DATE '2025-01-16', 'Available'),
+('U110', 'B+', 'RBC', DATE '2024-12-25', DATE '2025-02-05', 'Available'),
+('U111', 'O-', 'RBC', DATE '2024-12-10', DATE '2025-01-20', 'Available'), -- Critical
+('U112', 'A+', 'RBC', DATE '2024-12-12', DATE '2025-01-22', 'Available'),
+('U113', 'AB+', 'Plasma', DATE '2024-11-01', DATE '2025-11-01', 'Available'),
+('U114', 'O+', 'Platelets', DATE '2025-01-13', DATE '2025-01-18', 'Available'),
+('U115', 'B-', 'RBC', DATE '2024-12-18', DATE '2025-01-28', 'Available'),
+('U116', 'O-', 'Platelets', DATE '2025-01-14', DATE '2025-01-19', 'Available'),
+('U117', 'A-', 'Plasma', DATE '2024-10-01', DATE '2025-10-01', 'Available'),
+('U118', 'O+', 'RBC', DATE '2024-12-28', DATE '2025-02-08', 'Available'),
+('U119', 'AB-', 'Platelets', DATE '2025-01-12', DATE '2025-01-17', 'Available'),
+('U120', 'B+', 'RBC', DATE '2024-12-30', DATE '2025-02-10', 'Available'),
+('U121', 'O-', 'RBC', DATE '2024-12-05', DATE '2025-01-15', 'Available'), -- Critical
+('U122', 'A+', 'RBC', DATE '2024-12-06', DATE '2025-01-16', 'Available'),
+('U123', 'AB+', 'Plasma', DATE '2024-09-01', DATE '2025-09-01', 'Available'),
+('U124', 'O+', 'Platelets', DATE '2025-01-11', DATE '2025-01-16', 'Available'),
+('U125', 'B-', 'RBC', DATE '2024-12-15', DATE '2025-01-25', 'Available'),
+('U126', 'O-', 'Platelets', DATE '2025-01-13', DATE '2025-01-18', 'Available'),
+('U127', 'A-', 'Plasma', DATE '2024-08-01', DATE '2025-08-01', 'Available'),
+('U128', 'O+', 'RBC', DATE '2024-12-18', DATE '2025-01-28', 'Available'),
+('U129', 'AB-', 'Platelets', DATE '2025-01-14', DATE '2025-01-19', 'Available'),
+('U130', 'B+', 'RBC', DATE '2024-12-20', DATE '2025-01-30', 'Available'),
+('U131', 'O-', 'RBC', DATE '2025-01-01', DATE '2025-02-11', 'Available'),
+('U132', 'A+', 'RBC', DATE '2025-01-02', DATE '2025-02-12', 'Available'),
+('U133', 'AB+', 'Plasma', DATE '2025-01-03', DATE '2026-01-03', 'Available'),
+('U134', 'O+', 'Platelets', DATE '2025-01-14', DATE '2025-01-19', 'Available'),
+('U135', 'B-', 'RBC', DATE '2025-01-05', DATE '2025-02-15', 'Available'),
+('U136', 'O-', 'Platelets', DATE '2025-01-15', DATE '2025-01-20', 'Available'),
+('U137', 'A-', 'Plasma', DATE '2025-01-07', DATE '2026-01-07', 'Available'),
+('U138', 'O+', 'RBC', DATE '2025-01-08', DATE '2025-02-18', 'Available'),
+('U139', 'AB-', 'Platelets', DATE '2025-01-14', DATE '2025-01-19', 'Available'),
+('U140', 'B+', 'RBC', DATE '2025-01-10', DATE '2025-02-20', 'Available'),
+('U141', 'O-', 'RBC', DATE '2024-12-02', DATE '2025-01-12', 'Available'), -- Expired
+('U142', 'A+', 'RBC', DATE '2024-12-03', DATE '2025-01-13', 'Available'),
+('U143', 'AB+', 'Plasma', DATE '2024-12-04', DATE '2025-12-04', 'Available'),
+('U144', 'O+', 'Platelets', DATE '2025-01-10', DATE '2025-01-15', 'Available'),
+('U145', 'B-', 'RBC', DATE '2024-12-05', DATE '2025-01-15', 'Available'),
+('U146', 'O-', 'Platelets', DATE '2025-01-11', DATE '2025-01-16', 'Available'),
+('U147', 'A-', 'Plasma', DATE '2024-12-07', DATE '2025-12-07', 'Available'),
+('U148', 'O+', 'RBC', DATE '2024-12-08', DATE '2025-01-18', 'Available'),
+('U149', 'AB-', 'Platelets', DATE '2025-01-12', DATE '2025-01-17', 'Available'),
+('U150', 'B+', 'RBC', DATE '2024-12-10', DATE '2025-01-20', 'Available');
 
 -------------------------------------------------------------------------------
 -- 2. SILVER LAYER: Expiry Logic

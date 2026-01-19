@@ -45,19 +45,52 @@ INSERT INTO HealthcareAssetsDB.Bronze.AssetInventory VALUES
 ('AST002', 'CT', 'Siemens', 'Somatom', DATE '2024-06-01', 180), -- Due Dec 2024 (Overdue)
 ('AST003', 'Vent', 'Dragher', 'Infinity', DATE '2024-10-01', 90), -- Due Jan 2025
 ('AST004', 'InfusionPump', 'Baxter', 'Sigma', DATE '2023-01-01', 365), -- Very Overdue
-('AST005', 'XRay', 'Philips', 'Digital', DATE '2024-12-01', 180);
--- Bulk Assets
-INSERT INTO HealthcareAssetsDB.Bronze.AssetInventory
-SELECT 
-  'AST' || CAST(rn + 100 AS STRING),
-  CASE WHEN rn % 4 = 0 THEN 'InfusionPump' WHEN rn % 4 = 1 THEN 'Vent' WHEN rn % 4 = 2 THEN 'Monitor' ELSE 'Bed' END,
-  'GenericMfg',
-  'ModelX',
-  DATE_SUB(DATE '2025-01-01', CAST((rn % 400) AS INT)), -- Random last PM dates
-  CASE WHEN rn % 2 = 0 THEN 365 ELSE 180 END
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+('AST005', 'XRay', 'Philips', 'Digital', DATE '2024-12-01', 180),
+('AST006', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-01-15', 365),
+('AST007', 'Vent', 'Dragher', 'Infinity', DATE '2024-11-01', 90),
+('AST008', 'Monitor', 'Philips', 'Intellivue', DATE '2024-08-01', 180),
+('AST009', 'Bed', 'HillRom', 'Progressa', DATE '2024-02-01', 365),
+('AST010', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-03-01', 365),
+('AST011', 'Vent', 'Dragher', 'Infinity', DATE '2024-12-01', 90),
+('AST012', 'Monitor', 'Philips', 'Intellivue', DATE '2024-09-01', 180),
+('AST013', 'Bed', 'HillRom', 'Progressa', DATE '2024-04-01', 365),
+('AST014', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-05-01', 365),
+('AST015', 'Vent', 'Dragher', 'Infinity', DATE '2025-01-01', 90),
+('AST016', 'Monitor', 'Philips', 'Intellivue', DATE '2024-10-01', 180),
+('AST017', 'Bed', 'HillRom', 'Progressa', DATE '2024-06-01', 365),
+('AST018', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-07-01', 365),
+('AST019', 'Vent', 'Dragher', 'Infinity', DATE '2025-01-10', 90),
+('AST020', 'Monitor', 'Philips', 'Intellivue', DATE '2024-11-01', 180),
+('AST021', 'Bed', 'HillRom', 'Progressa', DATE '2024-08-01', 365),
+('AST022', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-09-01', 365),
+('AST023', 'Vent', 'Dragher', 'Infinity', DATE '2025-01-15', 90),
+('AST024', 'Monitor', 'Philips', 'Intellivue', DATE '2024-12-01', 180),
+('AST025', 'Bed', 'HillRom', 'Progressa', DATE '2024-10-01', 365),
+('AST026', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-11-01', 365),
+('AST027', 'Vent', 'Dragher', 'Infinity', DATE '2025-01-20', 90),
+('AST028', 'Monitor', 'Philips', 'Intellivue', DATE '2025-01-01', 180),
+('AST029', 'Bed', 'HillRom', 'Progressa', DATE '2024-12-01', 365),
+('AST030', 'InfusionPump', 'Baxter', 'Sigma', DATE '2025-01-01', 365),
+('AST031', 'Vent', 'Dragher', 'Infinity', DATE '2024-09-01', 90), -- Overdue
+('AST032', 'Monitor', 'Philips', 'Intellivue', DATE '2024-07-01', 180), -- Overdue
+('AST033', 'Bed', 'HillRom', 'Progressa', DATE '2024-01-01', 365), -- Overdue
+('AST034', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-02-01', 365),
+('AST035', 'Vent', 'Dragher', 'Infinity', DATE '2024-10-15', 90), -- Overdue
+('AST036', 'Monitor', 'Philips', 'Intellivue', DATE '2024-08-15', 180),
+('AST037', 'Bed', 'HillRom', 'Progressa', DATE '2024-03-01', 365),
+('AST038', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-04-01', 365),
+('AST039', 'Vent', 'Dragher', 'Infinity', DATE '2024-11-15', 90),
+('AST040', 'Monitor', 'Philips', 'Intellivue', DATE '2024-09-15', 180),
+('AST041', 'Bed', 'HillRom', 'Progressa', DATE '2024-05-01', 365),
+('AST042', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-06-01', 365),
+('AST043', 'Vent', 'Dragher', 'Infinity', DATE '2024-12-15', 90),
+('AST044', 'Monitor', 'Philips', 'Intellivue', DATE '2024-10-15', 180),
+('AST045', 'Bed', 'HillRom', 'Progressa', DATE '2024-07-01', 365),
+('AST046', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-08-01', 365),
+('AST047', 'Vent', 'Dragher', 'Infinity', DATE '2025-01-05', 90),
+('AST048', 'Monitor', 'Philips', 'Intellivue', DATE '2024-11-15', 180),
+('AST049', 'Bed', 'HillRom', 'Progressa', DATE '2024-09-01', 365),
+('AST050', 'InfusionPump', 'Baxter', 'Sigma', DATE '2024-10-01', 365);
 
 -------------------------------------------------------------------------------
 -- 2. SILVER LAYER: Schedule Calculation

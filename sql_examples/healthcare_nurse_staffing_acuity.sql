@@ -38,16 +38,57 @@ CREATE OR REPLACE TABLE HealthcareStaffingDB.Bronze.AcuityScores (
     AcuityScore INT -- 1 (Low) to 5 (Critical)
 );
 
--- Bulk Acuity
-INSERT INTO HealthcareStaffingDB.Bronze.AcuityScores
-SELECT 
-  'P' || CAST(rn + 100 AS STRING),
-  DATE '2025-01-20',
-  CASE WHEN rn % 2 = 0 THEN 'ICU' ELSE 'MED-SURG' END,
-  CASE WHEN (rn % 10) = 0 THEN 5 ELSE (rn % 4) + 1 END -- Mixed acuity
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
-            (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
-            (41),(42),(43),(44),(45),(46),(47),(48),(49),(50)) AS t(rn);
+INSERT INTO HealthcareStaffingDB.Bronze.AcuityScores VALUES
+('P101', DATE '2025-01-20', 'ICU', 5),
+('P102', DATE '2025-01-20', 'MED-SURG', 2),
+('P103', DATE '2025-01-20', 'ICU', 4),
+('P104', DATE '2025-01-20', 'MED-SURG', 3),
+('P105', DATE '2025-01-20', 'ICU', 5),
+('P106', DATE '2025-01-20', 'MED-SURG', 1),
+('P107', DATE '2025-01-20', 'ICU', 5),
+('P108', DATE '2025-01-20', 'MED-SURG', 2),
+('P109', DATE '2025-01-20', 'ICU', 4),
+('P110', DATE '2025-01-20', 'MED-SURG', 3),
+('P111', DATE '2025-01-20', 'ICU', 5),
+('P112', DATE '2025-01-20', 'MED-SURG', 1),
+('P113', DATE '2025-01-20', 'ICU', 5),
+('P114', DATE '2025-01-20', 'MED-SURG', 2),
+('P115', DATE '2025-01-20', 'ICU', 4),
+('P116', DATE '2025-01-20', 'MED-SURG', 3),
+('P117', DATE '2025-01-20', 'ICU', 5),
+('P118', DATE '2025-01-20', 'MED-SURG', 1),
+('P119', DATE '2025-01-20', 'ICU', 5),
+('P120', DATE '2025-01-20', 'MED-SURG', 2),
+('P121', DATE '2025-01-20', 'ICU', 4),
+('P122', DATE '2025-01-20', 'MED-SURG', 3),
+('P123', DATE '2025-01-20', 'ICU', 5),
+('P124', DATE '2025-01-20', 'MED-SURG', 1),
+('P125', DATE '2025-01-20', 'ICU', 5),
+('P126', DATE '2025-01-20', 'MED-SURG', 2),
+('P127', DATE '2025-01-20', 'ICU', 4),
+('P128', DATE '2025-01-20', 'MED-SURG', 3),
+('P129', DATE '2025-01-20', 'ICU', 5),
+('P130', DATE '2025-01-20', 'MED-SURG', 1),
+('P131', DATE '2025-01-20', 'ICU', 5),
+('P132', DATE '2025-01-20', 'MED-SURG', 2),
+('P133', DATE '2025-01-20', 'ICU', 4),
+('P134', DATE '2025-01-20', 'MED-SURG', 3),
+('P135', DATE '2025-01-20', 'ICU', 5),
+('P136', DATE '2025-01-20', 'MED-SURG', 1),
+('P137', DATE '2025-01-20', 'ICU', 5),
+('P138', DATE '2025-01-20', 'MED-SURG', 2),
+('P139', DATE '2025-01-20', 'ICU', 4),
+('P140', DATE '2025-01-20', 'MED-SURG', 3),
+('P141', DATE '2025-01-20', 'ICU', 5),
+('P142', DATE '2025-01-20', 'MED-SURG', 1),
+('P143', DATE '2025-01-20', 'ICU', 5),
+('P144', DATE '2025-01-20', 'MED-SURG', 2),
+('P145', DATE '2025-01-20', 'ICU', 4),
+('P146', DATE '2025-01-20', 'MED-SURG', 3),
+('P147', DATE '2025-01-20', 'ICU', 5),
+('P148', DATE '2025-01-20', 'MED-SURG', 1),
+('P149', DATE '2025-01-20', 'ICU', 5),
+('P150', DATE '2025-01-20', 'MED-SURG', 2);
 
 CREATE OR REPLACE TABLE HealthcareStaffingDB.Bronze.NurseShifts (
     NurseID STRING,
@@ -56,14 +97,27 @@ CREATE OR REPLACE TABLE HealthcareStaffingDB.Bronze.NurseShifts (
     HoursWorked DOUBLE
 );
 
--- Bulk Shifts
-INSERT INTO HealthcareStaffingDB.Bronze.NurseShifts
-SELECT 
-  'N' || CAST(rn + 500 AS STRING),
-  DATE '2025-01-20',
-  CASE WHEN rn % 3 = 0 THEN 'ICU' ELSE 'MED-SURG' END,
-  12.0
-FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10)) AS t(rn); -- 10 Nurses
+INSERT INTO HealthcareStaffingDB.Bronze.NurseShifts VALUES
+('N001', DATE '2025-01-20', 'ICU', 12.0),
+('N002', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N003', DATE '2025-01-20', 'ICU', 12.0),
+('N004', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N005', DATE '2025-01-20', 'ICU', 12.0),
+('N006', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N007', DATE '2025-01-20', 'ICU', 12.0),
+('N008', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N009', DATE '2025-01-20', 'ICU', 12.0),
+('N010', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N011', DATE '2025-01-20', 'ICU', 12.0),
+('N012', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N013', DATE '2025-01-20', 'ICU', 12.0),
+('N014', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N015', DATE '2025-01-20', 'ICU', 12.0),
+('N016', DATE '2025-01-20', 'MED-SURG', 12.0),
+('N017', DATE '2025-01-20', 'ICU', 12.0),
+('N018', DATE '2025-01-20', 'ICU', 12.0),
+('N019', DATE '2025-01-20', 'ICU', 12.0),
+('N020', DATE '2025-01-20', 'MED-SURG', 12.0);
 
 -------------------------------------------------------------------------------
 -- 2. SILVER LAYER: Supply vs Demand
