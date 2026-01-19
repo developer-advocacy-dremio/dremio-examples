@@ -356,6 +356,23 @@ All examples follow the **Medallion Architecture**:
 
 ---
 
+## 🚀 Unique & Emerging Domains
+
+| Scenario | File | Description |
+| :--- | :--- | :--- |
+| **Space Telemetry** | [space_satellite_telemetry.sql](sql_examples/space_satellite_telemetry.sql) | Satellite health & debris collision avoidance. |
+| **Esports Analytics** | [esports_tournament_analytics.sql](sql_examples/esports_tournament_analytics.sql) | Match strategy & player performance metrics. |
+| **Veterinary Health** | [veterinary_patient_health.sql](sql_examples/veterinary_patient_health.sql) | Patient tracking & breed health trends. |
+| **Fine Art Market** | [fine_art_provenance_valuation.sql](sql_examples/fine_art_provenance_valuation.sql) | Provenance tracking & portfolio valuation. |
+| **Aquaculture** | [aquaculture_farm_monitoring.sql](sql_examples/aquaculture_farm_monitoring.sql) | Fish farming water quality & yields. |
+| **Forestry** | [forestry_sustainable_harvest.sql](sql_examples/forestry_sustainable_harvest.sql) | LiDAR biomass estimation & harvest planning. |
+| **Film Production** | [film_production_logistics.sql](sql_examples/film_production_logistics.sql) | Shooting schedules & daily burn rates. |
+| **Autonomous Vehicles** | [autonomous_vehicle_sensor_fusion.sql](sql_examples/autonomous_vehicle_sensor_fusion.sql) | Sensor reliability & safety incidents. |
+| **Smart Home** | [smart_home_energy_optimization.sql](sql_examples/smart_home_energy_optimization.sql) | Energy vampire detection & cost savings. |
+| **Genealogy** | [genealogy_record_linkage.sql](sql_examples/genealogy_record_linkage.sql) | Ancestry tree matching with census records. |
+
+---
+
 ## 🛠️ Technical Demos
 
 **SQL Functions**
