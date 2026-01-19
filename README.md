@@ -288,6 +288,20 @@ All examples follow the **Medallion Architecture**:
 | **Wastewater** | [wastewater_treatment_compliance.sql](sql_examples/wastewater_treatment_compliance.sql) | Effluent quality monitoring. |
 | **EV Charging** | [electric_vehicle_charging_station_utilization.sql](sql_examples/electric_vehicle_charging_station_utilization.sql) | Station usage analytics. |
 
+### Manufacturing & Supply Chain (Phase 17)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- | :--- |
+| **Quality Inspection** | AI-driven visual inspection defects and confidence scoring. | `ConfidenceScore`, `DefectHeatmap` | [manufacturing_quality_inspection.sql](sql_examples/manufacturing_quality_inspection.sql) |
+| **Reverse Logistics** | Managing returns processing, refurbishment, and restocking. | `ReturnReason`, `RestockCost` | [supply_chain_reverse_logistics.sql](sql_examples/supply_chain_reverse_logistics.sql) |
+| **Auto Picking** | Automated warehouse robot efficiency and battery drain analysis. | `BatteryLevel`, `PickPathEff` | [warehouse_automated_picking.sql](sql_examples/warehouse_automated_picking.sql) |
+| **Assembly Line** | Balancing "Takt Time" vs Actual Cycle Time. | `CycleTime`, `StationLoad` | [manufacturing_assembly_line.sql](sql_examples/manufacturing_assembly_line.sql) |
+| **Component Sourcing** | Single-source risk analysis for critical electronic components. | `RiskScore`, `GeoDiversity` | [supply_chain_component_sourcing.sql](sql_examples/supply_chain_component_sourcing.sql) |
+| **Steel Mill Energy** | Tracking energy consumption per ton produced in Arc Furnaces. | `KWhPerTon`, `PeakLoad` | [manufacturing_steel_mill_energy.sql](sql_examples/manufacturing_steel_mill_energy.sql) |
+| **Pharma Genealogy** | Recursive batch tracking from raw materials to finished pills. | `BatchTrace`, `IngredientSource` | [manufacturing_pharma_genealogy.sql](sql_examples/manufacturing_pharma_genealogy.sql) |
+| **Aerospace Compliance** | Tracking supplier certifications and part compliance for safety. | `CertExpiry`, `ComplianceStatus` | [manufacturing_aerospace_compliance.sql](sql_examples/manufacturing_aerospace_compliance.sql) |
+| **Packaging Waste** | Sustainability metrics for CPG packaging and recyclability. | `RecyclablePct`, `WasteTonnage` | [supply_chain_packaging_waste.sql](sql_examples/supply_chain_packaging_waste.sql) |
+| **Custom Orders** | Tracking Made-to-Order (MTO) furniture production timelines. | `CustomSLA`, `ProductionStage` | [manufacturing_custom_orders.sql](sql_examples/manufacturing_custom_orders.sql) |
+
 ---
 
 ## 🎓 Other Industries
@@ -325,6 +339,20 @@ All examples follow the **Medallion Architecture**:
 | **GDPR Privacy** | [gdpr_dsar_tracking.sql](sql_examples/gdpr_dsar_tracking.sql) | Privacy request tracking. |
 | **ESG Footprint** | [esg_carbon_footprint_tracking.sql](sql_examples/esg_carbon_footprint_tracking.sql) | Carbon emissions reporting. |
 | **Call Centers** | [call_center_sentiment_analysis.sql](sql_examples/call_center_sentiment_analysis.sql) | Agent performance and sentiment. |
+
+### Services, Lifestyle & Hospitality (Phase 17)
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- | :--- |
+| **Fitness Trends** | User engagement analysis with wearable fitness tracker data. | `StepGoal`, `HeartRateZone` | [lifestyle_fitness_tracker_trends.sql](sql_examples/lifestyle_fitness_tracker_trends.sql) |
+| **Music Streaming** | A/B testing of recommendation algorithms and skip rates. | `SkipRate`, `AB_VariantResult` | [services_music_streaming.sql](sql_examples/services_music_streaming.sql) |
+| **Campus Housing** | Optimizing university dorm assignments and occupancy. | `OccupancyRate`, `Preferences` | [services_campus_housing.sql](sql_examples/services_campus_housing.sql) |
+| **Baggage Handling** | Root cause analysis for airline lost or delayed luggage. | `MishandleRate`, `ScanGap` | [services_baggage_handling.sql](sql_examples/services_baggage_handling.sql) |
+| **Hotel Housekeeping** | Room turnover efficiency and maid productivity tracking. | `TurnoverTime`, `RoomStatus` | [services_hotel_housekeeping.sql](sql_examples/services_hotel_housekeeping.sql) |
+| **Cruise Spend** | Analyzing onboard guest spending (Casino, Dining, Shore Ex). | `SpendCategory`, `GuestSegment` | [services_cruise_spend.sql](sql_examples/services_cruise_spend.sql) |
+| **Theme Park Queues** | Forecasting wait times and optimizing line management. | `AvgWaitTime`, `PeakHour` | [services_theme_park_queues.sql](sql_examples/services_theme_park_queues.sql) |
+| **Rental Car Fleet** | Utilization rates, mileage optimization, and idle time. | `UtilizationPct`, `MaintenanceDue` | [services_rental_car_fleet.sql](sql_examples/services_rental_car_fleet.sql) |
+| **Coworking Space** | Desk occupancy hotspots and meeting room usage. | `DeskUtil`, `MeetingDensity` | [services_coworking_space.sql](sql_examples/services_coworking_space.sql) |
+| **Kitchen Display** | Restaurant ticket times and station bottleneck analysis. | `PrepTime`, `OrderLag` | [services_kitchen_display_system.sql](sql_examples/services_kitchen_display_system.sql) |
 
 ---
 
