@@ -373,6 +373,16 @@ All examples follow the **Medallion Architecture**:
 
 ---
 
+| **Genealogy** | [genealogy_record_linkage.sql](sql_examples/genealogy_record_linkage.sql) | Ancestry tree matching with census records. |
+
+### 🌐 Comprehensive Multi-Source Patterns
+| Pattern | File | Description |
+| :--- | :--- | :--- |
+| **Retail Customer 360** | [retail_customer_360.sql](customer360/retail_customer_360.sql) | Unified profile from ERP, CRM, and Web sources. |
+| **Hybrid Supply Chain** | [hybrid_supply_chain.sql](customer360/hybrid_supply_chain.sql) | Control tower merging Snowflake, S3, and Postgres. |
+
+---
+
 ## 🛠️ Technical Demos
 
 **SQL Functions**
