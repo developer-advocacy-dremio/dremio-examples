@@ -371,9 +371,6 @@ All examples follow the **Medallion Architecture**:
 | **Smart Home** | [smart_home_energy_optimization.sql](sql_examples/smart_home_energy_optimization.sql) | Energy vampire detection & cost savings. |
 | **Genealogy** | [genealogy_record_linkage.sql](sql_examples/genealogy_record_linkage.sql) | Ancestry tree matching with census records. |
 
----
-
-| **Genealogy** | [genealogy_record_linkage.sql](sql_examples/genealogy_record_linkage.sql) | Ancestry tree matching with census records. |
 
 ### 🌐 Comprehensive Multi-Source Patterns
 | Pattern | File | Description |
