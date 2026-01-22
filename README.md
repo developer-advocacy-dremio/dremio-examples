@@ -290,7 +290,7 @@ All examples follow the **Medallion Architecture**:
 
 ### Manufacturing & Supply Chain (Phase 17)
 | Scenario | Description | Key Features | File |
-| :--- | :--- | :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- |
 | **Quality Inspection** | AI-driven visual inspection defects and confidence scoring. | `ConfidenceScore`, `DefectHeatmap` | [manufacturing_quality_inspection.sql](sql_examples/manufacturing_quality_inspection.sql) |
 | **Reverse Logistics** | Managing returns processing, refurbishment, and restocking. | `ReturnReason`, `RestockCost` | [supply_chain_reverse_logistics.sql](sql_examples/supply_chain_reverse_logistics.sql) |
 | **Auto Picking** | Automated warehouse robot efficiency and battery drain analysis. | `BatteryLevel`, `PickPathEff` | [warehouse_automated_picking.sql](sql_examples/warehouse_automated_picking.sql) |
@@ -342,7 +342,7 @@ All examples follow the **Medallion Architecture**:
 
 ### Services, Lifestyle & Hospitality (Phase 17)
 | Scenario | Description | Key Features | File |
-| :--- | :--- | :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- |
 | **Fitness Trends** | User engagement analysis with wearable fitness tracker data. | `StepGoal`, `HeartRateZone` | [lifestyle_fitness_tracker_trends.sql](sql_examples/lifestyle_fitness_tracker_trends.sql) |
 | **Music Streaming** | A/B testing of recommendation algorithms and skip rates. | `SkipRate`, `AB_VariantResult` | [services_music_streaming.sql](sql_examples/services_music_streaming.sql) |
 | **Campus Housing** | Optimizing university dorm assignments and occupancy. | `OccupancyRate`, `Preferences` | [services_campus_housing.sql](sql_examples/services_campus_housing.sql) |
