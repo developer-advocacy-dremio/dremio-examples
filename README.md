@@ -415,6 +415,8 @@ Speed up your data modeling with our ready-to-use GenAI prompts.
 
 -   **[Modeling Prompt Template](sample_prompts/modeling_prompt_template.md)**: A universal template to generate Bronze-Silver-Gold architectures from any dataset list.
 -   **[Example Application](sample_prompts/example_prompt_application.sql)**: A working example using 3 raw tables (Commerce) to demonstrate the prompt in action.
+-   **[Prompt Library (Built-in Agent)](sample_prompts/prompt_library.md)**: A cookbook of prompts optimized for Dremio's **Integrated Query Agent**.
+-   **[External Agent Skills & Python](sample_prompts/external_agent_skills.md)**: Guide for using external agents (Claude/Cursor) to write Python and use the `dremio-agent-skill`.
 
 ---
 

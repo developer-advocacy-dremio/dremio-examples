@@ -40,6 +40,7 @@ Generate a single SQL script that performs the following steps:
 **Output Format**:
 - Provide valid Dremio SQL code.
 - Use `CREATE OR REPLACE VIEW` syntax.
+- Create any folders that don't yet exist.
 - Add comments explaining each step.
 - Ensure the logic follows best practices for Dremio (e.g., avoiding expensive operations where possible).
 
