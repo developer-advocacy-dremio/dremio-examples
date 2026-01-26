@@ -409,6 +409,16 @@ All examples follow the **Medallion Architecture**:
 
 ---
 
+## 🤖 Prompt Engineering Templates
+
+Speed up your data modeling with our ready-to-use GenAI prompts.
+
+-   **[Modeling Prompt Template](sample_prompts/modeling_prompt_template.md)**: A universal template to generate Bronze-Silver-Gold architectures from any dataset list.
+-   **[Example Application](sample_prompts/example_prompt_application.sql)**: A working example using 3 raw tables (Commerce) to demonstrate the prompt in action.
+
+---
+
+
 ## 🔌 Connectivity & Integrations
 
 **Dremio Interfaces** (Direct Access)
