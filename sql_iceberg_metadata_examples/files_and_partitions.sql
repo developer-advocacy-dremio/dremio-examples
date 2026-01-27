@@ -9,6 +9,7 @@
 -- 1. SETUP: Create Context and Mock Data (Partitioned Iceberg Table)
 -------------------------------------------------------------------------------
 
+-- PREREQUISITE: Ensure a space named 'IcebergMetadataDB' exists, or run within your Home Space.
 CREATE FOLDER IF NOT EXISTS IcebergMetadataDB;
 
 -- Create a partitioned Iceberg table

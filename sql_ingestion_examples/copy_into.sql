@@ -9,6 +9,7 @@
 -- 1. SETUP: Create Target Table
 -------------------------------------------------------------------------------
 
+-- PREREQUISITE: Ensure a space named 'IngestionDB' exists, or run within your Home Space.
 CREATE FOLDER IF NOT EXISTS IngestionDB;
 
 CREATE TABLE IF NOT EXISTS IngestionDB.IncomingOrders (

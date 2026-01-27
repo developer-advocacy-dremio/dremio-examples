@@ -10,6 +10,28 @@
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
+-- 0. SETUP: Create Mock Data
+-------------------------------------------------------------------------------
+
+-- PREREQUISITE: Ensure 'SupplyChainDB' and 'RetailDB' spaces exist.
+CREATE FOLDER IF NOT EXISTS "SupplyChainDB"."Bronze";
+CREATE FOLDER IF NOT EXISTS "SupplyChainDB"."Silver";
+CREATE FOLDER IF NOT EXISTS "RetailDB"."Gold";
+
+-- Create Mock Tables
+CREATE TABLE IF NOT EXISTS "SupplyChainDB"."Bronze"."Shipments" (
+    ShipmentID INT, ProductID INT, ShipmentDate DATE, Status VARCHAR, Quantity INT
+);
+
+CREATE TABLE IF NOT EXISTS "SupplyChainDB"."Silver"."Supplier_Performance" (
+    SupplierName VARCHAR, Region VARCHAR, TotalReliability DOUBLE, ShipmentCount INT
+);
+
+CREATE TABLE IF NOT EXISTS "RetailDB"."Gold"."Sales_Summary" (
+    SaleRegion VARCHAR, SaleQuarter VARCHAR, Revenue DOUBLE, Profit DOUBLE, UnitsSold INT
+);
+
+-------------------------------------------------------------------------------
 -- 1. RAW REFLECTIONS
 -- Use Case: Accelerating expensive row-level scans or filtering on large datasets.
 -------------------------------------------------------------------------------

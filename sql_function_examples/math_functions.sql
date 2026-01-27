@@ -9,6 +9,7 @@
 -- 1. SETUP: Create Context and Mock Data
 -------------------------------------------------------------------------------
 
+-- PREREQUISITE: Ensure a space named 'FunctionExamplesDB' exists, or run within your Home Space.
 CREATE FOLDER IF NOT EXISTS FunctionExamplesDB;
 
 -- Create a table for Mathematical Demonstrations

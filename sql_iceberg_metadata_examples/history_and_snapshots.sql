@@ -13,6 +13,7 @@
 -- 1. SETUP: Create Context and Mock Data (Iceberg Table)
 -------------------------------------------------------------------------------
 
+-- PREREQUISITE: Ensure a space named 'IcebergMetadataDB' exists, or run within your Home Space.
 CREATE FOLDER IF NOT EXISTS IcebergMetadataDB;
 
 -- Create an Iceberg table
