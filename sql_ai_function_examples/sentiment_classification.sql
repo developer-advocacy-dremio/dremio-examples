@@ -13,6 +13,7 @@
 -- 0. SETUP: Create Dummy Data
 -------------------------------------------------------------------------------
 
+-- PREREQUISITE: Ensure a space named 'RetailDB' exists.
 CREATE FOLDER IF NOT EXISTS RetailDB.AI_Lab;
 
 CREATE TABLE IF NOT EXISTS RetailDB.AI_Lab.Customer_Reviews (
@@ -37,7 +38,7 @@ SELECT
     ReviewID,
     Product,
     ReviewText,
-    AI_GENERATE_TEXT(
+    AI_GENERATE(
         'Analyze the sentiment of the following customer review. Respond with only one word: "Positive", "Negative", or "Neutral". Review: ' || ReviewText
     ) AS Sentiment
 FROM RetailDB.AI_Lab.Customer_Reviews;
@@ -51,7 +52,7 @@ SELECT
     ReviewID,
     Product,
     ReviewText,
-    AI_GENERATE_TEXT(
+    AI_GENERATE(
         'Identify the main topic of this review (e.g., "Quality", "Support", "Performance", "Comfort", "Price"). Return only the topic name. Review: ' || ReviewText
     ) AS Main_Topic
 FROM RetailDB.AI_Lab.Customer_Reviews;
@@ -64,7 +65,7 @@ FROM RetailDB.AI_Lab.Customer_Reviews;
 SELECT
     ReviewID,
     ReviewText,
-    AI_GENERATE_TEXT(
+    AI_GENERATE(
         'Correct any spelling mistakes in the following text and return the cleaned version: ' || ReviewText
     ) AS Cleaned_Text
 FROM RetailDB.AI_Lab.Customer_Reviews;

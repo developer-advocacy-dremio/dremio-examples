@@ -12,6 +12,9 @@
 -- 0. SETUP: Create Messy Data
 -------------------------------------------------------------------------------
 
+-- PREREQUISITE: Ensure a space named 'RetailDB' exists.
+CREATE FOLDER IF NOT EXISTS RetailDB.AI_Lab;
+
 CREATE TABLE IF NOT EXISTS RetailDB.AI_Lab.Messy_Contacts (
     ID INT,
     Raw_Address VARCHAR,
@@ -31,7 +34,7 @@ INSERT INTO RetailDB.AI_Lab.Messy_Contacts VALUES
 SELECT
     ID,
     Raw_Address,
-    AI_GENERATE_TEXT(
+    AI_GENERATE(
         'Format the following address into a standardized single-line format (Street, City, State ZIP). Address: ' || Raw_Address
     ) AS Standardized_Address
 FROM RetailDB.AI_Lab.Messy_Contacts;
@@ -44,21 +47,29 @@ FROM RetailDB.AI_Lab.Messy_Contacts;
 SELECT
     ID,
     Raw_Phone,
-    AI_GENERATE_TEXT(
+    AI_GENERATE(
         'Reformat this phone number to (XXX) XXX-XXXX format. Return only the number. Input: ' || Raw_Phone
     ) AS Formatted_Phone
 FROM RetailDB.AI_Lab.Messy_Contacts;
 
 -------------------------------------------------------------------------------
 -- 3. DATA EXTRACTION
--- Extract City and State into separate columns (JSON simulation).
+-- Extract City and State into separate columns using WITH SCHEMA.
 -------------------------------------------------------------------------------
 
--- Note: AI responses are text. We can ask for JSON and then parse it if needed.
 SELECT
     ID,
     Raw_Address,
-    AI_GENERATE_TEXT(
-        'Extract the City and State from this address and return it as valid JSON {"City": "...", "State": "..."}. Input: ' || Raw_Address
-    ) AS Address_JSON
-FROM RetailDB.AI_Lab.Messy_Contacts;
+    t.minc.City,
+    t.minc.State
+FROM (
+    SELECT
+        ID,
+        Raw_Address,
+        AI_GENERATE(
+            'Extract the City and State from this address.',
+            Raw_Address
+        ) WITH SCHEMA (City VARCHAR, State VARCHAR) AS minc
+    FROM RetailDB.AI_Lab.Messy_Contacts
+) t;
+
