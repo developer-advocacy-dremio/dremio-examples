@@ -10,24 +10,24 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.BedMgmt;
-CREATE FOLDER IF NOT EXISTS RetailDB.BedMgmt.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.BedMgmt.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.BedMgmt.Gold;
+CREATE FOLDER IF NOT EXISTS HealthcareDB;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.BedMgmt;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.BedMgmt.Bronze;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.BedMgmt.Silver;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.BedMgmt.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.BedMgmt.Bronze.BedStatus (
+CREATE TABLE IF NOT EXISTS HealthcareDB.BedMgmt.Bronze.BedStatus (
     BedID INT,
     Department VARCHAR, -- ICU, ER, General
     IsOccupied BOOLEAN,
     LastCleaned TIMESTAMP
 );
 
-INSERT INTO RetailDB.BedMgmt.Bronze.BedStatus VALUES
+INSERT INTO HealthcareDB.BedMgmt.Bronze.BedStatus VALUES
 (1, 'ICU', true, '2025-01-01 10:00:00'),
 (2, 'ICU', false, '2025-01-02 08:30:00'),
 (3, 'ER', true, '2025-01-02 12:00:00'),
@@ -41,14 +41,14 @@ INSERT INTO RetailDB.BedMgmt.Bronze.BedStatus VALUES
 (11, 'General', false, '2025-01-02 08:00:00'),
 (12, 'ICU', true, '2025-01-02 01:00:00');
 
-CREATE TABLE IF NOT EXISTS RetailDB.BedMgmt.Bronze.CheckIns (
+CREATE TABLE IF NOT EXISTS HealthcareDB.BedMgmt.Bronze.CheckIns (
     CheckInID INT,
     ExampleDepartment VARCHAR,
     CheckInTime TIMESTAMP,
     WaitTimeMinutes INT
 );
 
-INSERT INTO RetailDB.BedMgmt.Bronze.CheckIns VALUES
+INSERT INTO HealthcareDB.BedMgmt.Bronze.CheckIns VALUES
 (1001, 'ER', '2025-01-02 10:00:00', 45),
 (1002, 'ER', '2025-01-02 10:15:00', 30),
 (1003, 'ER', '2025-01-02 10:30:00', 60),
@@ -64,27 +64,27 @@ INSERT INTO RetailDB.BedMgmt.Bronze.CheckIns VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.BedMgmt.Silver.OccupancyMetrics AS
+CREATE OR REPLACE VIEW HealthcareDB.BedMgmt.Silver.OccupancyMetrics AS
 SELECT 
     Department,
     COUNT(BedID) AS TotalBeds,
     SUM(CASE WHEN IsOccupied THEN 1 ELSE 0 END) AS OccupiedBeds
-FROM RetailDB.BedMgmt.Bronze.BedStatus
+FROM HealthcareDB.BedMgmt.Bronze.BedStatus
 GROUP BY Department;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.BedMgmt.Gold.CapacityForecast AS
+CREATE OR REPLACE VIEW HealthcareDB.BedMgmt.Gold.CapacityForecast AS
 SELECT 
     o.Department,
     o.TotalBeds,
     o.OccupiedBeds,
     (CAST(o.OccupiedBeds AS DOUBLE) / o.TotalBeds) * 100 AS OccupancyRate,
     AVG(c.WaitTimeMinutes) AS AvgWaitTime
-FROM RetailDB.BedMgmt.Silver.OccupancyMetrics o
-LEFT JOIN RetailDB.BedMgmt.Bronze.CheckIns c ON o.Department = c.ExampleDepartment
+FROM HealthcareDB.BedMgmt.Silver.OccupancyMetrics o
+LEFT JOIN HealthcareDB.BedMgmt.Bronze.CheckIns c ON o.Department = c.ExampleDepartment
 GROUP BY o.Department, o.TotalBeds, o.OccupiedBeds;
 
 -------------------------------------------------------------------------------
@@ -92,5 +92,5 @@ GROUP BY o.Department, o.TotalBeds, o.OccupiedBeds;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Which department has the highest OccupancyRate in RetailDB.BedMgmt.Gold.CapacityForecast?"
+"Which department has the highest OccupancyRate in HealthcareDB.BedMgmt.Gold.CapacityForecast?"
 */

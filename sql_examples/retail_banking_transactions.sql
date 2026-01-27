@@ -11,17 +11,17 @@
 -- 0. SETUP: Create Folder Structure
 -------------------------------------------------------------------------------
 
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.RetailBanking;
-CREATE FOLDER IF NOT EXISTS RetailDB.RetailBanking.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.RetailBanking.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.RetailBanking.Gold;
+CREATE FOLDER IF NOT EXISTS FinanceDB;
+CREATE FOLDER IF NOT EXISTS FinanceDB.RetailBanking;
+CREATE FOLDER IF NOT EXISTS FinanceDB.RetailBanking.Bronze;
+CREATE FOLDER IF NOT EXISTS FinanceDB.RetailBanking.Silver;
+CREATE FOLDER IF NOT EXISTS FinanceDB.RetailBanking.Gold;
 
 -------------------------------------------------------------------------------
--- 1. BRONZE LAYER: Raw Data
+-- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.RetailBanking.Bronze.Branches (
+CREATE TABLE IF NOT EXISTS FinanceDB.RetailBanking.Bronze.Branches (
     BranchID INT,
     BranchName VARCHAR,
     City VARCHAR,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.RetailBanking.Bronze.Branches (
     ManagerName VARCHAR
 );
 
-INSERT INTO RetailDB.RetailBanking.Bronze.Branches VALUES
+INSERT INTO FinanceDB.RetailBanking.Bronze.Branches VALUES
 (1, 'Downtown Main', 'New York', 'NY', 'Alice Smith'),
 (2, 'Westside', 'New York', 'NY', 'Bob Jones'),
 (3, 'Brooklyn Heights', 'Brooklyn', 'NY', 'Charlie Day'),
@@ -41,7 +41,7 @@ INSERT INTO RetailDB.RetailBanking.Bronze.Branches VALUES
 (9, 'Bronx South', 'Bronx', 'NY', 'Ian Clark'),
 (10, 'Hoboken Terminal', 'Hoboken', 'NJ', 'Jane Doe');
 
-CREATE TABLE IF NOT EXISTS RetailDB.RetailBanking.Bronze.Transactions (
+CREATE TABLE IF NOT EXISTS FinanceDB.RetailBanking.Bronze.Transactions (
     TxID INT,
     AccountID INT,
     BranchID INT,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.RetailBanking.Bronze.Transactions (
     TxDate TIMESTAMP
 );
 
-INSERT INTO RetailDB.RetailBanking.Bronze.Transactions VALUES
+INSERT INTO FinanceDB.RetailBanking.Bronze.Transactions VALUES
 (101, 1001, 1, 'Deposit', 500.00, '2025-01-01 09:00:00'),
 (102, 1002, 1, 'Withdrawal', 200.00, '2025-01-01 09:15:00'),
 (103, 1003, 2, 'Deposit', 1200.00, '2025-01-01 09:30:00'),
@@ -71,7 +71,7 @@ INSERT INTO RetailDB.RetailBanking.Bronze.Transactions VALUES
 -- 2. SILVER LAYER: Enriched Data
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.RetailBanking.Silver.EnrichedTransactions AS
+CREATE OR REPLACE VIEW FinanceDB.RetailBanking.Silver.EnrichedTransactions AS
 SELECT 
     t.TxID,
     t.AccountID,
@@ -81,21 +81,21 @@ SELECT
     t.TxType,
     t.TxAmount,
     t.TxDate
-FROM RetailDB.RetailBanking.Bronze.Transactions t
-JOIN RetailDB.RetailBanking.Bronze.Branches b ON t.BranchID = b.BranchID;
+FROM FinanceDB.RetailBanking.Bronze.Transactions t
+JOIN FinanceDB.RetailBanking.Bronze.Branches b ON t.BranchID = b.BranchID;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER: Aggregated Insights
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.RetailBanking.Gold.BranchPerformance AS
+CREATE OR REPLACE VIEW FinanceDB.RetailBanking.Gold.BranchPerformance AS
 SELECT 
     BranchName,
     State,
     COUNT(*) AS TotalTransactions,
     SUM(CASE WHEN TxType = 'Deposit' THEN TxAmount ELSE 0 END) AS TotalDeposits,
     SUM(CASE WHEN TxType = 'Withdrawal' THEN TxAmount ELSE 0 END) AS TotalWithdrawals
-FROM RetailDB.RetailBanking.Silver.EnrichedTransactions
+FROM FinanceDB.RetailBanking.Silver.EnrichedTransactions
 GROUP BY BranchName, State;
 
 -------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ GROUP BY BranchName, State;
 -------------------------------------------------------------------------------
 /*
 PROMPT 1:
-"Using RetailDB.RetailBanking.Gold.BranchPerformance, give me a list of branches with more than $2000 in total deposits."
+"Using FinanceDB.RetailBanking.Gold.BranchPerformance, give me a list of branches with more than $2000 in total deposits."
 
 PROMPT 2:
 "Show the distribution of transaction types for New York branches from the Silver layer."

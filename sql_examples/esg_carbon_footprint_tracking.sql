@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.ESG;
-CREATE FOLDER IF NOT EXISTS RetailDB.ESG.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.ESG.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.ESG.Gold;
+CREATE FOLDER IF NOT EXISTS ESGDB;
+CREATE FOLDER IF NOT EXISTS ESGDB.ESG;
+CREATE FOLDER IF NOT EXISTS ESGDB.ESG.Bronze;
+CREATE FOLDER IF NOT EXISTS ESGDB.ESG.Silver;
+CREATE FOLDER IF NOT EXISTS ESGDB.ESG.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.ESG.Bronze.Emissions (
+CREATE TABLE IF NOT EXISTS ESGDB.ESG.Bronze.Emissions (
     FacilityID VARCHAR,
     Year INT,
     Scope1_Tons INT, -- Direct
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.ESG.Bronze.Emissions (
     ProductionUnits INT
 );
 
-INSERT INTO RetailDB.ESG.Bronze.Emissions VALUES
+INSERT INTO ESGDB.ESG.Bronze.Emissions VALUES
 ('FAC-A', 2023, 500, 300, 1000, 10000),
 ('FAC-A', 2024, 480, 290, 950, 11000), -- Improved efficiency
 ('FAC-B', 2023, 1200, 800, 2000, 25000),
@@ -45,27 +45,27 @@ INSERT INTO RetailDB.ESG.Bronze.Emissions VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.ESG.Silver.IntensityMetrics AS
+CREATE OR REPLACE VIEW ESGDB.ESG.Silver.IntensityMetrics AS
 SELECT 
     FacilityID,
     Year,
     (Scope1_Tons + Scope2_Tons + Scope3_Tons) AS TotalEmissions,
     ProductionUnits,
     CAST((Scope1_Tons + Scope2_Tons + Scope3_Tons) AS DOUBLE) / ProductionUnits AS CarbonIntensity
-FROM RetailDB.ESG.Bronze.Emissions;
+FROM ESGDB.ESG.Bronze.Emissions;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.ESG.Gold.SustainabilityProgress AS
+CREATE OR REPLACE VIEW ESGDB.ESG.Gold.SustainabilityProgress AS
 SELECT 
     FacilityID,
     SUM(CASE WHEN Year = 2024 THEN TotalEmissions ELSE 0 END) AS Emissions_2024,
     SUM(CASE WHEN Year = 2023 THEN TotalEmissions ELSE 0 END) AS Emissions_2023,
     (SUM(CASE WHEN Year = 2024 THEN CarbonIntensity ELSE 0 END) - 
      SUM(CASE WHEN Year = 2023 THEN CarbonIntensity ELSE 0 END)) AS IntensityChange
-FROM RetailDB.ESG.Silver.IntensityMetrics
+FROM ESGDB.ESG.Silver.IntensityMetrics
 GROUP BY FacilityID;
 
 -------------------------------------------------------------------------------
@@ -73,5 +73,5 @@ GROUP BY FacilityID;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Identify facilities with a negative IntensityChange (improvement) in RetailDB.ESG.Gold.SustainabilityProgress."
+"Identify facilities with a negative IntensityChange (improvement) in ESGDB.ESG.Gold.SustainabilityProgress."
 */

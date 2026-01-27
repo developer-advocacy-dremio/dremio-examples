@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.HigherEd;
-CREATE FOLDER IF NOT EXISTS RetailDB.HigherEd.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.HigherEd.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.HigherEd.Gold;
+CREATE FOLDER IF NOT EXISTS EducationDB;
+CREATE FOLDER IF NOT EXISTS EducationDB.HigherEd;
+CREATE FOLDER IF NOT EXISTS EducationDB.HigherEd.Bronze;
+CREATE FOLDER IF NOT EXISTS EducationDB.HigherEd.Silver;
+CREATE FOLDER IF NOT EXISTS EducationDB.HigherEd.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.HigherEd.Bronze.Applicants (
+CREATE TABLE IF NOT EXISTS EducationDB.HigherEd.Bronze.Applicants (
     ApplicantID INT,
     Term VARCHAR, -- Fall 2025
     MajorOfInterest VARCHAR,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.HigherEd.Bronze.Applicants (
     DepositPaid BOOLEAN
 );
 
-INSERT INTO RetailDB.HigherEd.Bronze.Applicants VALUES
+INSERT INTO EducationDB.HigherEd.Bronze.Applicants VALUES
 (1, 'Fall 2025', 'Computer Science', 3.8, 'Enrolled', true),
 (2, 'Fall 2025', 'Engineering', 3.5, 'Admitted', false), -- Melt
 (3, 'Fall 2025', 'Business', 3.2, 'Denied', false),
@@ -46,7 +46,7 @@ INSERT INTO RetailDB.HigherEd.Bronze.Applicants VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.HigherEd.Silver.FunnelMetrics AS
+CREATE OR REPLACE VIEW EducationDB.HigherEd.Silver.FunnelMetrics AS
 SELECT 
     Term,
     MajorOfInterest,
@@ -56,13 +56,13 @@ SELECT
         WHEN Status = 'Enrolled' OR (Status = 'Admitted' AND DepositPaid = true) THEN 'Matriculated'
         ELSE Status 
     END AS FinalStage
-FROM RetailDB.HigherEd.Bronze.Applicants;
+FROM EducationDB.HigherEd.Bronze.Applicants;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.HigherEd.Gold.MajorYield AS
+CREATE OR REPLACE VIEW EducationDB.HigherEd.Gold.MajorYield AS
 SELECT 
     MajorOfInterest,
     COUNT(*) AS TotalApplicants,
@@ -70,7 +70,7 @@ SELECT
     SUM(CASE WHEN FinalStage = 'Matriculated' THEN 1 ELSE 0 END) AS EnrolledCount,
     (CAST(SUM(CASE WHEN FinalStage = 'Matriculated' THEN 1 ELSE 0 END) AS DOUBLE) / 
      NULLIF(SUM(CASE WHEN Status IN ('Admitted', 'Enrolled') THEN 1 ELSE 0 END), 0)) * 100 AS YieldRate
-FROM RetailDB.HigherEd.Silver.FunnelMetrics
+FROM EducationDB.HigherEd.Silver.FunnelMetrics
 GROUP BY MajorOfInterest;
 
 -------------------------------------------------------------------------------
@@ -78,5 +78,5 @@ GROUP BY MajorOfInterest;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Calculate the YieldRate for 'Computer Science' majors in RetailDB.HigherEd.Gold.MajorYield."
+"Calculate the YieldRate for 'Computer Science' majors in EducationDB.HigherEd.Gold.MajorYield."
 */

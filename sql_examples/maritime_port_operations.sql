@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Maritime;
-CREATE FOLDER IF NOT EXISTS RetailDB.Maritime.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Maritime.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Maritime.Gold;
+CREATE FOLDER IF NOT EXISTS TransportationDB;
+CREATE FOLDER IF NOT EXISTS TransportationDB.Maritime;
+CREATE FOLDER IF NOT EXISTS TransportationDB.Maritime.Bronze;
+CREATE FOLDER IF NOT EXISTS TransportationDB.Maritime.Silver;
+CREATE FOLDER IF NOT EXISTS TransportationDB.Maritime.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Maritime.Bronze.VesselCalls (
+CREATE TABLE IF NOT EXISTS TransportationDB.Maritime.Bronze.VesselCalls (
     CallID INT,
     VesselName VARCHAR,
     BerthID VARCHAR,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Maritime.Bronze.VesselCalls (
     ContainersUnloaded INT
 );
 
-INSERT INTO RetailDB.Maritime.Bronze.VesselCalls VALUES
+INSERT INTO TransportationDB.Maritime.Bronze.VesselCalls VALUES
 (1, 'SeaStar', 'B1', '2025-01-01 06:00:00', '2025-01-02 18:00:00', 500, 400),
 (2, 'OceanGiant', 'B2', '2025-01-01 08:00:00', '2025-01-03 08:00:00', 1200, 1500), -- Long stay
 (3, 'BlueWave', 'B1', '2025-01-03 06:00:00', '2025-01-03 14:00:00', 200, 150),
@@ -46,7 +46,7 @@ INSERT INTO RetailDB.Maritime.Bronze.VesselCalls VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Maritime.Silver.BerthActivity AS
+CREATE OR REPLACE VIEW TransportationDB.Maritime.Silver.BerthActivity AS
 SELECT 
     VesselName,
     BerthID,
@@ -54,20 +54,20 @@ SELECT
     Departure,
     DATE_DIFF(CAST(Departure AS TIMESTAMP), CAST(Arrival AS TIMESTAMP)) AS DwellHours,
     (ContainersLoaded + ContainersUnloaded) AS TotalMoves
-FROM RetailDB.Maritime.Bronze.VesselCalls;
+FROM TransportationDB.Maritime.Bronze.VesselCalls;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Maritime.Gold.PortThroughput AS
+CREATE OR REPLACE VIEW TransportationDB.Maritime.Gold.PortThroughput AS
 SELECT 
     BerthID,
     COUNT(*) AS VesselCount,
     AVG(DwellHours) AS AvgDwellTime,
     SUM(TotalMoves) AS TotalContainersMoved,
     (SUM(TotalMoves) / SUM(DwellHours)) AS MovesPerHour
-FROM RetailDB.Maritime.Silver.BerthActivity
+FROM TransportationDB.Maritime.Silver.BerthActivity
 GROUP BY BerthID;
 
 -------------------------------------------------------------------------------
@@ -75,5 +75,5 @@ GROUP BY BerthID;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Which BerthID has the highest MovesPerHour efficiency in RetailDB.Maritime.Gold.PortThroughput?"
+"Which BerthID has the highest MovesPerHour efficiency in TransportationDB.Maritime.Gold.PortThroughput?"
 */

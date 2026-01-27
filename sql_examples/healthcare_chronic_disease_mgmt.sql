@@ -10,24 +10,24 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.ChronicCare;
-CREATE FOLDER IF NOT EXISTS RetailDB.ChronicCare.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.ChronicCare.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.ChronicCare.Gold;
+CREATE FOLDER IF NOT EXISTS HealthcareDB;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.ChronicCare;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.ChronicCare.Bronze;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.ChronicCare.Silver;
+CREATE FOLDER IF NOT EXISTS HealthcareDB.ChronicCare.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.ChronicCare.Bronze.PatientRegistry (
+CREATE TABLE IF NOT EXISTS HealthcareDB.ChronicCare.Bronze.PatientRegistry (
     PatientID INT,
     ConditionGroup VARCHAR, -- Diabetes, Hypertension
     LastVisitDate DATE,
     BiometricValue DOUBLE -- e.g., HbA1c %, BP Systolic
 );
 
-INSERT INTO RetailDB.ChronicCare.Bronze.PatientRegistry VALUES
+INSERT INTO HealthcareDB.ChronicCare.Bronze.PatientRegistry VALUES
 (1, 'Diabetes', '2024-12-01', 6.5), -- Good
 (2, 'Diabetes', '2024-11-15', 8.2), -- High
 (3, 'Diabetes', '2024-06-01', 7.0), -- Gap in care (> 6 months)
@@ -43,7 +43,7 @@ INSERT INTO RetailDB.ChronicCare.Bronze.PatientRegistry VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.ChronicCare.Silver.CareGaps AS
+CREATE OR REPLACE VIEW HealthcareDB.ChronicCare.Silver.CareGaps AS
 SELECT 
     PatientID,
     ConditionGroup,
@@ -55,19 +55,19 @@ SELECT
         WHEN ConditionGroup = 'Hypertension' AND BiometricValue > 140 THEN 'Uncontrolled'
         ELSE 'Controlled'
     END AS HealthStatus
-FROM RetailDB.ChronicCare.Bronze.PatientRegistry;
+FROM HealthcareDB.ChronicCare.Bronze.PatientRegistry;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.ChronicCare.Gold.PopHealthSummary AS
+CREATE OR REPLACE VIEW HealthcareDB.ChronicCare.Gold.PopHealthSummary AS
 SELECT 
     ConditionGroup,
     COUNT(*) AS TotalPatients,
     SUM(CASE WHEN HealthStatus = 'Uncontrolled' THEN 1 ELSE 0 END) AS UncontrolledCount,
     SUM(CASE WHEN DaysSinceLastVisit > 180 THEN 1 ELSE 0 END) AS CareGapCount
-FROM RetailDB.ChronicCare.Silver.CareGaps
+FROM HealthcareDB.ChronicCare.Silver.CareGaps
 GROUP BY ConditionGroup;
 
 -------------------------------------------------------------------------------
@@ -75,5 +75,5 @@ GROUP BY ConditionGroup;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Show the number of patients with 'Care Gaps' (visits > 180 days ago) by condition in RetailDB.ChronicCare.Gold.PopHealthSummary."
+"Show the number of patients with 'Care Gaps' (visits > 180 days ago) by condition in HealthcareDB.ChronicCare.Gold.PopHealthSummary."
 */

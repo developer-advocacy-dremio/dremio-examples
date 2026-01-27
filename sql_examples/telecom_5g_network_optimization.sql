@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.TelecomInfra;
-CREATE FOLDER IF NOT EXISTS RetailDB.TelecomInfra.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.TelecomInfra.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.TelecomInfra.Gold;
+CREATE FOLDER IF NOT EXISTS TelecomDB;
+CREATE FOLDER IF NOT EXISTS TelecomDB.TelecomInfra;
+CREATE FOLDER IF NOT EXISTS TelecomDB.TelecomInfra.Bronze;
+CREATE FOLDER IF NOT EXISTS TelecomDB.TelecomInfra.Silver;
+CREATE FOLDER IF NOT EXISTS TelecomDB.TelecomInfra.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.TelecomInfra.Bronze.TowerLogs (
+CREATE TABLE IF NOT EXISTS TelecomDB.TelecomInfra.Bronze.TowerLogs (
     TowerID VARCHAR,
     CellSiteID VARCHAR,
     LatencyMs INT,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.TelecomInfra.Bronze.TowerLogs (
     Status VARCHAR -- Active, Degraded, Down
 );
 
-INSERT INTO RetailDB.TelecomInfra.Bronze.TowerLogs VALUES
+INSERT INTO TelecomDB.TelecomInfra.Bronze.TowerLogs VALUES
 ('T100', 'C1', 15, 850.0, 0.1, '2025-01-01 10:00:00', 'Active'),
 ('T100', 'C2', 18, 700.0, 0.2, '2025-01-01 10:00:00', 'Active'),
 ('T101', 'C1', 45, 200.0, 2.5, '2025-01-01 10:00:00', 'Degraded'), -- High latency/loss
@@ -47,7 +47,7 @@ INSERT INTO RetailDB.TelecomInfra.Bronze.TowerLogs VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.TelecomInfra.Silver.NetworkHealth AS
+CREATE OR REPLACE VIEW TelecomDB.TelecomInfra.Silver.NetworkHealth AS
 SELECT 
     TowerID,
     CellSiteID,
@@ -56,13 +56,13 @@ SELECT
     ThroughputMbps,
     PacketLossPct,
     Status
-FROM RetailDB.TelecomInfra.Bronze.TowerLogs;
+FROM TelecomDB.TelecomInfra.Bronze.TowerLogs;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.TelecomInfra.Gold.TowerPerformance AS
+CREATE OR REPLACE VIEW TelecomDB.TelecomInfra.Gold.TowerPerformance AS
 SELECT 
     TowerID,
     COUNT(*) AS LogCount,
@@ -70,7 +70,7 @@ SELECT
     AVG(ThroughputMbps) AS AvgThroughput,
     MAX(PacketLossPct) AS MaxPacketLoss,
     SUM(CASE WHEN Status = 'Down' THEN 1 ELSE 0 END) AS DowntimeEvents
-FROM RetailDB.TelecomInfra.Silver.NetworkHealth
+FROM TelecomDB.TelecomInfra.Silver.NetworkHealth
 GROUP BY TowerID;
 
 -------------------------------------------------------------------------------
@@ -78,5 +78,5 @@ GROUP BY TowerID;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Find all TowerIDs in RetailDB.TelecomInfra.Gold.TowerPerformance that have any DowntimeEvents."
+"Find all TowerIDs in TelecomDB.TelecomInfra.Gold.TowerPerformance that have any DowntimeEvents."
 */

@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Water;
-CREATE FOLDER IF NOT EXISTS RetailDB.Water.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Water.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Water.Gold;
+CREATE FOLDER IF NOT EXISTS UtilitiesDB;
+CREATE FOLDER IF NOT EXISTS UtilitiesDB.Water;
+CREATE FOLDER IF NOT EXISTS UtilitiesDB.Water.Bronze;
+CREATE FOLDER IF NOT EXISTS UtilitiesDB.Water.Silver;
+CREATE FOLDER IF NOT EXISTS UtilitiesDB.Water.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Water.Bronze.MeterReads (
+CREATE TABLE IF NOT EXISTS UtilitiesDB.Water.Bronze.MeterReads (
     MeterID INT,
     ZoneID VARCHAR,
     ReadingValue DOUBLE, -- Gallons
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Water.Bronze.MeterReads (
     PressurePSI DOUBLE
 );
 
-INSERT INTO RetailDB.Water.Bronze.MeterReads VALUES
+INSERT INTO UtilitiesDB.Water.Bronze.MeterReads VALUES
 (101, 'Z1', 1005.0, '2025-01-01 02:00:00', 60.5), -- Night flow (leak?)
 (101, 'Z1', 1010.0, '2025-01-01 03:00:00', 60.2), -- Increasing
 (102, 'Z1', 5000.0, '2025-01-01 02:00:00', 58.0),
@@ -45,7 +45,7 @@ INSERT INTO RetailDB.Water.Bronze.MeterReads VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Water.Silver.ConsumptionMetrics AS
+CREATE OR REPLACE VIEW UtilitiesDB.Water.Silver.ConsumptionMetrics AS
 SELECT 
     MeterID,
     ZoneID,
@@ -55,13 +55,13 @@ SELECT
     -- Simple Lag to get previous reading
     LAG(ReadingValue) OVER (PARTITION BY MeterID ORDER BY ReadingTime) AS PrevReading,
     (ReadingValue - LAG(ReadingValue) OVER (PARTITION BY MeterID ORDER BY ReadingTime)) AS HourlyUsage
-FROM RetailDB.Water.Bronze.MeterReads;
+FROM UtilitiesDB.Water.Bronze.MeterReads;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Water.Gold.LeakDetection AS
+CREATE OR REPLACE VIEW UtilitiesDB.Water.Gold.LeakDetection AS
 SELECT 
     MeterID,
     ZoneID,
@@ -72,7 +72,7 @@ SELECT
         WHEN EXTRACT(HOUR FROM ReadingTime) BETWEEN 2 AND 4 THEN HourlyUsage 
         ELSE 0 
     END) AS NightUsage
-FROM RetailDB.Water.Silver.ConsumptionMetrics
+FROM UtilitiesDB.Water.Silver.ConsumptionMetrics
 GROUP BY MeterID, ZoneID;
 
 -------------------------------------------------------------------------------
@@ -80,5 +80,5 @@ GROUP BY MeterID, ZoneID;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Identify MeterIDs with high NightUsage (> 5 gallons) in RetailDB.Water.Gold.LeakDetection indicating potential leaks."
+"Identify MeterIDs with high NightUsage (> 5 gallons) in UtilitiesDB.Water.Gold.LeakDetection indicating potential leaks."
 */

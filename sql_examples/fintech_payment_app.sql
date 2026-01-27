@@ -10,24 +10,24 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Fintech;
-CREATE FOLDER IF NOT EXISTS RetailDB.Fintech.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Fintech.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Fintech.Gold;
+CREATE FOLDER IF NOT EXISTS FinanceDB;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Fintech;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Fintech.Bronze;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Fintech.Silver;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Fintech.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Fintech.Bronze.AppUsers (
+CREATE TABLE IF NOT EXISTS FinanceDB.Fintech.Bronze.AppUsers (
     UserID INT,
     Username VARCHAR,
     SignupDate DATE,
     Region VARCHAR
 );
 
-INSERT INTO RetailDB.Fintech.Bronze.AppUsers VALUES
+INSERT INTO FinanceDB.Fintech.Bronze.AppUsers VALUES
 (1, 'user1', '2024-01-01', 'NA'),
 (2, 'user2', '2024-01-05', 'NA'),
 (3, 'user3', '2024-02-01', 'EU'),
@@ -40,7 +40,7 @@ INSERT INTO RetailDB.Fintech.Bronze.AppUsers VALUES
 (10, 'user10', '2024-05-15', 'EMEA');
 
 
-CREATE TABLE IF NOT EXISTS RetailDB.Fintech.Bronze.Transfers (
+CREATE TABLE IF NOT EXISTS FinanceDB.Fintech.Bronze.Transfers (
     TransferID INT,
     SenderID INT,
     ReceiverID INT,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Fintech.Bronze.Transfers (
     TxDate TIMESTAMP
 );
 
-INSERT INTO RetailDB.Fintech.Bronze.Transfers VALUES
+INSERT INTO FinanceDB.Fintech.Bronze.Transfers VALUES
 (101, 1, 2, 50.00, 'USD', '2025-01-01 10:00:00'),
 (102, 2, 3, 25.00, 'USD', '2025-01-01 11:00:00'),
 (103, 3, 1, 10.00, 'EUR', '2025-01-01 12:00:00'),
@@ -66,7 +66,7 @@ INSERT INTO RetailDB.Fintech.Bronze.Transfers VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Fintech.Silver.UnifiedTransfers AS
+CREATE OR REPLACE VIEW FinanceDB.Fintech.Silver.UnifiedTransfers AS
 SELECT 
     t.TransferID,
     u.Region AS SenderRegion,
@@ -81,19 +81,19 @@ SELECT
         WHEN t.Currency = 'MXN' THEN t.Amount * 0.05
         ELSE t.Amount 
     END AS AmountUSD
-FROM RetailDB.Fintech.Bronze.Transfers t
-JOIN RetailDB.Fintech.Bronze.AppUsers u ON t.SenderID = u.UserID;
+FROM FinanceDB.Fintech.Bronze.Transfers t
+JOIN FinanceDB.Fintech.Bronze.AppUsers u ON t.SenderID = u.UserID;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Fintech.Gold.RegionalVolume AS
+CREATE OR REPLACE VIEW FinanceDB.Fintech.Gold.RegionalVolume AS
 SELECT 
     SenderRegion,
     COUNT(*) AS TxCount,
     SUM(AmountUSD) AS TotalVolumeUSD
-FROM RetailDB.Fintech.Silver.UnifiedTransfers
+FROM FinanceDB.Fintech.Silver.UnifiedTransfers
 GROUP BY SenderRegion;
 
 -------------------------------------------------------------------------------
@@ -101,5 +101,5 @@ GROUP BY SenderRegion;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Which region has the highest transaction volume in USD according to RetailDB.Fintech.Gold.RegionalVolume?"
+"Which region has the highest transaction volume in USD according to FinanceDB.Fintech.Gold.RegionalVolume?"
 */

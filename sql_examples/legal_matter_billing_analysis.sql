@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Legal;
-CREATE FOLDER IF NOT EXISTS RetailDB.Legal.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Legal.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Legal.Gold;
+CREATE FOLDER IF NOT EXISTS LegalDB;
+CREATE FOLDER IF NOT EXISTS LegalDB.Legal;
+CREATE FOLDER IF NOT EXISTS LegalDB.Legal.Bronze;
+CREATE FOLDER IF NOT EXISTS LegalDB.Legal.Silver;
+CREATE FOLDER IF NOT EXISTS LegalDB.Legal.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Legal.Bronze.TimeEntries (
+CREATE TABLE IF NOT EXISTS LegalDB.Legal.Bronze.TimeEntries (
     EntryID INT,
     MatterID INT,
     AttorneyID INT,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Legal.Bronze.TimeEntries (
     Status VARCHAR -- Billed, Unbilled, WriteOff
 );
 
-INSERT INTO RetailDB.Legal.Bronze.TimeEntries VALUES
+INSERT INTO LegalDB.Legal.Bronze.TimeEntries VALUES
 (1, 1001, 501, 2.5, 450.00, '2025-01-01', 'Billed'),
 (2, 1001, 502, 1.0, 300.00, '2025-01-01', 'Billed'),
 (3, 1002, 501, 5.0, 450.00, '2025-01-02', 'Billed'),
@@ -47,7 +47,7 @@ INSERT INTO RetailDB.Legal.Bronze.TimeEntries VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Legal.Silver.BillingMetrics AS
+CREATE OR REPLACE VIEW LegalDB.Legal.Silver.BillingMetrics AS
 SELECT 
     MatterID,
     AttorneyID,
@@ -59,20 +59,20 @@ SELECT
         ELSE 0 
     END AS ActualRevenue,
     Status
-FROM RetailDB.Legal.Bronze.TimeEntries;
+FROM LegalDB.Legal.Bronze.TimeEntries;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Legal.Gold.MatterProfitability AS
+CREATE OR REPLACE VIEW LegalDB.Legal.Gold.MatterProfitability AS
 SELECT 
     MatterID,
     SUM(HoursWorked) AS TotalHours,
     SUM(PotentialRevenue) AS TotalValue,
     SUM(ActualRevenue) AS BilledValue,
     (SUM(ActualRevenue) / NULLIF(SUM(PotentialRevenue), 0)) * 100 AS RealizationRate
-FROM RetailDB.Legal.Silver.BillingMetrics
+FROM LegalDB.Legal.Silver.BillingMetrics
 GROUP BY MatterID;
 
 -------------------------------------------------------------------------------
@@ -80,5 +80,5 @@ GROUP BY MatterID;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Which MatterID has the lowest RealizationRate in RetailDB.Legal.Gold.MatterProfitability?"
+"Which MatterID has the lowest RealizationRate in LegalDB.Legal.Gold.MatterProfitability?"
 */

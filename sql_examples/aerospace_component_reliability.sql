@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Aerospace;
-CREATE FOLDER IF NOT EXISTS RetailDB.Aerospace.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Aerospace.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Aerospace.Gold;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Aerospace;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Aerospace.Bronze;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Aerospace.Silver;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Aerospace.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Aerospace.Bronze.Parts (
+CREATE TABLE IF NOT EXISTS ManufacturingDB.Aerospace.Bronze.Parts (
     PartSerial VARCHAR,
     PartType VARCHAR, -- Engine, LandingGear, Avionics
     InstallDate DATE,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Aerospace.Bronze.Parts (
     FailureReason VARCHAR
 );
 
-INSERT INTO RetailDB.Aerospace.Bronze.Parts VALUES
+INSERT INTO ManufacturingDB.Aerospace.Bronze.Parts VALUES
 ('SN001', 'Engine', '2023-01-01', '2024-01-01', 2000, 'Scheduled Maintenance'),
 ('SN002', 'Engine', '2023-06-01', NULL, 1500, NULL),
 ('SN003', 'LandingGear', '2023-01-01', '2024-06-01', 3000, 'Wear Limit'),
@@ -45,7 +45,7 @@ INSERT INTO RetailDB.Aerospace.Bronze.Parts VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Aerospace.Silver.ComponentHistory AS
+CREATE OR REPLACE VIEW ManufacturingDB.Aerospace.Silver.ComponentHistory AS
 SELECT 
     PartType,
     PartSerial,
@@ -54,20 +54,20 @@ SELECT
         WHEN FailureReason IS NOT NULL AND FailureReason != 'Scheduled Maintenance' THEN 'Unscheduled Removal'
         ELSE 'Scheduled/Active' 
     END AS RemovalType
-FROM RetailDB.Aerospace.Bronze.Parts;
+FROM ManufacturingDB.Aerospace.Bronze.Parts;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Aerospace.Gold.ReliabilityStats AS
+CREATE OR REPLACE VIEW ManufacturingDB.Aerospace.Gold.ReliabilityStats AS
 SELECT 
     PartType,
     SUM(FlightHours) AS TotalFlightHours,
     SUM(CASE WHEN RemovalType = 'Unscheduled Removal' THEN 1 ELSE 0 END) AS FailureCount,
     -- MTBF (Mean Time Between Failures)
     SUM(FlightHours) / NULLIF(SUM(CASE WHEN RemovalType = 'Unscheduled Removal' THEN 1 ELSE 0 END), 0) AS CalculatedMTBF
-FROM RetailDB.Aerospace.Silver.ComponentHistory
+FROM ManufacturingDB.Aerospace.Silver.ComponentHistory
 GROUP BY PartType;
 
 -------------------------------------------------------------------------------
@@ -75,5 +75,5 @@ GROUP BY PartType;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Calculate the CalculatedMTBF for 'Avionics' parts in RetailDB.Aerospace.Gold.ReliabilityStats."
+"Calculate the CalculatedMTBF for 'Avionics' parts in ManufacturingDB.Aerospace.Gold.ReliabilityStats."
 */

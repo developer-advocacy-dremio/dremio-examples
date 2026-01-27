@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Chemicals;
-CREATE FOLDER IF NOT EXISTS RetailDB.Chemicals.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Chemicals.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Chemicals.Gold;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Chemicals;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Chemicals.Bronze;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Chemicals.Silver;
+CREATE FOLDER IF NOT EXISTS ManufacturingDB.Chemicals.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Chemicals.Bronze.BatchLogs (
+CREATE TABLE IF NOT EXISTS ManufacturingDB.Chemicals.Bronze.BatchLogs (
     BatchID INT,
     ProductID VARCHAR,
     StartTime TIMESTAMP,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Chemicals.Bronze.BatchLogs (
     LabPurityPct DOUBLE
 );
 
-INSERT INTO RetailDB.Chemicals.Bronze.BatchLogs VALUES
+INSERT INTO ManufacturingDB.Chemicals.Bronze.BatchLogs VALUES
 (1, 'PolymX', '2025-01-01 08:00:00', '2025-01-01 12:00:00', 1000.0, 950.0, 99.5),
 (2, 'PolymX', '2025-01-01 13:00:00', '2025-01-01 17:00:00', 1000.0, 920.0, 98.0),
 (3, 'SolvA', '2025-01-01 08:00:00', '2025-01-01 10:00:00', 500.0, 490.0, 99.9),
@@ -46,7 +46,7 @@ INSERT INTO RetailDB.Chemicals.Bronze.BatchLogs VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Chemicals.Silver.QualityControl AS
+CREATE OR REPLACE VIEW ManufacturingDB.Chemicals.Silver.QualityControl AS
 SELECT 
     BatchID,
     ProductID,
@@ -57,20 +57,20 @@ SELECT
         WHEN LabPurityPct < 99.0 OR (OutputKg / InputKg) < 0.95 THEN 'Review'
         ELSE 'Pass'
     END AS QC_Status
-FROM RetailDB.Chemicals.Bronze.BatchLogs;
+FROM ManufacturingDB.Chemicals.Bronze.BatchLogs;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Chemicals.Gold.ProductEfficiency AS
+CREATE OR REPLACE VIEW ManufacturingDB.Chemicals.Gold.ProductEfficiency AS
 SELECT 
     ProductID,
     COUNT(*) AS BatchCount,
     AVG(YieldPct) AS AvgYield,
     AVG(LabPurityPct) AS AvgPurity,
     SUM(CASE WHEN QC_Status = 'Review' THEN 1 ELSE 0 END) AS FailedBatches
-FROM RetailDB.Chemicals.Silver.QualityControl
+FROM ManufacturingDB.Chemicals.Silver.QualityControl
 GROUP BY ProductID;
 
 -------------------------------------------------------------------------------
@@ -78,5 +78,5 @@ GROUP BY ProductID;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"List all products wth an AvgYield below 95% in RetailDB.Chemicals.Gold.ProductEfficiency."
+"List all products wth an AvgYield below 95% in ManufacturingDB.Chemicals.Gold.ProductEfficiency."
 */

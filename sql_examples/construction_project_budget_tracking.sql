@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Construction;
-CREATE FOLDER IF NOT EXISTS RetailDB.Construction.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Construction.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Construction.Gold;
+CREATE FOLDER IF NOT EXISTS ConstructionDB;
+CREATE FOLDER IF NOT EXISTS ConstructionDB.Construction;
+CREATE FOLDER IF NOT EXISTS ConstructionDB.Construction.Bronze;
+CREATE FOLDER IF NOT EXISTS ConstructionDB.Construction.Silver;
+CREATE FOLDER IF NOT EXISTS ConstructionDB.Construction.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Construction.Bronze.Expenses (
+CREATE TABLE IF NOT EXISTS ConstructionDB.Construction.Bronze.Expenses (
     ExpenseID INT,
     ProjectID INT,
     Phase VARCHAR, -- Foundation, Framing, Electrical
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Construction.Bronze.Expenses (
     ExpenseDate DATE
 );
 
-INSERT INTO RetailDB.Construction.Bronze.Expenses VALUES
+INSERT INTO ConstructionDB.Construction.Bronze.Expenses VALUES
 (1, 101, 'Foundation', 50000.00, 'Material', '2025-01-01'),
 (2, 101, 'Foundation', 30000.00, 'Labor', '2025-01-02'),
 (3, 101, 'Framing', 20000.00, 'Material', '2025-01-15'),
@@ -42,13 +42,13 @@ INSERT INTO RetailDB.Construction.Bronze.Expenses VALUES
 (10, 102, 'HVAC', 25000.00, 'Subcontractor', '2025-01-25'),
 (11, 101, 'Roofing', 18000.00, 'Labor', '2025-02-10');
 
-CREATE TABLE IF NOT EXISTS RetailDB.Construction.Bronze.Budgets (
+CREATE TABLE IF NOT EXISTS ConstructionDB.Construction.Bronze.Budgets (
     ProjectID INT,
     Phase VARCHAR,
     BudgetAmount DOUBLE
 );
 
-INSERT INTO RetailDB.Construction.Bronze.Budgets VALUES
+INSERT INTO ConstructionDB.Construction.Bronze.Budgets VALUES
 (101, 'Foundation', 75000.00),
 (101, 'Framing', 60000.00),
 (101, 'Plumbing', 15000.00),
@@ -61,14 +61,14 @@ INSERT INTO RetailDB.Construction.Bronze.Budgets VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Construction.Silver.CostAnalysis AS
+CREATE OR REPLACE VIEW ConstructionDB.Construction.Silver.CostAnalysis AS
 SELECT 
     e.ProjectID,
     e.Phase,
     SUM(e.Amount) AS TotalCost,
     MAX(b.BudgetAmount) AS BudgetLimit
-FROM RetailDB.Construction.Bronze.Expenses e
-LEFT JOIN RetailDB.Construction.Bronze.Budgets b 
+FROM ConstructionDB.Construction.Bronze.Expenses e
+LEFT JOIN ConstructionDB.Construction.Bronze.Budgets b 
     ON e.ProjectID = b.ProjectID AND e.Phase = b.Phase
 GROUP BY e.ProjectID, e.Phase;
 
@@ -76,7 +76,7 @@ GROUP BY e.ProjectID, e.Phase;
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Construction.Gold.BudgetVariance AS
+CREATE OR REPLACE VIEW ConstructionDB.Construction.Gold.BudgetVariance AS
 SELECT 
     ProjectID,
     Phase,
@@ -87,12 +87,12 @@ SELECT
         WHEN TotalCost > BudgetLimit THEN 'Over Budget'
         ELSE 'Under Budget'
     END AS Status
-FROM RetailDB.Construction.Silver.CostAnalysis;
+FROM ConstructionDB.Construction.Silver.CostAnalysis;
 
 -------------------------------------------------------------------------------
 -- 4. AGENT PROMPTS
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"List all phases in RetailDB.Construction.Gold.BudgetVariance that are 'Over Budget'."
+"List all phases in ConstructionDB.Construction.Gold.BudgetVariance that are 'Over Budget'."
 */
