@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.FraudDetection;
-CREATE FOLDER IF NOT EXISTS RetailDB.FraudDetection.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.FraudDetection.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.FraudDetection.Gold;
+CREATE FOLDER IF NOT EXISTS FinanceDB;
+CREATE FOLDER IF NOT EXISTS FinanceDB.FraudDetection;
+CREATE FOLDER IF NOT EXISTS FinanceDB.FraudDetection.Bronze;
+CREATE FOLDER IF NOT EXISTS FinanceDB.FraudDetection.Silver;
+CREATE FOLDER IF NOT EXISTS FinanceDB.FraudDetection.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.FraudDetection.Bronze.CardTransactions (
+CREATE TABLE IF NOT EXISTS FinanceDB.FraudDetection.Bronze.CardTransactions (
     TxID VARCHAR,
     CardID VARCHAR,
     Merchant VARCHAR,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.FraudDetection.Bronze.CardTransactions (
     TxTime TIMESTAMP
 );
 
-INSERT INTO RetailDB.FraudDetection.Bronze.CardTransactions VALUES
+INSERT INTO FinanceDB.FraudDetection.Bronze.CardTransactions VALUES
 ('TX001', 'CARD_123', 'Amazon', 45.50, 'US-NY', '2025-02-01 10:00:00'),
 ('TX002', 'CARD_123', 'Starbucks', 5.25, 'US-NY', '2025-02-01 10:05:00'),
 ('TX003', 'CARD_123', 'Best Buy', 1200.00, 'US-CA', '2025-02-01 10:30:00'), -- Suspicious: Geo jump
@@ -48,7 +48,7 @@ INSERT INTO RetailDB.FraudDetection.Bronze.CardTransactions VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.FraudDetection.Silver.FlaggedTransactions AS
+CREATE OR REPLACE VIEW FinanceDB.FraudDetection.Silver.FlaggedTransactions AS
 SELECT 
     TxID,
     CardID,
@@ -60,20 +60,20 @@ SELECT
         WHEN Amount > 2000 THEN 'High Value'
         ELSE 'Normal'
     END AS ValueCategory
-FROM RetailDB.FraudDetection.Bronze.CardTransactions;
+FROM FinanceDB.FraudDetection.Bronze.CardTransactions;
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.FraudDetection.Gold.PotentialFraud AS
+CREATE OR REPLACE VIEW FinanceDB.FraudDetection.Gold.PotentialFraud AS
 SELECT 
     CardID,
     COUNT(*) AS TxCount,
     SUM(Amount) AS TotalAmount,
     MIN(Location) AS FirstLoc,
     MAX(Location) AS LastLoc
-FROM RetailDB.FraudDetection.Silver.FlaggedTransactions
+FROM FinanceDB.FraudDetection.Silver.FlaggedTransactions
 GROUP BY CardID
 HAVING COUNT(*) >= 3 OR SUM(Amount) > 3000 OR MIN(Location) <> MAX(Location);
 
@@ -82,5 +82,5 @@ HAVING COUNT(*) >= 3 OR SUM(Amount) > 3000 OR MIN(Location) <> MAX(Location);
 -------------------------------------------------------------------------------
 /*
 PROMPT 1:
-"Identify all cards in RetailDB.FraudDetection.Gold.PotentialFraud that have transactions in conflicting locations."
+"Identify all cards in FinanceDB.FraudDetection.Gold.PotentialFraud that have transactions in conflicting locations."
 */

@@ -10,17 +10,17 @@
 -------------------------------------------------------------------------------
 -- 0. SETUP
 -------------------------------------------------------------------------------
-CREATE FOLDER IF NOT EXISTS RetailDB;
-CREATE FOLDER IF NOT EXISTS RetailDB.Compliance;
-CREATE FOLDER IF NOT EXISTS RetailDB.Compliance.Bronze;
-CREATE FOLDER IF NOT EXISTS RetailDB.Compliance.Silver;
-CREATE FOLDER IF NOT EXISTS RetailDB.Compliance.Gold;
+CREATE FOLDER IF NOT EXISTS FinanceDB;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Compliance;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Compliance.Bronze;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Compliance.Silver;
+CREATE FOLDER IF NOT EXISTS FinanceDB.Compliance.Gold;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER
 -------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS RetailDB.Compliance.Bronze.CashTransactions (
+CREATE TABLE IF NOT EXISTS FinanceDB.Compliance.Bronze.CashTransactions (
     TxID INT,
     AccountID INT,
     Amount DOUBLE,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS RetailDB.Compliance.Bronze.CashTransactions (
     Location VARCHAR
 );
 
-INSERT INTO RetailDB.Compliance.Bronze.CashTransactions VALUES
+INSERT INTO FinanceDB.Compliance.Bronze.CashTransactions VALUES
 (1, 101, 9500.00, '2025-01-01 10:00:00', 'Branch A'), -- Just under reporting limit
 (2, 101, 9000.00, '2025-01-02 11:00:00', 'Branch B'), -- Structuring pattern?
 (3, 101, 5000.00, '2025-01-02 14:00:00', 'Branch C'),
@@ -44,20 +44,20 @@ INSERT INTO RetailDB.Compliance.Bronze.CashTransactions VALUES
 -- 2. SILVER LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Compliance.Silver.DailyTotals AS
+CREATE OR REPLACE VIEW FinanceDB.Compliance.Silver.DailyTotals AS
 SELECT 
     AccountID,
     CAST(TxDate AS DATE) AS TxDay,
     COUNT(*) AS TxCount,
     SUM(Amount) AS TotalCash
-FROM RetailDB.Compliance.Bronze.CashTransactions
+FROM FinanceDB.Compliance.Bronze.CashTransactions
 GROUP BY AccountID, CAST(TxDate AS DATE);
 
 -------------------------------------------------------------------------------
 -- 3. GOLD LAYER
 -------------------------------------------------------------------------------
 
-CREATE OR REPLACE VIEW RetailDB.Compliance.Gold.SuspiciousActivityReports AS
+CREATE OR REPLACE VIEW FinanceDB.Compliance.Gold.SuspiciousActivityReports AS
 SELECT 
     AccountID,
     TxDay,
@@ -68,7 +68,7 @@ SELECT
         WHEN TotalCash BETWEEN 9000 AND 10000 AND TxCount > 1 THEN 'Potential Structuring'
         ELSE 'Normal'
     END AS RiskFlag
-FROM RetailDB.Compliance.Silver.DailyTotals
+FROM FinanceDB.Compliance.Silver.DailyTotals
 WHERE TotalCash > 9000;
 
 -------------------------------------------------------------------------------
@@ -76,5 +76,5 @@ WHERE TotalCash > 9000;
 -------------------------------------------------------------------------------
 /*
 PROMPT:
-"Identify all accounts in RetailDB.Compliance.Gold.SuspiciousActivityReports marked as 'Potential Structuring'."
+"Identify all accounts in FinanceDB.Compliance.Gold.SuspiciousActivityReports marked as 'Potential Structuring'."
 */
