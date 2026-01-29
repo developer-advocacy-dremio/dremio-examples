@@ -27,7 +27,6 @@ CREATE FOLDER IF NOT EXISTS AutonDB.Fleet;
 CREATE FOLDER IF NOT EXISTS AutonDB.Fleet.Bronze;
 CREATE FOLDER IF NOT EXISTS AutonDB.Fleet.Silver;
 CREATE FOLDER IF NOT EXISTS AutonDB.Fleet.Gold;
-USE AutonDB;
 
 -------------------------------------------------------------------------------
 -- 1. BRONZE LAYER: Raw Sensor Ingestion
