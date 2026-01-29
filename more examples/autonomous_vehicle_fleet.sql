@@ -43,16 +43,16 @@ CREATE FOLDER IF NOT EXISTS AutonDB.Fleet.Gold;
     
     ## Schema
     - `VehicleID`: Unique VIN or Fleet ID
-    - `Timestamp`: Event time (UTC)
+    - `EventTimestamp`: Event time (UTC)
     - `SpeedKmh`: Velocity in km/h
     - `BatteryPct`: State of Charge (0-100)
     - `DriveMode`: 'Manual', 'Autonomous', 'Idle'
     - `LidarObjectCount`: Number of objects detected by LIDAR
 */
 
-CREATE OR REPLACE TABLE AutonDB.Fleet.Bronze.SensorStream (
+CREATE TABLE IF NOT EXISTS AutonDB.Fleet.Bronze.SensorStream (
     VehicleID VARCHAR,
-    Timestamp TIMESTAMP,
+    EventTimestamp TIMESTAMP,
     SpeedKmh DOUBLE,
     BatteryPct INT,
     DriveMode VARCHAR,
@@ -138,7 +138,7 @@ INSERT INTO AutonDB.Fleet.Bronze.SensorStream VALUES
 CREATE OR REPLACE VIEW AutonDB.Fleet.Silver.VehicleHealth AS
 SELECT 
     VehicleID,
-    Timestamp,
+    EventTimestamp,
     SpeedKmh,
     BatteryPct,
     DriveMode,
@@ -181,7 +181,7 @@ FROM AutonDB.Fleet.Bronze.SensorStream;
 CREATE OR REPLACE VIEW AutonDB.Fleet.Gold.FleetEfficiency AS
 SELECT 
     VehicleID,
-    CAST(Timestamp AS DATE) AS ReportDate,
+    CAST(EventTimestamp AS DATE) AS ReportDate,
     AVG(SpeedKmh) AS AvgSpeed,
     MAX(SpeedKmh) AS MaxSpeed,
     MIN(BatteryPct) AS MinBattery,
@@ -189,7 +189,7 @@ SELECT
     COUNT(CASE WHEN DriveMode = 'Manual' THEN 1 END) AS ManualModeTicks,
     COUNT(CASE WHEN ComputeLoad = 'High Sensor Load' THEN 1 END) AS HighComputeEvents
 FROM AutonDB.Fleet.Silver.VehicleHealth
-GROUP BY VehicleID, CAST(Timestamp AS DATE);
+GROUP BY VehicleID, CAST(EventTimestamp AS DATE);
 
 -------------------------------------------------------------------------------
 -- 4. AGENT PROMPTS (Text-to-SQL Examples)
