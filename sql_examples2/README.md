@@ -1,53 +1,42 @@
-# Emerging Tech & Specialized SQL Examples (Batches 1-4)
+# SQL Examples Legacy Index
 
-This directory contains 40+ new, unique SQL scenarios focusing on **Emerging Technologies, Specialized Verticals, and Modern Data Architectures**.
-
-All examples in this directory follow the **Medallion Architecture** pattern (Bronze -> Silver -> Gold).
-
-## Batch 1: Manufacturing & Supply Chain 4.0
-- `agritech_hydroponics.sql`: IoT sensor monitoring for vertical farming.
-- `biotech_crispr_experiments.sql`: Tracking gene editing experimental results.
-- `energy_wind_farm_telemetry.sql`: Predictive maintenance for wind turbines.
-- `manufacturing_pharma_genealogy.sql`: (Updated) Traceability for drug manufacturing.
-- `sustainability_ev_battery_recycling.sql`: Tracking battery lifecycles and material recovery.
-- `supply_chain_rare_earths.sql`: Strategic sourcing and inventory for rare earth metals.
-- `tech_iot_firmware_rollout.sql`: Monitoring global firmware update deployments.
-- `textile_fabric_sourcing.sql`: Sustainable sourcing and quality control.
-- `urban_bike_share_rebalancing.sql`: Optimizing dock availability in real-time.
-- `maritime_container_demurrage.sql`: Optimizing port container logistics.
-
-## Batch 2: Services & Hospitality
-- `agriculture_precision_irrigation.sql`: AI-driven irrigation optimization.
-- `airline_crew_scheduling.sql`: Compliance and fatigue management.
-- `architecture_project_tracking.sql`: Budget and milestone tracking for firms.
-- `cybersecurity_phishing_sims.sql`: Employee security training analytics.
-- `education_mooc_retention.sql`: Student engagement and dropout prediction.
-- `event_music_festival_logistics.sql`: Crowd flow and resource management.
-- `food_cloud_kitchen_ops.sql`: Order throughput and delivery optimization.
-- `hospitality_resort_activities.sql`: Guest activity scheduling and capacity.
-- `insurance_telematics_ubi.sql`: Usage-based insurance scoring.
-- `marketing_influencer_roi.sql`: Campaign performance across social platforms.
-
-## Batch 3: Emerging Tech & Public Sector
-- `gaming_matchmaking_elo.sql`: Skill-based matchmaking analysis.
-- `proptech_hvac_digital_twin.sql`: Smart building energy optimization.
-- `logistics_drone_airspace.sql`: Drone delivery flight path deconfliction.
-- `healthtech_dtx_engagement.sql`: Digital Therapeutics adherence tracking.
-- `energy_geothermal_monitoring.sql`: Well integrity sensor monitoring.
-- `retail_diamond_provenance.sql`: Blockchain-verified supply chain.
-- `transport_evtol_vertiports.sql`: Urban air mobility traffic management.
-- `telecom_subsea_cables.sql`: Fault localization in fiber optics.
-- `hr_remote_work_compliance.sql`: Tax residency tracking for nomads.
-- `environmental_plastic_cleanup.sql`: Ocean barrier effectiveness metrics.
-
-## Batch 4: FinTech, Legal & Specialized
-- `fintech_crowdfunding_campaigns.sql`: Campaign success prediction.
-- `edtech_adaptive_learning_paths.sql`: Real-time curriculum adjustment.
-- `cybersecurity_zero_trust_logs.sql`: Identity and device health correlation.
-- `legaltech_ediscovery_scoring.sql`: Document relevance and privilege review.
-- `insurance_parametric_weather_payouts.sql`: Automated weather index insurance.
-- `space_orbital_debris_tracking.sql`: Satellite collision avoidance.
-- `sports_wearable_injury_risk.sql`: Athlete load and recovery monitoring.
-- `media_podcast_ad_attribution.sql`: Dynamic ad insertion analytics.
-- `energy_green_hydrogen_electrolysis.sql`: Renewable energy cost optimization.
-- `retail_autonomous_checkout_fraud.sql`: Computer vision anomaly detection.
+- [agriculture_precision_irrigation.sql](agriculture_precision_irrigation.sql)
+- [agritech_hydroponics.sql](agritech_hydroponics.sql)
+- [airline_crew_scheduling.sql](airline_crew_scheduling.sql)
+- [architecture_project_tracking.sql](architecture_project_tracking.sql)
+- [biotech_crispr_experiments.sql](biotech_crispr_experiments.sql)
+- [cybersecurity_phishing_sims.sql](cybersecurity_phishing_sims.sql)
+- [cybersecurity_zero_trust_logs.sql](cybersecurity_zero_trust_logs.sql)
+- [edtech_adaptive_learning_paths.sql](edtech_adaptive_learning_paths.sql)
+- [education_mooc_retention.sql](education_mooc_retention.sql)
+- [energy_geothermal_monitoring.sql](energy_geothermal_monitoring.sql)
+- [energy_green_hydrogen_electrolysis.sql](energy_green_hydrogen_electrolysis.sql)
+- [energy_wind_farm_telemetry.sql](energy_wind_farm_telemetry.sql)
+- [environment_wildfire_risk.sql](environment_wildfire_risk.sql)
+- [environmental_plastic_cleanup.sql](environmental_plastic_cleanup.sql)
+- [event_music_festival_logistics.sql](event_music_festival_logistics.sql)
+- [fintech_crowdfunding_campaigns.sql](fintech_crowdfunding_campaigns.sql)
+- [food_cloud_kitchen_ops.sql](food_cloud_kitchen_ops.sql)
+- [gaming_matchmaking_elo.sql](gaming_matchmaking_elo.sql)
+- [healthtech_dtx_engagement.sql](healthtech_dtx_engagement.sql)
+- [hospitality_resort_activities.sql](hospitality_resort_activities.sql)
+- [hr_remote_work_compliance.sql](hr_remote_work_compliance.sql)
+- [insurance_parametric_weather_payouts.sql](insurance_parametric_weather_payouts.sql)
+- [insurance_telematics_ubi.sql](insurance_telematics_ubi.sql)
+- [legaltech_ediscovery_scoring.sql](legaltech_ediscovery_scoring.sql)
+- [logistics_drone_airspace.sql](logistics_drone_airspace.sql)
+- [maritime_container_demurrage.sql](maritime_container_demurrage.sql)
+- [marketing_influencer_roi.sql](marketing_influencer_roi.sql)
+- [media_podcast_ad_attribution.sql](media_podcast_ad_attribution.sql)
+- [proptech_hvac_digital_twin.sql](proptech_hvac_digital_twin.sql)
+- [retail_autonomous_checkout_fraud.sql](retail_autonomous_checkout_fraud.sql)
+- [retail_diamond_provenance.sql](retail_diamond_provenance.sql)
+- [space_orbital_debris_tracking.sql](space_orbital_debris_tracking.sql)
+- [sports_wearable_injury_risk.sql](sports_wearable_injury_risk.sql)
+- [supply_chain_rare_earths.sql](supply_chain_rare_earths.sql)
+- [sustainability_ev_battery_recycling.sql](sustainability_ev_battery_recycling.sql)
+- [tech_iot_firmware_rollout.sql](tech_iot_firmware_rollout.sql)
+- [telecom_subsea_cables.sql](telecom_subsea_cables.sql)
+- [textile_fabric_sourcing.sql](textile_fabric_sourcing.sql)
+- [transport_evtol_vertiports.sql](transport_evtol_vertiports.sql)
+- [urban_bike_share_rebalancing.sql](urban_bike_share_rebalancing.sql)

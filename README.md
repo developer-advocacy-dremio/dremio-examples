@@ -56,3 +56,18 @@ All examples follow the **Medallion Architecture**:
 -   **[View & Reflection Strategy](view_reflection_best_practices.md)**: How to layer views and accelerate queries.
 -   **[Masking & Security](masking_recipes.md)**: Implementing Row-Level Security (RLS) and Column Masking.
 -   **[Privilege Management](privilege_management_recipes.md)**: Managing access control via RBAC.
+
+## 🔬 Niche, Scientific & Non-Profit Domains (Phase 3)
+
+| Scenario | Description | Key Features | File |
+| :--- | :--- | :--- | :--- |
+| **Wildlife Conservation** | Tracking animal tagging data to identify poaching risks. | `Geospatial`, `Medallion` | [wildlife_conservation_tracking.sql](sql_examples/wildlife_conservation_tracking.sql) |
+| **Ocean Plastic Cleanup** | Optimizing vessel routes based on satellite density maps. | `RouteOptimization` | [ocean_plastic_cleanup.sql](sql_examples/ocean_plastic_cleanup.sql) |
+| **Digital Archaeology** | Automating artifact dating via stratigraphic analysis. | `Stratigraphy` | [digital_archaeology_site.sql](sql_examples/digital_archaeology_site.sql) |
+| **Ski Resort Ops** | Balancing lift wait times with snow grooming quality. | `UtilizationMetric` | [ski_resort_operations.sql](sql_examples/ski_resort_operations.sql) |
+| **Refugee Aid Dist.** | Forecasting food/water gaps for camp demographics. | `GapAnalysis` | [humanitarian_aid_distribution.sql](sql_examples/humanitarian_aid_distribution.sql) |
+| **Nuclear Waste Monitor** | Tracking thermal decay and pressure for safety alerts. | `ThresholdDetection` | [nuclear_waste_monitoring.sql](sql_examples/nuclear_waste_monitoring.sql) |
+| **Urban Noise Pollution** | Mapping sensor decibels to zoning for compliance. | `GeospatialCompliance` | [urban_noise_pollution.sql](sql_examples/urban_noise_pollution.sql) |
+| **Patent Portfolio Mgmt** | Valuing IP assets via forward citation graph analysis. | `GraphAnalysis` | [legal_patent_portfolio.sql](sql_examples/legal_patent_portfolio.sql) |
+| **Radio Astronomy** | Filtering RFI interference to detect pulsars/FRBs. | `SignalProcessing` | [astronomy_radio_telescope.sql](sql_examples/astronomy_radio_telescope.sql) |
+| **Luxury Counterfeit** | Detecting cloned tags via impossible travel time logic. | `AntiCounterfeit` | [luxury_counterfeit_detection.sql](sql_examples/luxury_counterfeit_detection.sql) |
