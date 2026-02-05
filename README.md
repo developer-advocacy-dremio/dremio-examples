@@ -19,6 +19,11 @@ Contains new (2025-2026) scenarios focusing on:
 -   **Advanced Tech** (Orbital Debris, Drone Airspace, CRISPR)
 -   **Modern Economy** (Gig Economy, Esports, Influencer ROI)
 
+### 3. [Raw & Messy Data (AI Agent Training)](sql_examples3/README.md)
+Contains "dirty" datasets designed to challenge AI Agents to propose cleaning strategies and architecture:
+-   **Messy Scenarios**: Legacy Banking, IoT Duplicates, Regex Nightmares, JSON Extraction.
+-   **Goal**: Use Dremio AI Agents to auto-generate Bronze -> Silver cleaning logic.
+
 ---
 
 ## 🛠️ Technical Resources
