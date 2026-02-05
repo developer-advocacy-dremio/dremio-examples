@@ -6,14 +6,14 @@ This repository contains over **240+ industry-specific SQL scenarios**, tailored
 
 ## 🗂️ Example Libraries
 
-### 1. [Standard Industry Examples (200+)](sql_examples/README.md)
+### 1. [Standard Industry Examples](sql_examples/README.md)
 Contains standard vertical use cases including:
 -   **Healthcare** (Clinical, Claims, Operations)
 -   **Finance** (Banking, Trading, Risk)
 -   **Government** (Public Safety, Infrastructure)
 -   **Retail & Supply Chain** (Logistics, Customer 360)
 
-### 2. [Emerging Tech & Specialized (40+)](sql_examples2/README.md)
+### 2. [Emerging Tech & Specialized](sql_examples2/README.md)
 Contains new (2025-2026) scenarios focusing on:
 -   **IoT & Sustainability** (Hydroponics, EV Battery, Green Hydrogen)
 -   **Advanced Tech** (Orbital Debris, Drone Airspace, CRISPR)
