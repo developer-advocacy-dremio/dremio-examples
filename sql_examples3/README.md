@@ -85,6 +85,26 @@ An AI Agent analyzing these files should not just "run them". It should be able 
 | **[gig_economy_driver_pay.sql](gig_economy_driver_pay.sql)** | Gig | Pay component reconciliation (Surge/Tip/Fee), cancellation logic. |
 | **[smart_home_conflicts.sql](smart_home_conflicts.sql)** | IoT | Device state thrashing, conflicting modes (Heat + Cool). |
 | **[clinical_trial_data.sql](clinical_trial_data.sql)** | Healthcare | Dosage unit conversion (mg/g), PII suppression in IDs. |
+| **[aquarium_water_quality.sql](aquarium_water_quality.sql)** | Marine Biology | pH outliers, temperature unit mixing (°F/°C), sensor ID format migration. |
+| **[podcast_analytics_mess.sql](podcast_analytics_mess.sql)** | Media | Duration string parsing ("1:23:45" vs "5040s"), bot user-agent filtering, country code normalization. |
+| **[wine_cellar_inventory.sql](wine_cellar_inventory.sql)** | Hospitality | OCR vintage typos ("20l9"), multi-currency prices, score scale mixing (100-pt vs 20-pt vs 5-star). |
+| **[pet_adoption_records.sql](pet_adoption_records.sql)** | Non-Profit | Breed name variants ("Lab"/"Labrador"), weight with units ("25 lbs"), free-text age ("puppy", "~2020"). |
+| **[cemetery_plot_records.sql](cemetery_plot_records.sql)** | Government | 200-year date spanning, name order reversal ("Smith, John" vs "John Smith"), grid vs GPS coordinates. |
+| **[food_truck_inspections.sql](food_truck_inspections.sql)** | Public Health | Multi-format scores (letter/numeric/pass-fail), license plate OCR errors, GPS precision variance. |
+| **[vintage_arcade_scores.sql](vintage_arcade_scores.sql)** | Gaming | Score strings with K/M notation ("1.5K", "2M"), player initial validation, timezone alignment. |
+| **[beekeeping_hive_logs.sql](beekeeping_hive_logs.sql)** | Agriculture | Free-text boolean ("QUEENRIGHT"), weight unit parsing, disease code/description unification. |
+| **[elevator_maintenance_logs.sql](elevator_maintenance_logs.sql)** | Facilities | Floor notation ("B2"/"-2"/"SB"), priority code harmonization, overlapping maintenance windows. |
+| **[amateur_radio_contacts.sql](amateur_radio_contacts.sql)** | Hobby | Callsign canonicalization ("W1ABC/P"), frequency unit normalization, RST signal report parsing. |
+| **[botanical_garden_specimens.sql](botanical_garden_specimens.sql)** | Science | Taxonomy synonyms, DMS vs decimal coordinates, imprecise historical dates ("1870s", "ca. 1910"). |
+| **[film_festival_submissions.sql](film_festival_submissions.sql)** | Media | Runtime parsing ("1h32m", "5520s"), genre splitting, multi-currency budgets, cross-year resubmissions. |
+| **[dog_show_judging.sql](dog_show_judging.sql)** | Animals | Breed abbreviation mapping, mixed scoring scales (10-pt/100-pt/text), registration OCR errors. |
+| **[brewery_batch_records.sql](brewery_batch_records.sql)** | Food & Bev | Specific gravity formats (SG/Plato), volume units (bbl/gal/L), ABV calculation validation. |
+| **[genealogy_census_records.sql](genealogy_census_records.sql)** | Government | Archaic occupations, fractional ages ("3/12"), name abbreviations ("Jno.", "Chas."), age/birth-year mismatch. |
+| **[marine_vessel_ais.sql](marine_vessel_ais.sql)** | Maritime | MMSI validation, speed unit mixing (knots/km/h/mph), impossible heading values (>360°). |
+| **[auto_body_repair_estimates.sql](auto_body_repair_estimates.sql)** | Automotive | VIN OCR errors (O/0, I/1), labor rate parsing, damage area abbreviation normalization. |
+| **[museum_art_provenance.sql](museum_art_provenance.sql)** | Art | Artist name disambiguation, dimension parsing (inches/cm/fractions), historical multi-currency prices. |
+| **[roller_coaster_telemetry.sql](roller_coaster_telemetry.sql)** | Entertainment | G-force validation (>6G), speed firmware bugs, e-stop/valley detection, brake temperature anomalies. |
+| **[youth_soccer_league.sql](youth_soccer_league.sql)** | Sports | Age group normalization, score parsing ("3-1"/"Forfeit"), jersey number conflicts, phone formatting. |
 
 ### Usage
 Run these scripts to seed the "Bronze/Raw" layer in your Dremio environment. Then, ask your AI Agent:
